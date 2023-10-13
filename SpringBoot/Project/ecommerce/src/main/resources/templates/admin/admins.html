@@ -1,16 +1,16 @@
-users.html<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{base::Layout(~{::title},~{::section} )}">
 
 <head>
     <meta charset="UTF-8">
-    <title>Users</title>
+    <title>Admins</title>
 </head>
 <body>
 <section>
     <div class="container mt-5">
         <div class="card card-sh">
             <div class="card-header text-center">
-                <p class="fs-4">Users</p>
+                <p class="fs-4">Admins</p>
             </div>
             <th:block th:if="${session.errorMsg}">
                 <p class="text-danger fw-bold text-center">[[${session.errorMsg}]]</p>

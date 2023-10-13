@@ -3,52 +3,67 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Login Page</title>
+    <title>Product</title>
 </head>
 <body>
 <section>
-    <div class="container mt-5 p-5">
-        <div class="row">
-            <div class="col-md-6 p-5">
-                <img src="/img/ecom.png" alt="">
+    <div class="container mt-5">
+        <div class="card card-sh">
+            <div class="card-header text-center">
+                <p class="fs-4">View Cart</p>
             </div>
-            <div class="col-md-6 p-5">
-                <div class="card shadow p-3 mb-5 bg-body-tertiary rounded">
-                    <div class="card-header">
-                        <p class="fs-4 text-center">Login</p>
-                    </div>
-                    <th:block th:if="${param.error}">
-                        <p class="text-center text-danger">[[${session.SPRING_SECURITY_LAST_EXCEPTION.message}]]</p>
+            <th:block th:if="${session.errorMsg}">
+                <p class="text-danger fw-bold text-center">[[${session.errorMsg}]]</p>
+                <th:block th:text="${@commonServiceImpl.removeSessionMessage()}"></th:block>
+            </th:block>
+            <th:block th:if="${session.succMsg}">
+                <p class="text-success fw-bold  text-center">[[${session.succMsg}]]</p>
+                <th:block th:text="${@commonServiceImpl.removeSessionMessage()}"></th:block>
+            </th:block>
+            <div class="card-body">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">Sr NO</th>
+                        <th scope="col">Image</th>
+                        <th scope="col">Product Name</th>
+                        <th scope="col">Price</th>
+                        <th scope="col" class="text-center">Quantity</th>
+                        <th scope="col">Total Price</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="cart, c : ${cartList}">
+                        <th scope="row">[[${c.count}]]</th>
+                        <td><img th:src="@{'/img/product_img/'+${cart.product.image}}" height="70px" width="70px"></td>
+                        <td>[[${cart.product.title}]]</td>
+                        <td>[[${cart.product.discount_price}]]</td>
+                        <td class="text-center"> <a th:href="@{'/user/cartQuantityUpdate?sy=de&cartId='+ ${cart.id}}"><i class="fa-solid fa-minus"></i>    </a> [ [[${cart.quantity}]] ]   <a th:href="@{'/user/cartQuantityUpdate?sy=in&cartId='+ ${cart.id}}"><i class="fa-solid fa-plus"></i> </a> </td>
+                        <td>[[${cart.totalPrice}]]</td>
+
+                    </tr>
+                    <th:block th:if="${cartList.size() > 0}">
+                        <tr class="border-0">
+                            <!-- Empty space for alignment -->
+                            <td colspan="4"></td>
+                            <!-- Total Price Row -->
+                            <td class="fw-bold text-end">Total Price</td>
+                            <td class="fw-bold text-end">&#8377; [[${totalOrderPrice}]]</td>
+                        </tr>
+                        <tr class="border-0">
+                            <!-- Empty cells for alignment -->
+                            <td colspan="3"></td>
+                            <!-- Proceed to Payment Button -->
+                            <td colspan="3" class="text-end">
+                                <a href="/user/order" class="btn btn-warning px-4 py-2">Proceed to Payment</a>
+                            </td>
+                        </tr>
                     </th:block>
-
-
-
-                    <div class="card-body">
-                        <form action="/login" method="POST">
-                            <div class="mb-3">
-                                <label class="form-label">Email</label>
-                                <input name="username" type="email" class="form-control" placeholder="Enter your email here" required>
-                            </div>
-                            <div class="mb-3">
-
-                                <label class="form-label">Password</label>
-                                <input name="password" type="password" class="form-control" placeholder="Enter your password here" required>
-                            </div>
-
-                            <button type="submit" class="btn bg-primary text-white col-md-12">Login</button>
-                        </form>
-                        <div class="card-footer text-center">
-                            <a class="text-decoration-none"  href="/forgot_password">Forget Password</a> <br>
-                            Don't have an account?
-                            <a class="text-decoration-none"  href="/register">Create One</a>
-                        </div>
-                    </div>
-                </div>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
-
 </section>
 </body>
 </html>
-
