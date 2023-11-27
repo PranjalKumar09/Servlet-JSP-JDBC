@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{base::Layout(~{::title},~{::section} )}">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Index Page</title>
+</head>
+<body>
+    <section>
+        <div class="container-fluid bg-primary p-5 ">
+            <div class="row">
+                <div class="col-md-8 offset-md-2">
+                    <form action="#">
+                        <div class="input-group">
+                            <input type="text" class="form-control" name="ch">
+                            <button class="btn btn-light text-dark col-md-2"><i class="fa-solid fa-magnifying-glass"></i>Search</button>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid  mt-1">
+            <div class="row p-0">
+                <div class="col-md-2 p-0">
+                    <div class="card-body">
+                        <div class="card shadow-sm p-0 mb-5 bg-body-tertiary rounded">
+                            <div class="list-group">
+                                <button type="button" class="list-group-item list-group-item-action active" aria-current="true">
+                                    Categories
+                                </button>
+                                <a href="" class="list-group-item list-group-item-action" th:each="category:${categoryList}">[[${category.title}]]</a>
+                      
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-10">
+                    <div class="card shadow-sm p-3 mb-5 bg-white-tertiary rounded">
+                        <div class="card-header"><p class="fs-2 text-center">Products</p></div>
+
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="card div card-body text-center">
+                                        <img src="/img/product_img/laptop.jpg" width="100%" height="150px">
+                                        <p class="fs-5 text-center">Laptop</p>
+                                        <div class="row text-center">
+                                            <p class="fs-6 fw-bold"> &#8377  500
+                                            <span class="fs-6 text-success">20% Off</span></p>
+                                            <a href="view_product" class="col-md-6 offset-md-3     btn btn-primary">View Details</a>
+                                        </div>
+                                    </div>
+                                </div>
+<!--                                TODO: remove after backend implemented-->
+                                <div class="col-md-3" th:each="product:${productList}">
+                                    <div class="card div card-body text-center">
+                                        <img th:src="${'/img/product_img/'+product.image}" width="100%" height="150px">
+                                        <p class="fs-5 text-center">[[${product.title}]]</p>
+                                        <div class="row text-center">
+                                            <p class="fs-6 fw-bold">
+                                                <span> [[${product.discount_price}]]  </span> <br>
+                                               <span class="text-decoration-line-through text-secondary">&#8377  [[${product.price}]]</span>
+                                                <span class="fs-6 text-success">[[${product.discount}]]% off</span>
+                                            </p>
+
+
+
+
+                                            <a href="#" class="col-md-6 offset-md-3 btn btn-primary">View Details</a>
+                                        </div>
+                                    </div>
+                                </div>
+<!--                                END -->
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+    </section>
+</body>
+</html>
