@@ -43,6 +43,7 @@ public class CustomUser implements UserDetails {
     // Additional methods required by UserDetails can be implemented here.
 }
 ```
+Usually here we set all to true
 
 **Explanation of Methods:**
 - `getAuthorities()`: Returns the roles associated with the user. Spring expects roles to be prefixed with `"ROLE_"`. This setup assumes roles in the database are already formatted like `ROLE_USER`.

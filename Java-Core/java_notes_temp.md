@@ -1,4 +1,5 @@
 ### 1. **Ranges and Sizes of Primitive Data Types**
+### 1. **Ranges and Sizes of Primitive Data Types**
    - Be familiar with Java’s eight primitive data types: `byte`, `short`, `int`, `long`, `float`, `double`, `char`, and `boolean`.
    - **Ranges and Sizes**:
      - `byte`: 1 byte, -128 to 127
