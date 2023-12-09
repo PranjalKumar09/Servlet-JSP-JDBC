@@ -1,4 +1,8 @@
 package com.ecom.service;
 
-public class CommonService {
+import org.springframework.stereotype.Service;
+
+@Service
+public interface CommonService {
+    void removeSessionMessage();
 }
