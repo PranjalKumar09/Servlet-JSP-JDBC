@@ -1,7 +1,10 @@
-package com.ecom.service;
+package com.ecom.service.impl;
 
 import com.ecom.entity.Category;
 import com.ecom.repository.CategoryRepository;
+import com.ecom.service.CategoryService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,6 +24,21 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
+    public Page<Category> getAllCategory(Pageable pageable) {
+        return  categoryRepository.findAll(pageable);
+    }
+
+    @Override
+    public Boolean deleteCategory(int id) {
+        Category category = categoryRepository.findById(id).get();
+        if (category != null) {
+            categoryRepository.deleteById(id);
+            return true;
+        }
+        return false;
+    }
+
+    @Override
     public Boolean existCategory(String categoryName) {
         return categoryRepository.existsByTitle(categoryName);
     }
@@ -31,4 +49,14 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
 
+    @Override
+    public Category getCategoryById(int id) {
+//        Category category =  ;
+        return categoryRepository.findById(id).get();
+    }
+
+    @Override
+    public List<Category> getAllActiveCategory() {
+        return categoryRepository.findByIsActiveTrue();
+    }
 }

@@ -10,10 +10,11 @@ import com.ecom.service.CartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class CastServiceImpl implements CartService {
+public class CartServiceImpl implements CartService {
     @Autowired
     private CartReposistory cartReposistory;
     @Autowired
@@ -23,7 +24,41 @@ public class CastServiceImpl implements CartService {
 
     @Override
     public List<Cart> getCartByUserId(Integer userId) {
-        return List.of();
+        List<Cart>   carts =  cartReposistory.findByUserId(userId);
+        double totalOrderPrice = 0.0;
+        List<Cart> cartList = new ArrayList<>();
+        for (Cart cart : carts) {
+            double totalPrice = cart.getProduct().getDiscount_price()*cart.getQuantity() ;
+            cart.setTotalPrice(totalPrice);
+            totalOrderPrice += totalPrice;
+            cart.setTotalOrderAmount(totalOrderPrice);
+            cartList.add(cart);
+        }
+        return cartList;
+
+
+    }
+
+    @Override
+    public Integer getCountCart(Integer userId) {
+        return cartReposistory.countByUser(userReposistory.findById(userId).get());
+    }
+
+    @Override
+    public void updateQuantity(String sy, Integer cid) {
+        Cart cart = cartReposistory.findById(cid).get();
+        int quantity ;
+        if ("de".equals(sy)) {
+            quantity = cart.getQuantity() - 1;
+            if (quantity <= 0) {
+                cartReposistory.deleteById(cid);
+                return;
+            }
+        }
+        else  quantity = cart.getQuantity() + 1;
+
+        cart.setQuantity(quantity);
+        cartReposistory.save(cart);
     }
 
     @Override
@@ -31,22 +66,23 @@ public class CastServiceImpl implements CartService {
         UserDtls userDtls = userReposistory.findById(userId).orElse(null);
         Product product = productRepository.findById(productId).orElse(null);
 
-        Cart cart = cartReposistory.findByUserAndAndProduct(userId, productId);
+        if (userDtls == null || product == null) {
+            throw new IllegalArgumentException("User or Product not found");
+        }
 
-        if (cart == null && product != null ) {
+        Cart cart = cartReposistory.findByUserAndProduct(userDtls, product);
+
+        if (cart == null) {
             cart = new Cart();
             cart.setUser(userDtls);
             cart.setProduct(product);
             cart.setQuantity(1);
             cart.setTotalPrice(product.getDiscount_price());
-
         } else {
-            cart = cartReposistory.findByUserAndAndProduct(userId, productId);
             cart.setQuantity(cart.getQuantity() + 1);
             cart.setTotalPrice(cart.getQuantity() * cart.getProduct().getDiscount_price());
         }
         return cartReposistory.save(cart);
-
-
     }
+
 }
