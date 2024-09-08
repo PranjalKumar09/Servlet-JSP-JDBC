@@ -1,0 +1,59 @@
+
+    Form attribute should have name tag
+        ex->
+        <input type="tel" class="form-control" id="phone" name="phone"> ---
+
+        here name
+
+        1. web.xml
+        ==========
+
+    Purpose: Configures servlets and servlet mappings for your web application.
+    Servlet Definition: Defines the servlet and its class.
+    <servlet>
+        <servlet-name>App</servlet-name>
+        <servlet-class>com.servlets.RegisterServlet</servlet-class>
+    </servlet>
+
+    <!-- Servlet mapping -->
+    <servlet-mapping>
+        <servlet-name>App</servlet-name>
+        <url-pattern>/register</url-pattern>
+    </servlet-mapping>
+
+
+        2. Servlets
+        ============
+
+    Purpose: Handle HTTP requests and generate responses.
+
+    Methods:
+        doGet(HttpServletRequest req, HttpServletResponse resp): Handles GET requests.
+        doPost(HttpServletRequest req, HttpServletResponse resp): Handles POST requests.
+
+
+    public class RegisterServlet extends HttpServlet {
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        // Retrieve form parameters
+        String name = req.getParameter("user_name");
+        // Other parameters
+        
+        resp.setContentType("text/html");
+        try (PrintWriter out = resp.getWriter()) {
+            out.println("<h1>Registration Successful!</h1>");
+            // Output content
+        }
+    }
+}
+    name Attribute:
+
+    Purpose: Identifies form fields and makes their data accessible on the server side.
+    Example: <input type="text" name="user_name">
+
+
+
+    
+
+
+
