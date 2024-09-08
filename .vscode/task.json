@@ -1,0 +1,16 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "start-tomcat",
+        "type": "shell",
+        "command": "/opt/tomcat_backup/bin/catalina.sh",
+        "args": ["run"],
+        "group": {
+          "kind": "build",
+          "isDefault": true
+        },
+        "problemMatcher": []
+      }
+    ]
+} 

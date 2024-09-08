@@ -1,0 +1,85 @@
+    Advance Java
+    ============
+
+    *Desktop
+        1- Swing
+        2- JavaFx
+    *Web
+        1- Servlet
+        2- Jsp
+        3- Spring (Framework)
+    *Distributed
+        1- Spring boot (Framework)
+    
+    
+
+
+    Servlet: Servlet is simple java program runs on server & capable of handling request & generating dynamic response.
+
+                        Request
+    User/Client/Browser -------> Server
+                        <------- (Java Program)
+                        Response    DB
+
+
+
+
+
+    Creating Servlet Using Servlet
+    ==============================
+
+        -> Life Cycle Method
+
+            1- public void init(ServletConfig config);
+            2- public void service(ServletRequest request, ServletResponse response);
+            3- public void destroy():
+
+
+        -> Non life cycle method
+
+            4- public ServletConfig getServletConfig();
+            5- public String getServletInfo();
+
+        
+        Deploy in server
+        ----------------
+
+        web.xml- Deployment Descriptor
+        url mapping- www.fb.com/register
+
+        $ mvn archetype:generate -DgroupId=com.example -DartifactId=my-webapp -DarchetypeArtifactId=maven-archetype-webapp -DinteractiveMode=false
+
+        
+Servlet FirstProgram.java
+==========================
+
+    Location: /java/com/servlets
+    Package: com.servlets
+    Imports: jakarta.servlet.*
+    Implements: Servlet interface
+
+Methods:
+
+    init(ServletConfig config):
+        Called once when the servlet is first loaded.
+        Initializes the servlet.
+        System.out.println("Servlet initialized");
+
+    service(ServletRequest req, ServletResponse res):
+        Handles requests from clients.
+        Sets response content type to HTML.
+        Writes response with res.getWriter().println("<h1>Hello from FirstProgram Servlet! 2</h1>");
+        Prints debug information.
+
+    getServletConfig():
+        Returns servlet configuration object.
+
+    getServletInfo():
+        Returns information about the servlet (e.g., version).
+
+    destroy():
+        Called when the servlet is about to be destroyed.
+        System.out.println("Servlet is being destroyed");
+
+
+
