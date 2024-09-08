@@ -22,7 +22,10 @@
                         Response    DB
 
 
-
+    There 3 ways of Servlet:
+        1- Servlet interface
+        2- GenericServlet
+        3- HttpServlet
 
 
     Creating Servlet Using Servlet
@@ -83,3 +86,40 @@ Methods:
 
 
 
+GenericServlet
+===============
+    We generally user   implements  in servlet and    extends in GenericServlet
+    We dont need override then only  service needed
+    We then also maded SecondProgram.java & updated servelt name , pattern , then update the index.html
+
+HttpServlet
+===========
+    Purpose: Provides HTTP-specific methods for handling different types of HTTP requests.
+        Methods Provided:
+            doGet(HttpServletRequest req, HttpServletResponse resp): Handles HTTP GET requests.
+            doPost(HttpServletRequest req, HttpServletResponse resp): Handles HTTP POST requests.
+            doHead(HttpServletRequest req, HttpServletResponse resp): Handles HTTP HEAD requests.
+            doTrace(HttpServletRequest req, HttpServletResponse resp): Handles HTTP TRACE requests.
+        Exception Handling: When extending HttpServlet, there's no need to import specific exceptions for common HTTP methods as they are handled internally.
+
+    Recent Updates:
+        Created SecondProgram.java with specific HTTP method implementations.
+        Updated the servlet name and URL pattern in web.xml.
+        Updated index.html to reflect changes in the servlet configuration.
+
+        Possible Error:
+
+             HTTP 405 Method Not Allowed: When the form is submitted using POST, the server will respond with an HTTP 405 error if there is no doPost method to handle it.
+
+        So dopost should also be done
+    
+
+Servlet Life-Cycle:
+===================
+    Entire life cycle managed by Servlet container
+    Goes through 4 step
+
+    1- Loading Servlet
+    2- Intializing Servlet
+    3- Request Handling
+    4- Destroying Servlet
