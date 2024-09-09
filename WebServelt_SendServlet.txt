@@ -1,0 +1,72 @@
+Simplified Servlet Configuration Using @WebServlet
+
+Instead of defining servlets and servlet-mapping in web.xml, servlets can be directly annotated using the @WebServlet
+
+  Traditional web.xml Configuration
+
+  <servlet>
+      <servlet-name>Servlet1</servlet-name>
+      <servlet-class>com.servlets.FirstServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+      <servlet-name>Servlet1</servlet-name>
+      <url-pattern>/login</url-pattern>
+  </servlet-mapping>
+
+
+  @WebServlet("/login")
+public class FirstServlet extends HttpServlet {
+    // Override doGet, doPost methods as required
+}
+
+Request and Response Handling
+-----------------------------
+
+  In the servlet, the request (req) object contains information sent from the client (like form data), while the response (resp) object is used to send data back to the client.
+
+    Request: Data is extracted from the request using req.getParameter().
+    Response: Data is sent back using resp.getWriter() or redirect/forward methods.
+
+protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    String email = req.getParameter("email");
+    String password = req.getParameter("password");
+
+    if ("demo@email.com".equals(email) && "demo".equals(password)) {
+        // Redirect to the second servlet
+        resp.sendRedirect("servlet2");
+    } else {
+        // Handle failed login attempt
+        resp.getWriter().println("Invalid email or password");
+    }
+}
+
+
+
+
+Forward vs Redirect
+-------------------
+    Forward: Sends the request to another resource (e.g., another servlet or JSP) on the server without the client knowing. The URL in the browser remains unchanged.
+
+    RequestDispatcher rd = req.getRequestDispatcher("/servlet2");
+    rd.forward(req, resp);
+
+
+
+    Redirect: Informs the client (browser) to issue a new request to a different URL. The URL in the browser is updated.
+
+    resp.sendRedirect("servlet2");
+
+
+
+1. sendRedirect and doGet
+
+When using sendRedirect, the browser receives a redirect response from the server, and it initiates a new request to the redirected URL. This new request is always a GET request, regardless of the method (like POST) used in the original request.
+
+
+2. Forwarding Using RequestDispatcher
+
+Unlike sendRedirect, the RequestDispatcher.forward() method forwards the same request to another resource (like a servlet or JSP) on the server without the browser being aware of it. This maintains the original request method (either GET or POST).
+
+
+
+
