@@ -1,0 +1,10 @@
+
+    Welcome file list
+    =================
+
+    Like home page
+    Element of web-app,used to define list of welcome files
+    Its sub element is <welcome-file>  used to define welcome file
+    It is file that invoked automatically by server, if you don't specify any file name
+
+    

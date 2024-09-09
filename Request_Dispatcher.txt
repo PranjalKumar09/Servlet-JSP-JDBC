@@ -1,0 +1,10 @@
+Request Dispatcher
+==================
+    This interface provides facility of dispatching request to another it may be html, servlet or jsp
+
+    There are two methods defined in RequestDispatcherInterface
+        Forward() & Include()
+
+    See image: Request_Dispatcher.png
+    
+
