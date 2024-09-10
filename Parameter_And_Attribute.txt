@@ -1,0 +1,12 @@
+
+Parameter
+---------
+    There are those values which are provide by user to any servlet to process request during request operation
+
+Attribute
+---------
+    These are oobject that are the attache by one servlet to object(session request, context etc) & other servlet can fetch object to proces to logic
+
+    setAttributes(String name, object)
+    object value=getAttribute(String name)
+    removeAttributing(String name)
