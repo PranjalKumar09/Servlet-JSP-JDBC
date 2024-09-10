@@ -1,0 +1,70 @@
+Session Tracking
+================
+    Session simply means particular interval of time
+    Session tracking is way to maintain state(Date) of an user. It is also know as session management in servlet
+
+    Http Protocol is state less Protocol
+
+
+Session Tracking Techniques
+===========================
+    4 Techniques
+
+    1- Cookies
+    2- Hidden Form Field
+    3- URL Rewriting
+    4- HttpSession
+
+    For example , In a 4th Project, when navigating from Servlet1 to Servlet2 using a hyperlink, you might find that the data (e.g., user name) from Servlet1 is not available in Servlet2. This occurs because a hyperlink (<a href="servlet2">Servlet2</a>) does not carry the data from Servlet1 to Servlet2.
+    
+        String name = req.getParameter("name");
+        PrintWriter out = resp.getWriter();
+
+        resp.setContentType("text/html");
+        out.println("Welcome to Servlet1 name="+name);
+        out.print("<br> <a href='servlet2>Servlet2</a>");
+    
+   Why doGet and Not doPost:
+
+    doGet:
+        Usage: Handles HTTP GET requests.
+        Appropriate for: Retrieving data or navigating between resources via URLs.
+        Example: When using hyperlinks, doGet is used because hyperlinks make GET requests.
+
+    doPost:
+        Usage: Handles HTTP POST requests.
+        Appropriate for: Submitting form data that modifies server state.
+        Example: When submitting forms that post data, doPost is used. However, POST requests are not suited for navigation via hyperlinks.
+
+
+    Cookies
+    =======
+
+    1. Cookies is session tracking Techniques which is used to maintaining state.
+    2. They are used in client state.
+    3. Cookies defined in key value pair.
+    4. Cookies class present in servlet.http.package
+    doGet is commonly used to read cookies and respond, while doPost might be used to set or update cookies based on form submissions or other POST data.
+
+
+
+    Retrieving Cookies:
+        Cookie[] cookies = req.getCookies(); retrieves an array of Cookie objects sent by the client with the request.
+
+    Handling Null Cookies:
+        if (cookies == null) checks if no cookies were sent. If true, it redirects the user to index.html.
+
+    Processing Cookies:
+        If cookies are present, the response content type is set to HTML with resp.setContentType("text/html");.
+        PrintWriter out = resp.getWriter(); is used to send HTML content in the response.
+        out.println("<h1>Welcome!</h1>"); outputs a welcome message.
+        out.println("<p>Email: " + cookies[0].getValue() + "</p>"); displays the value of the first cookie.
+        out.println("<p>Password: " + cookies[1].getValue() + "</p>"); displays the value of the second cookie.
+        out.print("<a href='logout'>Log out</a>"); provides a link for the user to log out.
+
+
+    The code assumes that cookies[0] and cookies[1] are present and correctly ordered. If not, it may throw an ArrayIndexOutOfBoundsException.
+
+        ck[0].setMaxAge(0); and ck[1].setMaxAge(0); set the cookies’ maximum age to 0, which effectively deletes them.
+
+        
