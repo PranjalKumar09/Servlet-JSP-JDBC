@@ -12,7 +12,7 @@ Session Tracking Techniques
 
     1- Cookies
     2- Hidden Form Field
-    3- URL Rewriting
+    3- URL Rewriting (Use doPost from receiving end)
     4- HttpSession
 
     For example , In a 4th Project, when navigating from Servlet1 to Servlet2 using a hyperlink, you might find that the data (e.g., user name) from Servlet1 is not available in Servlet2. This occurs because a hyperlink (<a href="servlet2">Servlet2</a>) does not carry the data from Servlet1 to Servlet2.
@@ -48,6 +48,7 @@ Session Tracking Techniques
 
 
 
+
     Retrieving Cookies:
         Cookie[] cookies = req.getCookies(); retrieves an array of Cookie objects sent by the client with the request.
 
@@ -67,4 +68,144 @@ Session Tracking Techniques
 
         ck[0].setMaxAge(0); and ck[1].setMaxAge(0); set the cookies’ maximum age to 0, which effectively deletes them.
 
-        
+
+
+
+
+URL Rewriting
+=============
+    It allows you to pass data between servlets or to the client using URLs. This technique is useful when you need to retain data across requests or sessions without using cookies or sessions explicitly.
+
+    Key ValueFormat
+    Syntax- https://localhost:8080/projectname?name1=value1&name2=value2
+
+    The doPost method in a servlet handles POST requests and can be used to process data sent from a form or another servlet.
+    To retrieve parameters in a servlet, use req.getParameter("parameterName").
+
+    You can forward data to another servlet using URL parameters. For example, in your case, you send the name parameter to Servlet2.
+    
+    Example
+
+    Servlet1
+
+    import java.io.IOException;
+    import java.io.PrintWriter;
+    import javax.servlet.ServletException;
+    import javax.servlet.annotation.WebServlet;
+    import javax.servlet.http.HttpServlet;
+    import javax.servlet.http.HttpServletRequest;
+    import javax.servlet.http.HttpServletResponse;
+
+    @WebServlet("/servlet1")
+    public class Servlet1 extends HttpServlet {
+
+        @Override
+        protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+            String name = req.getParameter("nm");
+            resp.setContentType("text/html");
+            PrintWriter out = resp.getWriter();
+            out.print("<h1>Name: " + name + "</h1>");
+            out.print("<a href='servlet2?username=" + name + "'>Go to Servlet 2</a>");
+        }
+    }
+
+    servlet2
+
+    import java.io.IOException;
+    import java.io.PrintWriter;
+    import javax.servlet.ServletException;
+    import javax.servlet.annotation.WebServlet;
+    import javax.servlet.http.HttpServlet;
+    import javax.servlet.http.HttpServletRequest;
+    import javax.servlet.http.HttpServletResponse;
+
+    @WebServlet("/servlet2")
+    public class Servlet2 extends HttpServlet {
+
+        @Override
+        protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+            String username = req.getParameter("username");
+            resp.setContentType("text/html");
+            PrintWriter out = resp.getWriter();
+            out.print("<h1>Username: " + username + "</h1>");
+        }
+    }
+
+
+
+Hidden form
+===========
+    Maintaining state of an user
+    Syntax- <input type="hidden" name="uname" value="codewith" />
+
+    by doget in receiving end 
+
+    URL Rewriting: This often involves appending parameters to the URL. For example, if a user selects a product, the URL might look like example.com/products?productId=123. URL rewriting is typically used with doGet because the parameters are passed through the URL, and GET requests are used to retrieve information based on these parameters.
+
+    Hidden Forms: Forms using POST methods often involve hidden fields to send additional data that should not be visible or altered by the user. When you submit a form with POST, the data is sent in the body of the request, which allows for a more secure and flexible way of sending data. This is why hidden forms, which include data that should not be exposed or tampered with, use doPost to process the submitted data.
+
+    Hidden Form used in facebook comments like getting the comment id , in hidden form
+
+
+
+HttpSession
+===========
+    Container creates session id for each user. Container uses id to identify particular user
+
+    HttpSession session = req.getSession();
+
+    session.getAttribute("objname","value");
+    session.setAttribute("objname");
+    session.removeAttribute("objname");
+    session.invalidate();
+
+    Use do get
+
+
+
+
+Cookies
+
+    Storage Location:
+        Stored on the client-side (in the user's browser).
+
+    Data Size:
+        Limited to about 4KB per cookie.
+
+    Persistence:
+        Can be persistent (with an expiration date) or session-based (deleted when the browser is closed). Persistent cookies remain even after the browser is closed until their expiry date.
+
+    Visibility:
+        Cookies are visible to the client-side scripts (JavaScript) and can be accessed or modified by them.
+
+    Expiration:
+        Can be set to expire at a specific time or after a certain period. If no expiration is set, it's a session cookie and will be deleted when the browser is closed.
+
+    Security:
+        Can be made more secure using attributes like Secure (only sent over HTTPS) and HttpOnly (not accessible via JavaScript). However, cookies are still potentially vulnerable to attacks such as cross-site scripting (XSS).
+
+    Management:
+        Can be manually deleted by the user through browser settings or by the server by sending a cookie with an expired date.
+
+HTTP Sessions
+
+    Storage Location:
+        Stored on the server-side (e.g., in memory, a file, or a database).
+
+    Data Size:
+        Can store larger amounts of data compared to cookies, as the data is kept on the server.
+
+    Persistence:
+        Sessions persist on the server until they expire due to inactivity or are explicitly invalidated. The client only holds a session ID, which is usually managed via a cookie or URL parameter.
+
+    Visibility:
+        Session data is not visible to the client-side scripts. Only the session ID is sent to the client.
+
+    Expiration:
+        Sessions typically expire after a period of inactivity (configurable) or when explicitly invalidated by the server. Sessions are not tied to browser closure but to server-side management.
+
+    Security:
+        Sessions are generally more secure as sensitive data is stored server-side and not exposed to the client. However, session IDs can be targeted by attacks like session hijacking or fixation.
+
+    Management:
+        Session termination is handled by the server. Sessions are automatically cleaned up based on expiration policies or manual invalidation.

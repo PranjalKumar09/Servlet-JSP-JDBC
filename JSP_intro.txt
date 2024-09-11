@@ -1,0 +1,21 @@
+
+JSP Tutorial
+============
+
+    1: JSP is create web application just like Servlet technology
+    2: It is extension to Servlet because it provide more functionality (Custom tags)
+        JSP = Servlet_features + Extra (Expressive, Custom tags)
+    3: JSAP consist of HTML & JSP tags
+    4: JSP easier to maintain servlet because can separate design & development
+
+    * Easy to maintain, deploy
+    * Less length prf
+
+
+JSP scripting elements
+======================
+    Provide ability to insert java code inside JSP
+    3 types of scripting element:
+        1: Declaration Tag   <%!  int a=10,String name="abc" public void show(){} %>
+        2: Expression Tag    <% = a%>   <%= name %>
+        3: Scriptlet Tag     <% req.getParameter(); %>
