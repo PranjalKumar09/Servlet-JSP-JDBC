@@ -19,3 +19,177 @@ JSP scripting elements
         1: Declaration Tag   <%!  int a=10,String name="abc" public void show(){} %>
         2: Expression Tag    <% = a%>   <%= name %>
         3: Scriptlet Tag     <% req.getParameter(); %>
+
+    Like instead of index.html index.jsp used
+
+    <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <h1>Hello World</h1>
+        <h1>Declaration Tag:</h1>
+        <%! 
+            int a = 10;
+            String name = "abc";
+        %>
+        <h1>Expression Tag: <%= a %> <%= name %> </h1>
+        <% 
+            int sum = 20 + 30;
+            out.println("Sum= " + sum);
+            
+            int sub = sum - 10;
+            out.println("Subtraction= " + sub);
+        %>
+
+        <h1 style="color:red"><%= sum %></h1>
+        <h1 style="color:red"><%= sub %></h1>
+    </body>
+    </html>
+
+
+
+JSP Directive
+=============
+
+    Jsp directive message that tell web container how to translate jsp page into coreesponding servlet
+
+    3 type of directive-
+        1: page directive
+
+            import
+            contentType
+            extends
+            info
+            buffer
+            language
+            isELIgnored
+            isThreadSafe
+            autoFlush
+            session
+            pageEncoding
+            errorPage
+            isErrorPage
+
+        2: include directive
+        3: taglib directive
+
+
+JSP Directives:
+
+    <%@ page ... %>: Defines page-wide properties and settings.
+    <%@ taglib ... %>: Imports tag libraries.
+    <%@ include file="..." %>: Includes another file at translation time.
+
+JSP Declarations:
+
+    Declared using <%! ... %>. Used to declare variables and methods that are accessible throughout the page.
+    Example: <%! int a = 10; String name = "abc"; %>
+
+JSP Expressions:
+
+    Embedded within <%= ... %> tags. Evaluates Java expressions and outputs the result directly in the HTML.
+    Example: <%= a %> outputs the value of variable a.
+
+JSP Scriptlets:
+
+    Used for embedding Java code into the HTML.
+    Enclosed in <% ... %>. This code is executed when the page is requested.
+    Example: <% int sum = 20 + 30; %>
+
+JSP Implicit Objects:
+
+    Predefined objects provided by JSP.
+    out (used for output), request, response, session, application, pageContext, config, and page.
+
+
+
+
+    Page Directives:
+        language="java": Specifies the language used (Java).
+        contentType="text/html; charset=UTF-8": Sets the content type and character encoding.
+        pageEncoding="UTF-8": Specifies the page encoding.
+        session="false": Disables session tracking.
+        isELIgnored="false": Enables Expression Language (EL) usage.
+        errorPage="error.jsp": Specifies the error page to handle exceptions.
+
+    Declaration Tag (<%! ... %>):
+        Used to declare variables and methods. These are available throughout the JSP page.
+
+    Expression Tag (<%= ... %>):
+        Evaluates Java expressions and inserts the result into the HTML.
+
+    Scriptlet (<% ... %>):
+        Contains Java code that is executed when the page is requested.
+
+    Implicit Objects:
+        out: Used to send content to the client.
+        request, response, session, application, pageContext, config, page: Other pre-defined objects for handling requests, responses, sessions, and application-level tasks.
+
+    Including Files:
+        <%@ include file="header.jsp" %>: Includes the content of header.jsp at translation time.
+
+Error Handling
+
+    errorPage="error.jsp": Specifies a page that handles errors that occur on the JSP page.
+
+File Inclusion
+
+    Ensure the included file (header.jsp) is correctly placed in the appropriate directory relative to the current JSP page.
+
+
+
+TagLib Directive
+================
+    JSTL (JavaServer Pages Standard Tag Library) is a collection of custom tags that simplify JSP development by allowing common functionalities like conditionals, loops, and data manipulation without using Java code.
+
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+    <%@ taglib %> directive: This is used to declare a tag library in a JSP file. Here, it declares JSTL's core tag library with the prefix c.
+    prefix="c": Assigns a prefix to the JSTL core tags. You use this prefix when referring to the tags.
+    uri="http://java.sun.com/jsp/jstl/core": Specifies the URI for JSTL core tags. This tells the JSP engine where to find the tag library.
+
+
+    <c:set>
+    Purpose: To set a variable in the JSP page.
+    Attributes:
+        var: The name of the variable.
+        value: The value assigned to the variable.
+
+        <c:set var="name" value="Hello World!" />
+
+
+    <c:out>
+    Purpose: To output the value of an expression or a variable to the client.
+    Attributes:
+        value: The value to be displayed.
+        <c:out value="${name}" />
+
+
+    <c:if>
+    Purpose: A conditional tag used to evaluate an expression. If the expression is true, the enclosed body is executed.
+    Attributes:
+        test: The condition to be evaluated.
+
+    <c:if test="${3 > 2}">
+        <h2>True Block</h2>
+    </c:if>
+
+    Following dependency to your Maven pom.xml: jakarta.servlet.jsp.jstl-api provides the API, and jakarta.servlet.jsp.jstl provides the implementation.
+
+    <dependency>
+        <groupId>jakarta.servlet.jsp.jstl</groupId>
+        <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
+        <version>3.0.0</version>
+    </dependency>
+
+    <dependency>
+        <groupId>org.glassfish.web</groupId>
+        <artifactId>jakarta.servlet.jsp.jstl</artifactId>
+        <version>3.0.0</version>
+    </dependency>
