@@ -1,0 +1,21 @@
+
+
+JSP Error
+=========
+    <error-page>
+          <exception-type>java.lang.Throwable</exception-type>
+          <location>/error.jsp</location>
+    </error-page>
+
+
+    index.jsp
+    <%@ page errorPage="error.jsp" %>
+        <% String name=null;
+        name.length(); <!-- This will cause error -->
+        %>
+
+
+    error.jsp
+    <%@ page isErrorPage="true" %>
+        <h1>Something went wrong</h1>
+        <p><%= exception.getMessage() %></p>
