@@ -1,0 +1,123 @@
+
+Custom Tag
+==========
+
+    index.jsp
+    ---------
+    <%@ taglib uri="WEB-INF/mylib.tld" prefix="t" %>
+    When using <t:greet> or <t:greet />, ensure proper closing, i.e., <t:greet /> for an empty tag.
+    Similarly, for <t:Demo />, use the correct syntax
+
+    mylib.tld
+    ---------
+    <?xml version="1.0" encoding="UTF-8"?>
+    <taglib xmlns="http://java.sun.com/xml/ns/javaee"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd"
+            version="2.1">
+
+        <tlib-version>1.0</tlib-version>
+        <short-name>Testing</short-name>
+        <uri>http://example.com/tags</uri>
+
+        <tag>
+            <name>greet</name>
+            <tag-class>tag.WelcomeTag</tag-class>
+            <body-content>empty</body-content>
+        </tag>
+        <tag>
+            <name>area</name>
+            <tag-class>tag.Square</tag-class>
+            <body-content>empty</body-content>
+            
+            <attribute>
+                <name>side</name>
+                <required>true</required>
+            </attribute>
+        </tag>
+
+
+        <tag>
+            <name>Demo</name>
+            <tag-class>tag.Demo</tag-class>
+            <body-content>empty</body-content>
+        </tag>
+    </taglib>
+
+    <name>: Specifies the tag name (area in this case).
+    <tag-class>: Specifies the Java class that implements the tag functionality (tag.Square).
+    <body-content>: Defines the content type of the tag body. In this example, it's empty, meaning the tag does not have a body content.
+    <attribute>: Defines an attribute for the custom tag.
+
+        <name>: The name of the attribute (side).
+        <required>: Indicates whether this attribute is required or not. Here it’s set to true, meaning the attribute must be provided in the JSP.
+
+
+
+    Demo.java
+    ---------
+    public class Demo extends TagSupport {
+        @Override
+        public int doStartTag() throws JspException {
+            try {
+                JspWriter out = pageContext.getOut();
+                out.print("<h1>Demo Page</h1>");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return SKIP_BODY;
+        }
+    }
+
+
+    Square.java
+    ----------
+    package tag;
+
+        import jakarta.servlet.jsp.JspException;
+        import jakarta.servlet.jsp.JspWriter;
+        import jakarta.servlet.jsp.tagext.TagSupport;
+
+        public class Square extends TagSupport {
+            private int side; // The side of the square
+
+            // Getter for side
+            public int getSide() {
+                return side;
+            }
+
+            // Setter for side
+            public void setSide(int side) {
+                this.side = side;
+            }
+
+            @Override
+            public int doStartTag() throws JspException {
+                try {
+                    JspWriter out = pageContext.getOut();
+                    // Calculate the area and output it
+                    out.print("<h1>Square Area: " + (side * side) + "</h1>");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                return SKIP_BODY; // Indicates that the tag has no body content to process
+            }
+        }
+
+    setSide(int side): Sets value of the side attribute.
+    doStartTag(): This method is called when the tag is encountered in the JSP. (outputs it)
+
+
+
+
+
+
+
+
+    It is a String in JSP but Treated as an int in Java
+
+    In JSP:
+    When you use <t:area side="10" />, the attribute side="10" is passed as a string. This is because JSP cannot infer the data type of the attribute automatically.
+
+    In Java (Tag Handler Class):
+    Since you expect side to be an integer (because it's a number used in calculations), you convert the string to an integer inside the Java class. The setSide(int side) method handles this conversion.

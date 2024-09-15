@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 
 <%@ page errorPage="error.jsp" %>
-<%@ taglib url="src/main/webapp/WEB-INF/mylib.tld" prefix="t" %>
+<%@ taglib uri="WEB-INF/mylib.tld" prefix="t" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -13,8 +13,15 @@
 </head>
 <body>
     <h1>Greet Message</h1>
-    <t:gree
-    
+    <t:greet msg="good Aftenoon"/>
+    <%-- even  <t: greet> </t:greet> causing error  --%>
+    <t:Demo />
+
+    <br><br>
+    <t:area side="10"/>
+
+
 </body>
 </html>
 
+<h1>End Page</h1>
