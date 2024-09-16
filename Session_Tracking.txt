@@ -79,6 +79,8 @@ URL Rewriting
     Key ValueFormat
     Syntax- https://localhost:8080/projectname?name1=value1&name2=value2
 
+    generally do get method is used
+
     The doPost method in a servlet handles POST requests and can be used to process data sent from a form or another servlet.
     To retrieve parameters in a servlet, use req.getParameter("parameterName").
 
@@ -138,13 +140,23 @@ Hidden form
     Maintaining state of an user
     Syntax- <input type="hidden" name="uname" value="codewith" />
 
-    by doget in receiving end 
+    dopost method recommed
 
-    URL Rewriting: This often involves appending parameters to the URL. For example, if a user selects a product, the URL might look like example.com/products?productId=123. URL rewriting is typically used with doGet because the parameters are passed through the URL, and GET requests are used to retrieve information based on these parameters.
+    but both can be used
+        <form method="post" action="YourServlet">
+            <input type="hidden" name="userId" value="12345">
+            <input type="submit" value="Submit">
+        </form>
+        
 
-    Hidden Forms: Forms using POST methods often involve hidden fields to send additional data that should not be visible or altered by the user. When you submit a form with POST, the data is sent in the body of the request, which allows for a more secure and flexible way of sending data. This is why hidden forms, which include data that should not be exposed or tampered with, use doPost to process the submitted data.
+        <form method="get" action="YourServlet">
+            <input type="hidden" name="userId" value="12345">
+            <input type="submit" value="Submit">
+        </form>
 
+    In forms doGet is default    
     Hidden Form used in facebook comments like getting the comment id , in hidden form
+
 
 
 
@@ -209,3 +221,59 @@ HTTP Sessions
 
     Management:
         Session termination is handled by the server. Sessions are automatically cleaned up based on expiration policies or manual invalidation.
+
+
+
+
+
+doGet
+
+    Purpose:
+        Designed to handle HTTP GET requests, typically used for retrieving data from the server.
+
+    Request Parameters:
+        Parameters are appended to the URL in the query string (e.g., http://example.com/resource?param1=value1&param2=value2).
+
+    Data Size:
+        Limited by the maximum URL length, which is imposed by the browser and server. Generally, this limit is around 2000 characters.
+
+    Caching:
+        GET requests can be cached by browsers and intermediate proxies, which can improve performance for frequently accessed data.
+
+    Bookmarking:
+        URLs with GET parameters can be bookmarked and shared easily because the parameters are included in the URL.
+
+    Security:
+        Less secure for transmitting sensitive data (e.g., passwords) since parameters are visible in the URL. Sensitive data should not be transmitted using GET requests.
+
+    Idempotency:
+        GET requests should be idempotent, meaning they should not change the server state. Multiple identical GET requests should produce the same result without side effects.
+
+    Usage:
+        Commonly used for retrieving and displaying data (e.g., fetching and displaying a user profile).
+
+doPost
+
+    Purpose:
+        Designed to handle HTTP POST requests, typically used for submitting data to be processed by the server.
+
+    Request Parameters:
+        Parameters are sent in the request body rather than the URL. This allows for a larger amount of data to be transmitted.
+
+    Data Size:
+        Generally allows for larger data sizes compared to GET, as there are no URL length restrictions.
+
+    Caching:
+        POST requests are not cached by default, which ensures that each request is processed anew.
+
+    Bookmarking:
+        POST requests cannot be bookmarked or shared directly because parameters are not included in the URL.
+
+    Security:
+        More secure than GET for transmitting sensitive data, as the data is not included in the URL. However, POST data can still be intercepted if not transmitted over HTTPS.
+
+    Idempotency:
+        POST requests are not necessarily idempotent. Multiple identical POST requests may have side effects (e.g., creating multiple records in a database).
+
+    Usage:
+        Commonly used for submitting forms, uploading files, and performing actions that modify server state (e.g., creating or updating a user profile).

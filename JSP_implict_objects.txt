@@ -1,0 +1,59 @@
+
+JSP implicit objects
+-------------------
+    There are 9 jsp implicit objects, creatred by web container
+    out, request, response, config , application, session, pageContext, page, exception
+
+    1 JSP out implicit objects
+        For writing any day to buffer, JSP  provides an implicit named out. Object of JspWriter, in case to write something
+
+        PrintWriter out = response.getWriter();
+
+
+    2 JSP request implicit object
+        JSP request is an implicit object of type HttpServletRequest i.e. created for each jsp request by web container
+        It can used to get request information such as parameter, header information, remote address, server name, server port, content type, character encoding etc.
+        It can also be used to set, get & remove attributes from jsp request scope
+            <% String name = request.getParameter("username")
+               out.print("welcome" + name);                 %>
+
+    3 JSP response implicit Object
+        In JSP, response is an implicit object of type HttpServletResponse. The instance of HttpServletResponse is created by web container for each jsp request
+        It can be used to add or manipulate response such as redirect response to another resource, send error etc.
+        <% response.sendRedirect("http://www.google.com") %>
+    
+    4 JSP config implicit object
+        In JSP, config is an implicit object of type ServletConfig. This object can be used to get intialization parameter for a particular JSP page
+
+        It used in web.xml (In general)
+            <%
+            String name = config.getInitParameter("dname");
+            out.print("driver name is :" +name );
+            %>
+    
+    5 JSP application implicit object
+        In JSP, application is an implicit object of type ServletContext
+        This object can be used to get, set or remove attribute from application scope.
+        <%
+        String driver = application.getInitParameter("driver");
+        out.print("driver is :" + driver);
+        %>
+
+    6 Session implicit object
+        In JSP, session is an implicit object of type HttpSession
+        
+    
+    7 pageContext implicit object
+        In JSP, pageContext is an implicit object of type PageContext class
+
+        PageContext object can be used to set, get or remove attribute from one of attribute from one of following scopes: page, request, session , application
+
+    8 page implicit object
+        page is implicit object of type Object class
+        This object is assigned to reference of auto generated servlet class->     Object page = this;
+
+        For using this object it must cast to be Servlet type ->     <% (HttpServlet)page.log("message"); %>
+
+    9 exception implicit object
+        Exception is implicit object of type java.lang.Throwable class
+        <% = exception %>

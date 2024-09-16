@@ -16,20 +16,19 @@ public class Profile extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Cookie[] cookies = req.getCookies();
-        
-        if (cookies==null )
-            resp.sendRedirect("index.html");
-        else
-            resp.setContentType("text/html");
-            PrintWriter out = resp.getWriter();
+            Cookie[] cookies = req.getCookies();
+            
+            if (cookies==null )
+                resp.sendRedirect("index.html");
+            else
+                resp.setContentType("text/html");
+                PrintWriter out = resp.getWriter();
 
-            out.println("<h1>Welcome!</h1>");
-            out.println("<p>Email: " + cookies[0].getValue() + "</p>");
-            out.println("<p>Password: " + cookies[1].getValue() + "</p>");
-            out.print("<a href='logout'>Log out</a>");
-
-
+                out.println("<h1>Welcome!</h1>");
+                out.println("<p>Email: " + cookies[0].getValue() + "</p>");
+                out.println("<p>Password: " + cookies[1].getValue() + "</p>");
+                out.print("<a href='logout'>Log out</a>");
     }
+    
 
 }

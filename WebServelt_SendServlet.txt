@@ -22,7 +22,7 @@ public class FirstServlet extends HttpServlet {
 Request and Response Handling
 -----------------------------
 
-  In the servlet, the request (req) object contains information sent from the client (like form data), while the response (resp) object is used to send data back to the client.
+  request (req) object contains information sent from the client (like form data), while the response (resp) object is used to send data back to the client.
 
     Request: Data is extracted from the request using req.getParameter().
     Response: Data is sent back using resp.getWriter() or redirect/forward methods.

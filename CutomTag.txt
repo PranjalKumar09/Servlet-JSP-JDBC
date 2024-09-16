@@ -74,19 +74,13 @@ Custom Tag
     ----------
     package tag;
 
-        import jakarta.servlet.jsp.JspException;
-        import jakarta.servlet.jsp.JspWriter;
-        import jakarta.servlet.jsp.tagext.TagSupport;
-
+       
         public class Square extends TagSupport {
             private int side; // The side of the square
 
-            // Getter for side
             public int getSide() {
                 return side;
             }
-
-            // Setter for side
             public void setSide(int side) {
                 this.side = side;
             }
@@ -95,7 +89,6 @@ Custom Tag
             public int doStartTag() throws JspException {
                 try {
                     JspWriter out = pageContext.getOut();
-                    // Calculate the area and output it
                     out.print("<h1>Square Area: " + (side * side) + "</h1>");
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -108,16 +101,9 @@ Custom Tag
     doStartTag(): This method is called when the tag is encountered in the JSP. (outputs it)
 
 
-
-
-
-
-
-
     It is a String in JSP but Treated as an int in Java
+        In JSP:
+        When you use <t:area side="10" />, the attribute side="10" is passed as a string. This is because JSP cannot infer the data type of the attribute automatically.
 
-    In JSP:
-    When you use <t:area side="10" />, the attribute side="10" is passed as a string. This is because JSP cannot infer the data type of the attribute automatically.
-
-    In Java (Tag Handler Class):
-    Since you expect side to be an integer (because it's a number used in calculations), you convert the string to an integer inside the Java class. The setSide(int side) method handles this conversion.
+        In Java (Tag Handler Class):
+        Since you expect side to be an integer (because it's a number used in calculations), you convert the string to an integer inside the Java class. The setSide(int side) method handles this conversion.

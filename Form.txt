@@ -7,7 +7,6 @@
 
         1. web.xml
         ==========
-
     Purpose: Configures servlets and servlet mappings for your web application.
     Servlet Definition: Defines the servlet and its class.
     <servlet>
@@ -24,7 +23,6 @@
 
         2. Servlets
         ============
-
     Purpose: Handle HTTP requests and generate responses.
 
     Methods:
