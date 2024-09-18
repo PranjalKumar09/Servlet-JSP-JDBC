@@ -1,0 +1,81 @@
+JSTL
+====
+    * Represent set of tags to simplify the JSP
+
+    Advantages
+    ----------
+        Fast development JSTL provides many tags that simplify JSP
+
+        Code Reusability we can use JSTL tags on various pages
+
+        No need to use scriptlet tag it provides use of servlet tag
+
+    JSTL tags (5 types)
+    ---------
+        1 Core tags
+        2 Function tags
+        3 Formatting tags
+        4 XML tags (Not used now days more)
+        5 Sql tags
+        
+
+    Core tags
+    ---------
+        Support URL management, flow control etc, for including it in code ->
+
+        c:out = it display result of an expression, like <%= %>
+            <c:out value="c:out"></c:out>
+
+        c:import = retrieves relative or an absolute URL and display contents to either a String in 'var',  a Reader in 'varReader' or  page
+            <c:import url="next.jsp" var="data"></c:import>
+            <h1><c:out value="${data}"></c:out></h1>
+
+            value will come as written in value, to overcome this we can write
+            <%@ page isELIignored %>
+
+
+        c:set = result of an expression under evolution in 'scope' variable
+                <h1>
+            <c:set var="result" value="${400*12}" scope="session"></c:set>
+            Before : <c:out value="${result}"></c:out>
+            </h1>
+
+        c:remove = used for removing specified scoped variable from particular scope
+            <h1>
+                <c:remove var="result"/>
+                After: <c:out value="${result}"></c:out>
+            </h1>
+
+        c:catch = used for catches any throwable exceptions that occur in body
+
+        c:if = it is conditional tag used for testing condition body content only if expression evaluates is true
+
+        c:choose, c.when, c.otherwise =  simple conditional tag that inlcudes its bod on content if evaluates true
+
+        c:forEach = iteration tag. Repeats nester number of times
+
+        c:forTokens = iterate over tokens which separated by supplied delimiter
+
+        c:param = parameter contains 'import' tag's URL
+
+
+
+    Function Tags
+    -------------
+    <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
+        fn:contains(), fn:endsWith() ,fn:startsWith() : these  return boolean  value check like  fn:--(string, thing_to_check)
+
+
+        fn:escapseXml()
+        fn:indexOf(string, sub_string_of_which_index has to found):
+        if substring not found then it gives -1
+        fn:trim()
+        fn:split()
+        fn:toLowerCase()
+        fn:toUpperCase()
+        fn:substring()
+        fn:substringAfter()
+        fn:substringBefore()
+        fn:length()
+        fn:replace()

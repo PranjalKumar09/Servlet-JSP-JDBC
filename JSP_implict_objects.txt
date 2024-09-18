@@ -18,7 +18,7 @@ JSP implicit objects
                out.print("welcome" + name);                 %>
 
     3 JSP response implicit Object
-        In JSP, response is an implicit object of type HttpServletResponse. The instance of HttpServletResponse is created by web container for each jsp request
+2        In JSP, response is an implicit object of type HttpServletResponse. The instance of HttpServletResponse is created by web container for each jsp request
         It can be used to add or manipulate response such as redirect response to another resource, send error etc.
         <% response.sendRedirect("http://www.google.com") %>
     
