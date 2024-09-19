@@ -44,3 +44,61 @@ JDBC Steps (5)
     5. Create connection
             by conn.close()
 
+
+    PreparedStatement ps = conn.prepareStatement("INSERT INTO studentInfo (id, name, address) VALUES (?, ?, ?)");
+        ps.setInt(1, id);
+        ps.setString(2, name);
+        ps.setString(3, address);
+        ps.executeUpdate();
+
+
+    PreparedStatement ps = conn.prepareStatement("UPDATE studentInfo SET name=?, address=? WHERE id=?");
+        ps.setString(1, name);
+        ps.setString(2, address);
+        ps.setInt(3, id);
+        ps.executeUpdate();
+
+    psInsert.setInt(1, 122);
+    psInsert.setString(2, "Aarti Verma");
+    psInsert.setString(3, "Near Main Market");
+    psInsert.addBatch();
+
+    psInsert.setInt(1, 123);
+    psInsert.setString(2, "Ravi Sharma");
+    psInsert.setString(3, "Behind City Mall");
+    psInsert.addBatch();
+
+    psInsert.executeBatch();
+
+    ResultSet rs = stmt.executeQuery("SELECT * FROM studentInfo");
+    while (rs.next()) {
+        System.out.println("ID: " + rs.getInt("id") + ", Name: " + rs.getString("name") + ", Address: " + rs.getString("address"));
+    }
+
+
+
+        Class.forName("com.mysql.cj.jdbc.Driver");
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/student", "root", "09072005");
+
+                Scanner sc = new Scanner(System.in);
+                System.out.println("Enter student ID: ");
+                int id = sc.nextInt();
+
+                System.out.println("Enter student Name: ");
+                String name = sc.next();
+
+                System.out.println("Enter student Address: ");
+                String address = sc.next();
+
+                PreparedStatement ps = con.prepareStatement("INSERT INTO studentInfo (id, name, address) VALUES (?,?,?)");
+                // PreparedStatement ps = con.prepareStatement("UPDATE studentInfo SET name=?, address=? WHERE id=?"); // for updating
+
+                ps.setInt(1, id);
+                ps.setString(2, name);
+            ps.setString(3, address);
+            int i = ps.executeUpdate();
+
+
+
+
+
