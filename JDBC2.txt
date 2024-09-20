@@ -1,0 +1,6 @@
+
+    make packages ->
+        com.conn
+        com.DAO
+        com.entity
+        com.Main

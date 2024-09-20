@@ -1,0 +1,1 @@
+this is sample page with nothing in jsp format type
