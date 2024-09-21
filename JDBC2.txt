@@ -4,3 +4,87 @@
         com.DAO
         com.entity
         com.Main
+
+src/
+│
+├── com/
+│   ├── conn/
+│   │   └── DBConnect.java
+│   ├── DAO/
+│   │   └── ContactDAO.java
+│   ├── entity/
+│   │   └── contact.java
+│   └── main/
+│       └── MainClass.java
+
+
+
+    com.conn: Contains the DBConnect class for handling database connections.
+    com.DAO: Contains the ContactDAO class for database operations like adding, updating, deleting, and fetching contacts.
+    com.entity: Contains the contact class representing the contact entity.
+    com.main: Contains the MainClass class that interacts with the user and manages the operations.
+
+
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+
+Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/student", "root", "09072005");
+
+PreparedStatement:
+
+    This class is used to execute parameterized SQL queries. It helps to prevent SQL injection attacks by safely binding values to SQL queries.
+
+PreparedStatement ps = conn.prepareStatement("INSERT INTO contact (name, phno) VALUES (?, ?)");
+ps.setString(1, contact.getName());
+ps.setString(2, contact.getPhno());
+
+
+ResultSet:
+
+    ResultSet holds the results of a SELECT query and allows you to iterate over the returned rows.
+
+ResultSet rs = ps.executeQuery();
+while (rs.next()) {
+    int id = rs.getInt("id");
+    String name = rs.getString("name");
+    String phno = rs.getString("phno");
+}
+
+
+contact: Represents a contact with fields for id, name, and phno.
+ContactDAO: Manages database operations (adding, updating, deleting, and retrieving contacts).
+DBConnect: Establishes and returns a database connection.
+
+
+contact class
+
+private int id;
+private String name;
+private String phno;
+
+public int getId() { return id; }
+public void setId(int id) { this.id = id; }
+
+public String getName() { return name; }
+public void setName(String name) { this.name = name; }
+
+public String getPhno() { return phno; }
+public void setPhno(String phno) { this.phno = phno; }
+
+
+
+
+Scanner for User Input
+
+Scanner sc = new Scanner(System.in);
+System.out.println("Enter Name:");
+String name = sc.next();
+
+
