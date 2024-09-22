@@ -2,3 +2,5 @@
 
     Frontend        Backend        Database
     html/jsp    Servlet <->DAO      MySql
+
+    
