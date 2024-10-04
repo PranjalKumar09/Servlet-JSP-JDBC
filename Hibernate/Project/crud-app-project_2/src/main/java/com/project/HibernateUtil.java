@@ -25,8 +25,10 @@ public class HibernateUtil {
             properties.put(Environment.SHOW_SQL, true);
 
             configuration.setProperties(properties);
-            configuration.addAnnotatedClass(Student.class);
-            
+            // configuration.addAnnotatedClass(Student.class);
+
+            configuration.addAnnotatedClass(com.ManytoMany.Emp.class);
+            configuration.addAnnotatedClass(com.ManytoMany.Address.class);
 
             ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
                     .applySettings(configuration.getProperties())
