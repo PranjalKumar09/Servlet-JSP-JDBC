@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.pranjal.AppTest" time="0.025" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.pranjal.AppTest" time="0.04" tests="1" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -12,7 +12,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="US"/>
     <property name="sun.boot.library.path" value="/opt/jdk-21.0.4+7/lib"/>
-    <property name="sun.java.command" value="/media/pranjal/New Volume/CODES/Public/Servlet/Hibernate/Project/firstapp/target/surefire/surefirebooter3512381024717611293.jar /media/pranjal/New Volume/CODES/Public/Servlet/Hibernate/Project/firstapp/target/surefire 2024-10-02T18-26-33_879-jvmRun1 surefire3395136195427795424tmp surefire_018404749782684157893tmp"/>
+    <property name="sun.java.command" value="/media/pranjal/New Volume/CODES/Public/Servlet/Hibernate/Project/firstapp/target/surefire/surefirebooter12852697778090343621.jar /media/pranjal/New Volume/CODES/Public/Servlet/Hibernate/Project/firstapp/target/surefire 2024-10-03T00-05-13_380-jvmRun1 surefire15790307380626230216tmp surefire_06100177326258911661tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/media/pranjal/New Volume/CODES/Public/Servlet/Hibernate/Project/firstapp/target/test-classes:/media/pranjal/New Volume/CODES/Public/Servlet/Hibernate/Project/firstapp/target/classes:/home/pranjal/.m2/repository/junit/junit/4.11/junit-4.11.jar:/home/pranjal/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/home/pranjal/.m2/repository/org/hibernate/orm/hibernate-core/6.6.1.Final/hibernate-core-6.6.1.Final.jar:/home/pranjal/.m2/repository/jakarta/persistence/jakarta.persistence-api/3.1.0/jakarta.persistence-api-3.1.0.jar:/home/pranjal/.m2/repository/jakarta/transaction/jakarta.transaction-api/2.0.1/jakarta.transaction-api-2.0.1.jar:/home/pranjal/.m2/repository/org/jboss/logging/jboss-logging/3.5.0.Final/jboss-logging-3.5.0.Final.jar:/home/pranjal/.m2/repository/org/hibernate/common/hibernate-commons-annotations/7.0.1.Final/hibernate-commons-annotations-7.0.1.Final.jar:/home/pranjal/.m2/repository/io/smallrye/jandex/3.2.0/jandex-3.2.0.jar:/home/pranjal/.m2/repository/com/fasterxml/classmate/1.5.1/classmate-1.5.1.jar:/home/pranjal/.m2/repository/net/bytebuddy/byte-buddy/1.14.18/byte-buddy-1.14.18.jar:/home/pranjal/.m2/repository/jakarta/xml/bind/jakarta.xml.bind-api/4.0.0/jakarta.xml.bind-api-4.0.0.jar:/home/pranjal/.m2/repository/jakarta/activation/jakarta.activation-api/2.1.0/jakarta.activation-api-2.1.0.jar:/home/pranjal/.m2/repository/org/glassfish/jaxb/jaxb-runtime/4.0.2/jaxb-runtime-4.0.2.jar:/home/pranjal/.m2/repository/org/glassfish/jaxb/jaxb-core/4.0.2/jaxb-core-4.0.2.jar:/home/pranjal/.m2/repository/org/eclipse/angus/angus-activation/2.0.0/angus-activation-2.0.0.jar:/home/pranjal/.m2/repository/org/glassfish/jaxb/txw2/4.0.2/txw2-4.0.2.jar:/home/pranjal/.m2/repository/com/sun/istack/istack-commons-runtime/4.1.1/istack-commons-runtime-4.1.1.jar:/home/pranjal/.m2/repository/jakarta/inject/jakarta.inject-api/2.0.1/jakarta.inject-api-2.0.1.jar:/home/pranjal/.m2/repository/org/antlr/antlr4-runtime/4.13.0/antlr4-runtime-4.13.0.jar:/home/pranjal/.m2/repository/com/mysql/mysql-connector-j/8.0.33/mysql-connector-j-8.0.33.jar:/home/pranjal/.m2/repository/com/google/protobuf/protobuf-java/3.21.9/protobuf-java-3.21.9.jar:"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -27,7 +27,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
-    <property name="surefire.real.class.path" value="/media/pranjal/New Volume/CODES/Public/Servlet/Hibernate/Project/firstapp/target/surefire/surefirebooter3512381024717611293.jar"/>
+    <property name="surefire.real.class.path" value="/media/pranjal/New Volume/CODES/Public/Servlet/Hibernate/Project/firstapp/target/surefire/surefirebooter12852697778090343621.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="21.0.4+7-LTS"/>
     <property name="user.name" value="pranjal"/>
@@ -54,5 +54,5 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="65.0"/>
   </properties>
-  <testcase name="shouldAnswerWithTrue" classname="com.pranjal.AppTest" time="0.002"/>
+  <testcase name="shouldAnswerWithTrue" classname="com.pranjal.AppTest" time="0.004"/>
 </testsuite>
