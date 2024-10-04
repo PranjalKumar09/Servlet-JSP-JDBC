@@ -42,11 +42,18 @@ public class App {
 
         try (Session session = factory.openSession()) {
             Transaction tx = session.beginTransaction();
-            session.persist(e1);
-            session.persist(e2);
-            session.persist(ad1);
-            session.persist(ad2);
-            System.out.println("Register Success");
+            // session.persist(e1);
+            // session.persist(e2);
+            // session.persist(ad1);
+            // session.persist(ad2);
+
+            Emp emp  = (Emp) session.get(Emp.class, 101);
+            System.out.println("Employee Name: " + emp.getName());
+            System.out.println(emp.getAddresses().size());
+
+
+
+            // System.out.println("Register Success");
             tx.commit();
             // System.out.println("Employee saved successfully with id: " + emp.getId());
         }

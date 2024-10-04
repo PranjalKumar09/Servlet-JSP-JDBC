@@ -3,6 +3,7 @@ package com.ManytoMany;
 import java.util.List;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 // import jakarta.persistence.GeneratedValue;
 // import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -15,7 +16,7 @@ public class Emp {
     private int id;
     private String Name;
 
-    @ManyToMany(mappedBy="emp")
+    @ManyToMany(mappedBy="emp", fetch= FetchType.LAZY)
     private List<Address> addresses;
     public int getId() {
         return id;
