@@ -26,3 +26,12 @@ File_Handling.txt
 Hibernate
 
     intro.md
+    
+    Project_making.md
+    Relationship.md
+    Crud.md
+    Fetch.md
+    Cascade.md
+    HQL.md
+    HCQL_Criteria_Queries.md
+    Caching.md

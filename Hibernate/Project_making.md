@@ -146,3 +146,35 @@ public class Employee {
 - Set `hbm2ddl.auto` appropriately (use `update` for development).
 
 
+
+
+
+
+
+### Dao Example
+``` java
+
+public boolean saveEmp(Emp emp) {
+    boolean f = false;
+
+    Session session = factory.openSession();
+    Transaction tx = session.beginTransaction();
+
+    try {
+        session.persist(emp); // Persist the employee object
+        
+        tx.commit(); // Commit the transaction
+        f = true;
+    } catch (Exception e) {
+        if (tx != null) 
+            tx.rollback(); // Rollback in case of an error
+        
+    } finally {
+        session.close(); // Close the session in the finally block
+    }
+
+    return f; // Return the success status
+}
+```
+
+

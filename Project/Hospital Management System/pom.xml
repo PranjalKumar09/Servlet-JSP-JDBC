@@ -21,11 +21,11 @@
 
   <dependencies>
     <dependency>
-      <groupId>jakarta.platform</groupId>
-      <artifactId>jakarta.jakartaee-exampleapi</artifactId>
-      <version>10.0.0</version> <!-- Use the appropriate version for your project -->
-      <scope>provided</scope>
-  </dependency>
+    <groupId>jakarta.platform</groupId>
+    <artifactId>jakarta.jakartaee-api</artifactId>
+    <version>11.0.0-M4</version>
+    <scope>provided</scope>
+</dependency>
 
     <dependency>
       <groupId>jakarta.servlet.jsp.jstl</groupId>

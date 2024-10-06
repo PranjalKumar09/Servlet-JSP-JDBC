@@ -14,20 +14,20 @@ public class App {
         SessionFactory factory = HibernateUtil.getSessionFactory();
 
         Emp e1 = new Emp();
-        e1.setId(101);
-        e1.setName("Rakesh");
+        e1.setId(105);
+        e1.setName("Monu");
     
         Emp e2 = new Emp();
-        e2.setId(102);
-        e2.setName("Suresh");
+        e2.setId(106);
+        e2.setName("Tony");
 
         Address ad1 = new Address();
-        ad1.setId(1);
-        ad1.setAddressName("Delhi");
+        ad1.setId(4);
+        ad1.setAddressName("Bhooak");
 
         Address ad2 = new Address();
-        ad2.setId(2);
-        ad2.setAddressName("Mumbai");
+        ad2.setId(7);
+        ad2.setAddressName("Sehore");
 
         List<Address> list1 = new ArrayList<>();
         list1.add(ad1);
@@ -42,7 +42,7 @@ public class App {
 
         try (Session session = factory.openSession()) {
             Transaction tx = session.beginTransaction();
-            // session.persist(e1);
+            session.persist(e1);
             // session.persist(e2);
             // session.persist(ad1);
             // session.persist(ad2);

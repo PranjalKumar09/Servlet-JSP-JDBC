@@ -95,3 +95,6 @@ Employee Name: Rakesh
 | **Performance**          | Better performance if child data is not needed   | Potential performance overhead               |
 | **Memory Usage**         | Lower memory usage, as fewer entities are loaded | Higher memory usage, as all entities are loaded|
 | **Initialization Error** | Can throw `LazyInitializationException` if accessed outside session | No such issue |
+
+
+- `Lazy` is default type
