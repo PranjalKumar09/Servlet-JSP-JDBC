@@ -4,9 +4,9 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.hibernate.query.MutationQuery;
-import org.hibernate.query.Query;
+// import org.hibernate.Transaction;
+// import org.hibernate.query.MutationQuery;
+// import org.hibernate.query.Query;
 
 import com.pranjal.conn.HibernateUtil;
 import com.pranjal.entity.Student;
@@ -15,7 +15,7 @@ public class App {
     public static void main(String[] args) {
         SessionFactory factory = HibernateUtil.getSessionFactory();
         Session session = factory.openSession();
-        Transaction tx = session.beginTransaction();
+        /* Transaction tx = session.beginTransaction();
 
         // Persisting a couple of students
         Student s1 = new Student();
@@ -91,8 +91,25 @@ public class App {
         } else {
             System.out.println("No student found with id=3.");
         }
-
         tx.commit();
+ */
+        
+        Student st = session.get(Student.class, 3);
+        System.out.println(st);
+        Student st2 = session.get(Student.class,4);
+        System.out.println(st2);
+
+        
         session.close();
     }
 }
+
+
+/* 
+  be set into auto-commit mode.
+Hibernate: select s1_0.id,s1_0.Salary,s1_0.address,s1_0.name from Student s1_0 where s1_0.id=?
+Student [id=3, name=Charlie Brown, address=789 Oak Dr, Salary=29000]
+Hibernate: select s1_0.id,s1_0.Salary,s1_0.address,s1_0.name from Student s1_0 where s1_0.id=?
+Student [id=4, name=Dana White, address=135 Pine Ln, Salary=31000]
+
+ */

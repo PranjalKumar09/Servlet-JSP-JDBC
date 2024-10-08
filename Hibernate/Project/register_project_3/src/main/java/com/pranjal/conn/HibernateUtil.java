@@ -23,7 +23,7 @@ public class HibernateUtil {
 
             properties.put(Environment.DIALECT, "org.hibernate.dialect.MySQLDialect");
             properties.put(Environment.HBM2DDL_AUTO, "update");
-            properties.put(Environment.SHOW_SQL, false);
+            properties.put(Environment.SHOW_SQL, true);
 
             configuration.setProperties(properties);
             configuration.addAnnotatedClass(com.pranjal.entity.Student.class);
