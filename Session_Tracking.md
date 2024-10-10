@@ -66,7 +66,7 @@ URL rewriting is a technique where data is passed between servlets through URL p
 - Typically uses the `doGet` method.
 
 ``` java
-out.print("<a href='servlet2?username=" + name + "'>Go to Servlet 2</a>");
+out.print("<a href='  ?username=" + name + "'>Go to Servlet 2</a>");
 ```
 ``` java
 String username = req.getParameter("username");

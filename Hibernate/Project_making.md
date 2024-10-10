@@ -178,3 +178,47 @@ public boolean saveEmp(Emp emp) {
 ```
 
 
+### Checking if DB is connected in JSP
+
+``` jsp
+SessionFactory factory = HibernateUtil.getSessionFactory();
+out.print(factory);  // Print factory to verify connection
+```
+
+### Directory Structure
+
+- **com.dao** - For Data Access Objects (DAO)
+- **com.db** - For database configuration (e.g., HibernateUtil)
+- **com.entity** - For entity classes (e.g., User, Expense)
+- **com.servlet** - For servlets that handle requests
+
+### Converting Data Types in JSP to Servlet
+#### Converting String to Double:
+``` java
+Double price = Double.parseDouble(req.getParameter("price"));
+```
+#### Fetching User from Session:
+``` java
+User user = (User) req.getSession().getAttribute("user");
+```
+### URL Rewriting for Editing Data
+- #### Fetching ID from URL parameter:
+``` java
+int id = Integer.parseInt(request.getParameter("id"));
+```
+### Passing Data to JSP using EL (Expression Language)
+To use `${expense.title}`, set the attribute in the request:
+``` java
+request.setAttribute("expense", expense);
+```
+
+### Querying with Hibernate and Managing Sessions
+- **Querying Expenses for a User:**
+``` java
+session = sessionFactory.openSession();
+Query<Expense> query = session.createQuery("from Expense where user = :user");
+query.setParameter("user", user);
+expenses = query.getResultList();
+session.close();  // Always close the session to avoid errors
+```
+- **Important**: Always remember to close the session after the query to avoid memory leaks and other errors.

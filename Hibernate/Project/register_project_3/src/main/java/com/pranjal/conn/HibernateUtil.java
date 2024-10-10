@@ -21,9 +21,13 @@ public class HibernateUtil {
         properties.put("jakarta.persistence.jdbc.user", "root");
         properties.put("jakarta.persistence.jdbc.password", "09072005");
 
-            properties.put(Environment.DIALECT, "org.hibernate.dialect.MySQLDialect");
+            properties.put(Environment.DIALECT, "org.hibernate.dialect.MySQL8Dialect");
             properties.put(Environment.HBM2DDL_AUTO, "update");
             properties.put(Environment.SHOW_SQL, true);
+            properties.put(Environment.USE_SECOND_LEVEL_CACHE, true);
+            properties.put(Environment.CACHE_REGION_FACTORY, "org.hibernate.cache.ehcache.internal.EhcacheRegionFactory");
+
+
 
             configuration.setProperties(properties);
             configuration.addAnnotatedClass(com.pranjal.entity.Student.class);

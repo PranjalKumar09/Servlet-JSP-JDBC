@@ -1,12 +1,7 @@
 package com.pranjal.action;
 
-import java.util.List;
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-// import org.hibernate.Transaction;
-// import org.hibernate.query.MutationQuery;
-// import org.hibernate.query.Query;
 
 import com.pranjal.conn.HibernateUtil;
 import com.pranjal.entity.Student;
@@ -49,7 +44,7 @@ public class App {
         System.out.println(studentByAddress);
 
         // Fetch using parameters
-        Query<Student> paramQuery = session.createQuery("from Student where address = :ad and id = :id", Student.class);
+        Query<Student> maparamQuery = session.createQuery("from Student where address = :ad and id = :id", Student.class);
         paramQuery.setParameter("id", 1);
         paramQuery.setParameter("ad", "Ad1");
         System.out.println(paramQuery.getSingleResult());
@@ -101,6 +96,15 @@ public class App {
 
         
         session.close();
+    
+
+        Session session2 = factory.openSession();
+        Student st3  = session2.get(Student.class, 5);
+        System.out.println(st3);
+        session2.close();
+        factory.close();
+        
+    
     }
 }
 

@@ -44,7 +44,7 @@ Student [id=4, name=Dana White, address=135 Pine Ln, Salary=31000]
      - JBoss Cache
 
     
-    To use it
+#### Dependencies To use it
 ``` xml
 <dependency>
     <groupId>org.hibernate</groupId>
@@ -52,6 +52,24 @@ Student [id=4, name=Dana White, address=135 Pine Ln, Salary=31000]
     <version>5.6.15.Final</version>
 </dependency>
 ```
+#### Configuration:
+``` java
+properties.put(Environment.USE_SECOND_LEVEL_CACHE, true);
+properties.put(Environment.CACHE_REGION_FACTORY, "org.hibernate.cache.ehcache.internal.EhcacheRegionFactory");
+```
+#### Entity Configuration:
+``` java
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
+import javax.persistence.Cacheable;
+
+@Cacheable
+@Cache(usage = CacheConcurrencyStrategy.READ_ONLY)
+@Entity
+public class Student{--}
+```
+
+
 
 3. **Query Level Cache**
    - Hibernate provides query-level caching to store the results of specific queries.
@@ -76,3 +94,10 @@ Client <-> ORM <-> DB
 
 
 
+
+
+
+    Private String FullName;
+    Private String Email ;
+    Private String Password ;
+    Private String About ;

@@ -22,7 +22,7 @@
                     <%
                     String msg  = (String) session.getAttribute("msg");           
                     if (msg!=null) {
-                    %>
+                        %>
                         <p class="text-center fs-4 text-success"><%=msg %></p>
                     <%    
                     }
