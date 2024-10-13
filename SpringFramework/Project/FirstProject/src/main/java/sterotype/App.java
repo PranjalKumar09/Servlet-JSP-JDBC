@@ -9,8 +9,10 @@ public class App {
 
         Emp student = (Emp) context.getBean("emp");
 
+        System.out.println(student.hashCode());
 
-        System.out.println(student);
+        Emp student2 = (Emp) context.getBean("emp");
+        System.out.println(student2.hashCode());
 
 //        System.out.println(st2);
     }

@@ -133,4 +133,3 @@ public Student(Address address) {
 private Address address;
 ```
 **Note**: If only one bean is present, `@Autowired` will work without `@Qualifier`.
- 

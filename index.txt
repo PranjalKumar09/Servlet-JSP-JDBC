@@ -40,3 +40,8 @@ Hibernate
 Spring
     Intro.md
     BeanLifeCycle.md
+    Sterotype_annotation_Scopes.md
+    Expression_Java_Config_File.md
+
+    
+    
