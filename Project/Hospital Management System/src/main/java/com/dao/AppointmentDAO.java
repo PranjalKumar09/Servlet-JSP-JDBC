@@ -46,7 +46,7 @@ public class AppointmentDAO {
     }
 
     public List<Appointment> getAllAppointmentsByUserId(int id_l) {
-        List<Appointment> list = new ArrayList<Appointment>();
+        List<Appointment> list = new ArrayList<>();
         String sql = "SELECT * FROM appointment where user_id=?";
         try {
             PreparedStatement ps = conn.prepareStatement(sql);

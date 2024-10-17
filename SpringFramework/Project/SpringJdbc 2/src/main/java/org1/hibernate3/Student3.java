@@ -1,4 +1,4 @@
-package org.hibernate3;
+package org1.hibernate3;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;

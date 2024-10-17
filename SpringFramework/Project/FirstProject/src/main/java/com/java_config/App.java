@@ -7,10 +7,10 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class App {
     public static void main(String[] args) {
 //        ApplicationContext context = new ClassPathXmlApplicationContext("bean6.xml");
-        ApplicationContext context = new AnnotationConfigApplicationContext(config.class);
-        Emp emp = (Emp) context.getBean("getEmp");
+//        ApplicationContext context = new AnnotationConfigApplicationContext(config.class);
+//        Emp emp = (Emp) context.getBean("getEmp");
 //        Emp emp2 = (Emp) context.getBean("emp");
-        System.out.println(emp);
+//        System.out.println(emp);
 //        System.out.println(emp2);
     }
 }

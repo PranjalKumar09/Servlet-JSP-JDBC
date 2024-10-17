@@ -40,20 +40,6 @@ In Hibernate, both `session.getReference()` and `session.get()` are used to retr
 
 
 
-
-
-## Example Code
-
-```java
-Employee emp = session.getReference(Employee.class, 1);
-
-@Override
-public String toString() {
-    return "Employee [id=" + id + ", empName=" + empName + ", salary=" + salary + ", joiningDate=" + joiningDate
-            + ", email=" + email + ", status=" + status + ", token=" + token + "]";
-}
-```
-
 ### Handling Binary Data
 Binary data such as images, we can annotate the field with `@Lob`
 
@@ -61,11 +47,4 @@ Binary data such as images, we can annotate the field with `@Lob`
 @Lob
 private byte[] image;
 ```
-___
-##### **Note:** In both getReferences & get when same thing called mulitple type same thing is executed like
-```java
-        Employee emp = session.get(Employee.class,1);
-        Employee emp2 = session.get(Employee.class,1);
-        System.out.println(emp);
-        System.out.println(emp2);
-```
+_

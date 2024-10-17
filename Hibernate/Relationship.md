@@ -4,7 +4,7 @@
 In a **One-to-One** relationship, one record in a table is associated with one and only one record in another table. This mapping is common when you have two entities where one entity logically depends on the other.
 
 ### Example:
-Consider the following two tables:
+
 
 - **Table 1 (Employee Details)**  
   | emp_id | Emp_name | add_id (FK) |

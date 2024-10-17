@@ -1,4 +1,4 @@
-package org.hibernate2;
+package org1.hibernate2;
 
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
@@ -19,27 +19,44 @@ public class App {
         // Get the SessionFactory bean from the Spring context
         SessionFactory sessionFactory = context.getBean("sessionFactory", SessionFactory.class);
 
-        // Open a new session
-        try (Session session = sessionFactory.openSession()) {
-            // Begin a transaction
-            Transaction transaction = session.beginTransaction();
+        // Create a session
+        Session session = sessionFactory.openSession();
+        Transaction transaction = null;
 
-            // Using CriteriaBuilder to create a CriteriaQuery
+        try {
+            // Start a transaction
+            transaction = session.beginTransaction();
+
+            // Create CriteriaBuilder and CriteriaQuery
             CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
             CriteriaQuery<Student2> criteriaQuery = criteriaBuilder.createQuery(Student2.class);
+
+            // Define the root of the query
             Root<Student2> root = criteriaQuery.from(Student2.class);
+            criteriaQuery.select(root).where(criteriaBuilder.equal(root.get("id"), 1));
 
-            // Set the selection criteria (replace "name" with your actual field name)
-            criteriaQuery.select(root).where(criteriaBuilder.equal(root.get("John"), "Kumar"));
+            // Execute the query
+            List<Student2> results = session.createQuery(criteriaQuery).getResultList();
 
-            // Execute the query and get results
-            List<Student2> students = session.createQuery(criteriaQuery).getResultList();
+            // Check if results are found and print
+            if (!results.isEmpty()) {
+                Student2 student = results.get(0);
+                System.out.println(student.toString());
+            } else {
+                System.out.println("No student found with ID 1.");
+            }
+
+            // Commit the transaction
             transaction.commit();
-
-            // Print results
-            students.forEach(student -> System.out.println(student.getName())); // Adjust according to your Student2 class
         } catch (Exception e) {
+            // Rollback the transaction in case of an error
+            if (transaction != null) {
+                transaction.rollback();
+            }
             e.printStackTrace();
+        } finally {
+            // Close the session
+            session.close();
         }
     }
 }

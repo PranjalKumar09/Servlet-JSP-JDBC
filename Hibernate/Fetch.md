@@ -48,7 +48,7 @@ Hibernate: select a1_0.emp_id, a1_1.id, a1_1.addressName from Address_Emp a1_0 j
   - **Performance Overhead**: If child entities are not needed, eager loading results in extra and unnecessary database calls, increasing the time and memory consumption.
   
 - **Usage Example**:
-  ```java
+```java
   Emp emp = (Emp) session.get(Emp.class, 101);
   System.out.println("Employee Name: " + emp.getName());
   System.out.println(emp.getAddresses().size());  // Child entities already loaded

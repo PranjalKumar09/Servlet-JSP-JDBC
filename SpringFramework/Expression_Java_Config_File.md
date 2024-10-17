@@ -142,7 +142,7 @@ public class Config {
 
 ### Handling Multiple Beans:
 
-    ioc container first check with type name , then check it with  variable name , in multiple beans then give error if none found
+Ioc container first check with type name , then check it with  variable name , in multiple beans then give error if none found
   - Use `@Primary` in configuration to give one bean priority.
   - Use `@Qualifier` on the injection side to specify which bean to use.
   - Use `@Bean(name={"another_name"})` to define custom bean names.

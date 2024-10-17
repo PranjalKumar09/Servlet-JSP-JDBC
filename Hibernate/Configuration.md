@@ -40,28 +40,6 @@ This is a traditional way to configure Hibernate using an XML file (`hibernate.c
 - **format_sql**: If set to true, it formats the printed SQL for readability.
 
 
-#### Example of Configuring Hibernate Using Java Code
-
-In this section, we will see how to programmatically configure Hibernate in Java using the `Configuration` and `SessionFactory` classes.
-
-```java
-// Step 1: Create a Configuration object
-Configuration cfg = new Configuration();
-
-// Step 2: Load the default hibernate.cfg.xml configuration file
-cfg.configure(); 
-
-// Step 3: Build the SessionFactory from the Configuration object
-SessionFactory factory = cfg.buildSessionFactory();
-
-// Step 4: Another method to create SessionFactory
-SessionFactory factory2 = new Configuration().configure().buildSessionFactory();
-
-// Step 5: If the configuration file has a different name than hibernate.cfg.xml or is located outside the default location
-Configuration customCfg = new Configuration().configure("custom-hibernate.cfg.xml");
-SessionFactory customFactory = customCfg.buildSessionFactory();
-```
-
 
 ## 2. Java Configuration
 #### Configuration making
@@ -124,16 +102,16 @@ import org.hibernate.cfg.Configuration;
 public class App {
     public static void main(String[] args) {
         System.out.println("Hello World!");
-        Configuration cfg = new Configuration();
-        cfg.configure(); // Loads hibernate.cfg.xml
+        Configuration cfg = new Configuration(); // step 1 
+        cfg.configure(); // Loads hibernate.cfg.xml..  step 2 
 
-        SessionFactory factory = cfg.buildSessionFactory();
+        SessionFactory factory = cfg.buildSessionFactory(); // step 3
 
         // Alternative method to get SessionFactory
         SessionFactory factory2 = new Configuration().configure().buildSessionFactory();
 
         // Print the factory object
-        System.out.println(factory);
+        System.out.println(factory);  // step 4
     }
 }
 ```

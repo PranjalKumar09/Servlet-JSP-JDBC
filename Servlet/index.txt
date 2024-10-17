@@ -36,12 +36,19 @@ Hibernate
     HCQL_Criteria_Queries.md
     Caching.md
 
+    NOT INDEXED
+        Configuration.md
+        
 
 Spring
     Intro.md
     BeanLifeCycle.md
     Sterotype_annotation_Scopes.md
     Expression_Java_Config_File.md
+    Spring_JDBC.md
+    Spring_JDBC_Crud.md
+    SpringORM.md
+    
 
     
     

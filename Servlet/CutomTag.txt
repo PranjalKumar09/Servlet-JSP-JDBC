@@ -107,3 +107,6 @@ Custom Tag
 
         In Java (Tag Handler Class):
         Since you expect side to be an integer (because it's a number used in calculations), you convert the string to an integer inside the Java class. The setSide(int side) method handles this conversion.
+
+
+

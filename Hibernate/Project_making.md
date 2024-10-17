@@ -1,48 +1,3 @@
-# Hibernate Configuration and Annotations
-
-## Step 1: Annotate Entity Class with Hibernate Annotations
-Hibernate requires us to annotate the Java class with specific annotations to map it to a database table. For example:
-
-```java
-
-@Entity // Annotation
-public class Student {
-    @Id
-    private int id;
-    private String name;
-    private String email;
-    private String address;
-
-    // Getters and Setters
-}
-```
-- `@Entity:` Marks this class as a Hibernate entity.
-- `@Id:` Marks the id field as the primary key of the table.
-
-
-## Step 2: Add the Annotated Class to Configuration
-``` java
-configuration.addAnnotatedClass(Student.class);
-```
-## Step 3: Insert a Record into the Table
-``` java
-SessionFactory factory = HibernateUtil.getSessionFactory();
-Session session = factory.openSession();
-
-Student st = new Student();
-st.setId(1);
-st.setName("John Doe");
-st.setEmail("johndoe@example.com");
-st.setAddress("123 Main St");
-
-Transaction tx = session.beginTransaction();
-session.persist(st);  // Persisting the entity
-
-tx.commit();
-session.close();
-```
-- `session.persist()`: This is used to save the Student object into the database. It is preferred over save() because it adheres to the JPA specification.
-- `tx.commit()`: This commits the transaction, making the changes permanent in the database.
 
 # Commonly Used Hibernate Annotations
 
@@ -111,32 +66,24 @@ public class Employee {
 
 ## What Happens When You Change the Class File?
 
-### Adding New Fields
-- **Scenario:** Adding a new field like `String department`.
-- **Effect:** If `hbm2ddl.auto` is set to `update`, Hibernate adds the new column. If set to `create` or `create-drop`, it recreates the table.
-- **Error Possibility:** No error if `update` is set correctly.
+1. **Adding or Removing Fields:**
+   - **Effect:** When adding, a new column is created (if `hbm2ddl.auto` is set to `update`). When removing, the column remains in the database but is no longer mapped.
+   - **Error Possibility:** No errors if `update` is set, but unused columns stay unless manually handled.
 
-### Removing Fields
-- **Scenario:** Removing a field like `String token`.
-- **Effect:** The column stays in the database but isn’t mapped.
-- **Error Possibility:** No error, but the column remains unless manually removed.
+2. **Changing the Table Name:**
+   - **Effect:** A new table is created, but the old one is not automatically deleted.
+   - **Error Possibility:** No errors, but data migration must be handled manually.
 
-### Changing the Table Name
-- **Scenario:** Using `@Table(name = "new_table_name")` to change the table name.
-- **Effect:** A new table is created, but the old one remains unless deleted manually.
-- **Error Possibility:** No error, but you’ll need to migrate data manually.
+3. **Changing Field Types:**
+   - **Effect:** Hibernate tries to alter the column type.
+   - **Error Possibility:** Errors may occur if existing data can't be cast to the new type.
 
-### Changing the Field Type
-- **Scenario:** Changing `Double salary` to `Integer salary`.
-- **Effect:** Hibernate attempts to alter the column. 
-- **Error Possibility:** A database error may occur if existing data can't be cast to the new type.
+## Hibernate’s `hbm2ddl.auto` Settings:
 
-## Hibernate’s `hbm2ddl.auto` Settings
+- **create/create-drop:** Recreates tables on startup (and drops on close with `create-drop`).
+- **update:** Alters schema without dropping data (useful for development).
+- **validate:** Only checks schema but doesn’t modify the database.
 
-- **create:** Drops and recreates the table on each start.
-- **create-drop:** Same as `create`, but also drops the table on close.
-- **update:** Updates the schema without dropping data (recommended for development).
-- **validate:** Validates schema matches entities, but doesn’t alter the database.
 
 ## Note
 
@@ -180,7 +127,7 @@ public boolean saveEmp(Emp emp) {
 
 ### Checking if DB is connected in JSP
 
-``` jsp
+``` java
 SessionFactory factory = HibernateUtil.getSessionFactory();
 out.print(factory);  // Print factory to verify connection
 ```

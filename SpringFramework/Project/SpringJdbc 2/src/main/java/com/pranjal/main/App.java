@@ -1,7 +1,8 @@
-package com.pranjal;
+package com.pranjal.main;
 import com.pranjal.dao.StudentDao;
 import com.pranjal.entity.Student;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.List;
@@ -10,7 +11,8 @@ import java.util.Scanner;
 public class App {
     public static void main(String[] args) {
         ApplicationContext context = new ClassPathXmlApplicationContext("config.xml");
-        StudentDao dao = context.getBean("studentDaoImpl", StudentDao.class); // Make sure this matches your bean id
+//        ApplicationContext context = new AnnotationConfigApplicationContext(java_config.class);
+        StudentDao dao = context.getBean("studentDao", StudentDao.class); // Make sure this matches your bean id
 
         Scanner scanner = new Scanner(System.in);
         int choice;
@@ -79,9 +81,8 @@ public class App {
                     // Get All Students
                     List<Student> students = dao.getAllStudents();
                     System.out.println("All Students:");
-                    for (Student s : students) {
+                    for (Student s : students)
                         System.out.println("ID=" + s.getId() + ", Name=" + s.getName() + ", Address=" + s.getAddress());
-                    }
                     break;
 
                 case 6:

@@ -1,4 +1,4 @@
-package org.hibernate2;
+package org1.hibernate2;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -33,4 +33,14 @@ public class Student2 {
     private int id;
     private String name;
     private String address;
+
+
+    @Override
+    public String toString() {
+        return "Student2{" +
+                "address='" + address + '\'' +
+                ", id=" + id +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }
