@@ -1,16 +1,19 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: pranjal
-  Date: 23/10/24
-  Time: 5:32 pm
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page isELIgnored="false" %>
+
+
+
 <html>
-  <head>
-    <title>$Title$</title>
-  </head>
-  <body>
-  $END$
-  </body>
+<head>
+    <title>Title</title>
+</head>
+<body>
+    <%@include file="css.jsp"%>
+    <h1 class="title-center">Register Successfully</h1>
+    <hr>
+    <h5> Name:    ${user.fullName}</h5>
+    <h5> Email:   ${user.email}</h5>
+    <h5> Password:${user.password}</h5>
+    <h5> Age:     ${user.age}</h5>
+</body>
 </html>

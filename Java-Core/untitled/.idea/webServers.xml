@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="841790fe-4aa3-4152-ac5f-5cdd7300eb63" name="tomcat-intel" url="http://localhost">
+        <fileTransfer mountedRoot="/opt/tomcat_backup" accessType="MOUNT" port="0" />
+      </webServer>
+    </option>
+  </component>
+</project>

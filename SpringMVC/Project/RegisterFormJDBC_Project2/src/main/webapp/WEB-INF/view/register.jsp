@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
+<%@ page isELIgnored="false" %>
 <html>
 <head>
     <title>Title</title>
@@ -14,6 +14,7 @@
         <div class="col-md-6 offset-md-3">
             <div class="card">
                 <div class="card-header text-center fs-3">Register Page</div>
+                <p class="fs-bold">${msg}</p>
                 <div class="card-body">
                     <form action="createUser" method="post">
                         <div class="mb-3">

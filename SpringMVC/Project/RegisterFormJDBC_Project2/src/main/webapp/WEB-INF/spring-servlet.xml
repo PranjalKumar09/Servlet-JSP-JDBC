@@ -9,8 +9,18 @@
             http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
             http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <context:component-scan base-package="com.controller"></context:component-scan>
+    <context:component-scan base-package="com.controller, com.service, com.dao"></context:component-scan>
 
     <bean name="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver" p:suffix=".jsp" p:prefix="/WEB-INF/view/">
     </bean>
+    <bean name="jds" class="org.springframework.jdbc.datasource.DriverManagerDataSource"
+          p:driverClassName="com.mysql.cj.jdbc.Driver"
+          p:username="root"
+          p:password="09072005"
+          p:url="jdbc:mysql://localhost:3306/my_db" />
+
+    <bean name="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate"
+          p:dataSource-ref="jds" />
+
+
 </beans>

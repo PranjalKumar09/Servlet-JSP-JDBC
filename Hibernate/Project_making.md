@@ -142,7 +142,8 @@ out.print(factory);  // Print factory to verify connection
 ### Converting Data Types in JSP to Servlet
 #### Converting String to Double:
 ``` java
-Double price = Double.parseDouble(req.getParameter("price"));
+Double price = Double.parseDouble(req.getParameter("price")); // here  parameter is not present or not a valid double, it will throw a NumberFormatException.
+Double price2 = (Double) req.getSession().getAttribute("price"); //  if the session does not contain an attribute with that name, or it will hold the Double value if it exists.
 ```
 #### Fetching User from Session:
 ``` java

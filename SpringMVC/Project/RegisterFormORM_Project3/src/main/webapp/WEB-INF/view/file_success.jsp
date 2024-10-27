@@ -17,7 +17,7 @@
 <body>
 <div class="text-center">
     <h1>File Upload Successful</h1>
-    <img src="<c:url value="resources/img/${imgName}"/> " >
+    <img src="<c:url value="resource/img/${imgName}"/> " >
 </div>
 </body>
 </html>

@@ -1,16 +1,18 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: pranjal
-  Date: 25/10/24
-  Time: 8:28 am
-  To change this template use File | Settings | File Templates.
---%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page isELIgnored="false" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Success Page</title>
 </head>
 <body>
+    <%@ include file="../resources/css/css.jsp"   %>
 
+    <h1>Success Page</h1>
+    <h2>Name:           ${user.fullName}</h2>
+    <h2>Id:           ${user.id}</h2>
+    <h2>Email:           ${user.email}</h2>
+    <h2>Password:           ${user.password}</h2>
+    <h2>Age:           ${user.age}</h2>
 </body>
 </html>
