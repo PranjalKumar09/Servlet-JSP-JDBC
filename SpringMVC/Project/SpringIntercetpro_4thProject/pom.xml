@@ -7,6 +7,12 @@
   <version>1.0-SNAPSHOT</version>
   <name>SpringIntercetpro_4thProject Maven Webapp</name>
   <url>http://maven.apache.org</url>
+  <properties>
+    <spring.version>6.1.13</spring.version>
+
+    <jstl.version>3.0.2</jstl.version>
+  </properties>
+
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
@@ -14,7 +20,31 @@
       <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-orm</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-webmvc</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>jakarta.servlet.jsp.jstl</groupId>
+      <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
+      <version>${jstl.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.glassfish.web</groupId>
+      <artifactId>jakarta.servlet.jsp.jstl</artifactId>
+      <version>3.0.1</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-fileupload2-jakarta-servlet6 -->
+
+
   </dependencies>
+
   <build>
     <finalName>SpringIntercetpro_4thProject</finalName>
   </build>
