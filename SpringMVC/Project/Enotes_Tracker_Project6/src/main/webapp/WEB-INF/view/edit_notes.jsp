@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
-    <title>Add Notes Page</title>
+    <title>Edit Page</title>
     <%@include file="../resoucres/component/css.jsp"%>
 </head>
 <body style="background-color: #f0f0f0;">
@@ -18,7 +18,7 @@
         <div class="col-md-10 offset-md-1">
             <div class="card">
                 <div class="card-header text-center">
-                    <h3>Add your notes </h3>
+                    <h3>Edit your notes </h3>
                 </div>
                 <div class="card-body">
                     <form action="">
