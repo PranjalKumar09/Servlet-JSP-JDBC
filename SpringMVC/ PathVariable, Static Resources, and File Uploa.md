@@ -51,6 +51,16 @@
       <link rel="stylesheet" href="<c:url value='/resources/css/style.css' />">
     </head>
     ```
+  - **Like Image can access as**:
+    ```jsp
+    
+    <img src="resources/img/img2.jpg" alt="Relative Path Test 2" width="300" height="auto">
+    <img src="resources/img/notes1.webp" alt="Relative Path Test 2" width="300" height="auto">
+
+    <img src="<c:url value='/resources/img/img2.jpg' />" alt="JSP c:url Test 2" width="300" height="auto">
+    <img src="<c:url value='/resources/img/notes1.webp' />" alt="JSP c:url Test 1" width="300" height="auto">
+    ```
+
 
 #### 3. **File Upload Configuration**
 - **Multipart Resolver Configuration** (`spring_servlet.xml`):

@@ -55,7 +55,10 @@ SpringMVC
     Getting_data.md 
     configuration&Sending_data.md 
     MakingProject.md 
-   
+    PathVariable, Static Resources, and File Uploa.md
+    SpringMVC_ExceptionHandling_and_Interceptors.md
+
+
 
 
 

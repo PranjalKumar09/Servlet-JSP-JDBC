@@ -174,3 +174,16 @@ public class User {
 </servlet-mapping>
 ```
 
+
+
+    
+    Now if i am at this url -> http://localhost:8080/EmployeeManagement_Project5_war/edit_emp/152
+    To go in this ->  @RequestMapping(path = "/updateEmp"  i have to go in  http://localhost:8080/EmployeeManagement_Project5_war/updateEmp
+
+    Now by <form action="updateEmp"> i will go to -> http://localhost:8080/EmployeeManagement_Project5_war/edit_emp/updateEmp
+
+    by <form action="updateEmp"> i will go to -> http://localhost:8080/updateEmp
+
+    this is correct ->  <form action="${pageContext.request.contextPath}/updateEmp">
+
+    
