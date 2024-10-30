@@ -1,4 +1,8 @@
 package com.service;
 
-public class UserService {
+import com.entity.User;
+
+public interface UserService {
+    int insertUser(User user);
+    User loginUser(String email, String password);
 }
