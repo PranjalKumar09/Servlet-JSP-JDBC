@@ -11,6 +11,8 @@
     <title>Title</title>
 </head>
 <body>
+    <h1>Something Wrong on Server <br>
+        Please try again</h1>
 
 </body>
 </html>
