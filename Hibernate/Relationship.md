@@ -188,10 +188,9 @@ public class EmpDtls {
     private String name;
     @OneToMany
     private  List<Address> address;
-   ---
-
-
-
+```
+ ---
+``` java
 public class App {
     public static void main(String[] args) {
         SessionFactory factory = HibernateUtil.getSessionFactory();
@@ -283,6 +282,13 @@ After adding the `@OneToMany(mappedBy = "empDtls")` annotation to the `EmpDtls` 
 
 The join table `EmpDtls_Address` will no longer be generated.
 
+With a **bidirectional relationship** between two classes:
+
+- **Without `mappedBy`**: An additional join table is created to manage the relationship, as neither side is designated as the owning side.
+  
+- **With `mappedBy`**: Only a single foreign key column is created in the table of the owning entity (the one without `mappedBy`), avoiding the need for an extra join table.
+
+- **`mappedBy` means** -> It which column will manage the foregin key
 ___
 ___
 # Many to Many
