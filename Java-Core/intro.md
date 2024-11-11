@@ -196,6 +196,7 @@
   - Example: `double piValue = Math.PI;`
 
 - **Math Class**:
+  - It already included so no need to be include that explicitly
   - Provides various mathematical operations.
   - Example: 
     ```java

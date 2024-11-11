@@ -67,11 +67,11 @@
    
    **Syntax**:
    ```java
-   labelName:
+   <labelName>:
    for(init; condition; stmt) {
        for(init; condition; stmt) {
            // Statements
-           break labelName;
+           break <labelName>;
        }
    }
    ```
