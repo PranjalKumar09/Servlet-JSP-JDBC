@@ -175,15 +175,64 @@ public class User {
 ```
 
 
+### URL Routing in the Application
 
-    
-    Now if i am at this url -> http://localhost:8080/EmployeeManagement_Project5_war/edit_emp/152
-    To go in this ->  @RequestMapping(path = "/updateEmp"  i have to go in  http://localhost:8080/EmployeeManagement_Project5_war/updateEmp
+1. **Editing an Employee**:
+   - If you navigate to:  
+     `http://localhost:8080/EmployeeManagement_Project5_war/edit_emp/152`,  
+     this will allow you to edit the employee with ID `152`.
+   
+2. **Updating an Employee**:
+   - To perform an update, you need to go to:  
+     `http://localhost:8080/EmployeeManagement_Project5_war/updateEmp`.
+   - Use the following form action to correctly point to the update endpoint:  
+     ```html
+     <form action="${pageContext.request.contextPath}/updateEmp">
+     ```
 
-    Now by <form action="updateEmp"> i will go to -> http://localhost:8080/EmployeeManagement_Project5_war/edit_emp/updateEmp
+### Notes on Redirection and Form Submission
+- Avoid unnecessary redirects after updates to improve user experience. If you can show a success message on the same page, do so instead of redirecting.
 
-    by <form action="updateEmp"> i will go to -> http://localhost:8080/updateEmp
+### Database Query for Notes
+To fetch notes for a specific user, use the following query, When in hibernate we have User user as foreign key:
+```java
+Query<Notes> query = session.createQuery("from Notes where user.id = :userId", Notes.class);
+query.setParameter("userId", userId);
+```
 
-    this is correct ->  <form action="${pageContext.request.contextPath}/updateEmp">
+### Action Links for Notes
+When displaying action buttons for each note, use:
+```html
+<div>
+    <a href="edit_notes?id=${note.id}" >Edit</a>
+    <a href="deleteNotes?id=${note.id}">Delete</a>
+</div>
+```
 
-    
+### Employee Edit and Update Controller Methods
+1. **Edit Employee**:
+   ```java
+   @RequestMapping("/edit_emp/{id}")
+   public String edit_emp(@PathVariable("id") int id, Model model) {
+        // code
+       return "edit_emp";
+   }
+   ```
+
+2. **Update Employee**:
+   ```java
+   @RequestMapping(path = "/updateEmp", method = RequestMethod.POST)
+   public String updateEmp(HttpSession session, @ModelAttribute Emp emp) {
+        // code
+       return "redirect:/home"; // Consider using a message display instead of a redirect
+   }
+   ```
+
+3. **Delete Employee**:
+   ```java
+   @RequestMapping("/deleteEmp/{id}")
+   public String deleteEmp(HttpSession session, @PathVariable("id") int id) {
+       // code
+       return "redirect:/home"; // Consider showing a message instead of a redirect
+   }
+   ```
