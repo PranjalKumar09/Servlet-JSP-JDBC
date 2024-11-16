@@ -86,9 +86,9 @@ public class HomeController {
         return "profile";
     }
     @RequestMapping("/logout")
-    public String logout(HttpSession session) {
-        session.invalidate();
-        return "redirect:/login";
+        public String logout(HttpSession session) {
+            session.invalidate();
+            return "redirect:/login";
     }
 
 

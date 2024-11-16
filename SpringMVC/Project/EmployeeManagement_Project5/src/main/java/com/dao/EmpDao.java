@@ -70,16 +70,16 @@ public class EmpDao {
         return 1;
     }
     public int deleteEmp(Emp emp) {
-        Transaction tx = null;
-        try (Session session = sessionFactory.openSession()) {
-            tx = session.beginTransaction();
-            session.remove(emp);
-            tx.commit();
-        } catch (Exception e) {
-            e.printStackTrace();
-            return 0;
-        }
-        return 1;
+            Transaction tx = null;
+            try (Session session = sessionFactory.openSession()) {
+                tx = session.beginTransaction();
+                session.remove(emp);
+                tx.commit();
+            } catch (Exception e) {
+                e.printStackTrace();
+                return 0;
+            }
+            return 1;
     }
 }
 
