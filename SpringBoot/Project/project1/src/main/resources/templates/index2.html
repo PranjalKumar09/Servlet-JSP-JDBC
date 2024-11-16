@@ -6,7 +6,7 @@
     <link th:href="@{/css/style.css}" rel="stylesheet" />
 </head>
 <body>
-<h1>Index Page</h1>
+<!--<h1>Index Page</h1>
 <div th:replace="~{head::fragment1}"></div>
         <h1>Index Page</h1>
     <h1 data-th-text="#{name.full}"></h1>
@@ -53,12 +53,29 @@
 
     </div>
 <div th:if="${2 le 3}">true block</div>
-<!--<div th:if="${2+10<3}">true block</div>-->
+&lt;!&ndash;<div th:if="${2+10<3}">true block</div>&ndash;&gt;
 
 
    <p>
 
     [[${u1?.name}]]
    </p>
+
+
+    <h1> Setting attribute values</h-->
+
+<!--<div th:object="${u1}"></div>-->
+
+    <input type="submit" value="SUBMIT FORM" th:attr="value=#{subscribe.submit}"/>
+
+    <div th:if="2<3">
+        <h1>3 is greater than 2</h1>
+    </div>
+
+    <div th:unless="2>3">
+        <h1>3 is greater than 2 ONLY RUN IF FALSE</h1>
+    </div>
+
+
 </body>
 </html>

@@ -17,10 +17,13 @@ import static org.springframework.security.config.Customizer.withDefaults;
 @EnableWebSecurity
 public class SecurityConfig {
 
-    @Autowired
-    public SuccessHandler successHandler;
-    @Autowired
-    public CustomFailureHandler customFailureHandler;
+    public final SuccessHandler successHandler;
+    public final CustomFailureHandler customFailureHandler;
+
+    public SecurityConfig(SuccessHandler successHandler, CustomFailureHandler customFailureHandler) {
+        this.successHandler = successHandler;
+        this.customFailureHandler = customFailureHandler;
+    }
 
     @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder() {

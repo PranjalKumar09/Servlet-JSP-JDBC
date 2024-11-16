@@ -59,7 +59,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void resetAttempt(String email) {
-
+        userRepo.updateFailedAttempt(0,email);
     }
 
     @Override
@@ -71,10 +71,15 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean unlockAccountTimeExpired(User user) {
+        if (user.getLockedTime() == null) {
+            // If lockedTime is null, the account is either already unlocked or has no lock time set
+            return true;
+        }
+
         long lockTime = user.getLockedTime().getTime();
         long currentTime = System.currentTimeMillis();
 
-        if (lockTime + Lock_duration_time > currentTime ){
+        if (lockTime + Lock_duration_time < currentTime ){
             user.setLockedTime(null);
             user.setAccountNotLocked(true);
             user.setFailedAttempt(0);

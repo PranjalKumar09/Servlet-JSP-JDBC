@@ -24,7 +24,7 @@
 
 ### **Platform**
 - **Definition**: An environment where a program runs; it is a combination of the **Operating System (OS)** and the **Processor (CPU)**.
-  - Examples of platforms: Windows, Linux, MacOS
+  - Examples of platforms: Windows, Linux, MacOS, Windows, MacOS
   - Total Platforms: Physical Machines = 5, Platforms = 3
 
 ---

@@ -1,10 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<!--      th:replace="base :: Layout(title='Index Page', body='This is the body content')">-->
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Index Page</title>
+    <link th:href="@{/css/style.css}" rel="stylesheet" />
 </head>
 <body>
-
+    [[${#dates.format(date1, 'yyyy-MM-dd HH:mm:ss')}]]
+    [[${#dates.day(date1)}l]]
 </body>
 </html>

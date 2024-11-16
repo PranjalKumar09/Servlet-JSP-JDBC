@@ -43,7 +43,7 @@ public class CustomFailureHandler extends SimpleUrlAuthenticationFailureHandler 
                         exception = new LockedException("Your account is locked !! failed attempt");
                     }
 
-                } else {
+                } else if(!user.isAccountNotLocked()){
                     if (userService.unlockAccountTimeExpired(user)){
                         exception = new LockedException("Account is Unlocked! Please try to login");
                     } else {

@@ -11,6 +11,7 @@ import java.util.List;
 public class CustomUser implements UserDetails {
     private User user;
     public CustomUser(User user) {
+        super();
         this.user = user;
     }
 
@@ -45,7 +46,6 @@ public class CustomUser implements UserDetails {
 
     @Override
     public boolean isAccountNonLocked() {
-
         return user.isAccountNotLocked();
     }
 
