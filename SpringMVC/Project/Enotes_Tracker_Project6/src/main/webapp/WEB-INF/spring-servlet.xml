@@ -37,6 +37,7 @@
         <property name="annotatedClasses">
             <list>
                 <value>com.entity.User</value>
+                <value>com.entity.Notes</value>
             </list>
         </property>
     </bean>
@@ -45,11 +46,11 @@
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
 
-    <!--<mvc:interceptors>
+    <mvc:interceptors>
         <mvc:interceptor>
-            <mvc:mapping path="/myProfile" />
+            <mvc:mapping path="/user/*" />
             <bean class="com.interceptor.AuthInterceptor" />
         </mvc:interceptor>
-    </mvc:interceptors>-->
+    </mvc:interceptors>
 
 </beans>

@@ -21,12 +21,13 @@
                     <h3>Edit your notes </h3>
                 </div>
                 <div class="card-body">
-                    <form action="">
-                        <div class="mb-3"><label>Enter Title</label><input type="text" name="email" class="form-control"></div>
+                    <form action="update_notes" method="POST">
+                        <div class="mb-3"><label>Enter Title</label><input type="text" name="title" class="form-control" value="${notes.title}"></div>
                         <div class="mb-3"><label>Enter Description</label>
-                            <textarea rows="4" cols="" class="form-control"></textarea>
+                            <textarea rows="4" cols="" class="form-control" name="description">${notes.description}"</textarea>
                         </div>
-                        <button class="btn btn-primary mt-4">Save</button>
+                        <input type="hidden" name="id" value="${notes.id}" >
+                        <button class="btn btn-primary mt-4">Update</button>
 
                     </form>
                 </div>

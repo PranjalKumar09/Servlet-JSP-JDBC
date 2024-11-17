@@ -27,7 +27,7 @@
                     </c:if>
                 </div>
                 <div class="card-body">
-                    <form action="loginUser" method="post">
+                    <form action="${pageContext.request.contextPath}/loginUser" method="post">
                          <div class="mb-3"><label>Enter Email</label><input type="email" name="email" class="form-control"></div>
                         <div class="mb-3"><label>Enter Password</label><input type="password" name="password" class="form-control"></div>
                         <button type="submit" class="btn btn-primary col-md-12">Login</button>

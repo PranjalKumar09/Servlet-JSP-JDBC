@@ -11,12 +11,15 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="home"><i class="fa-solid fa-house me-1"></i>Home</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="add_notes">Add Notes</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="login">View Notes</a>
-                </li>
+                <c:if test="${not empty user}">
+                    <li class="nav-item">
+                        <a class="nav-link" href="${pageContext.request.contextPath}/user/add_notes">Add Notes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="${pageContext.request.contextPath}/user/view_notes">View Notes</a>
+                    </li>
+                </c:if>
+
             </ul>
             <form class="d-flex">
                 <c:if test="${empty user}">
@@ -24,8 +27,8 @@
                     <a href="register" class="btn btn-light" type="submit">Register</a>
                 </c:if>
                 <c:if test="${not empty user}">
-                    <a href="#" class="btn btn-light me-2" type="submit"><i class="fa-solid fa-right-to-bracket me-1"></i><i class="fa-solid fa-user"></i>${user.fullName}</a>
-                    <a href="#" class="btn btn-light" type="submit">Logout</a>
+                    <a href="#" class="btn btn-light me-2"><i class="fa-solid fa-right-to-bracket me-1"></i><i class="fa-solid fa-user"></i>${user.fullName}</a>
+                    <a href="${pageContext.request.contextPath}/user/logout" class="btn btn-light" type="submit">Logout</a>
                 </c:if>
             </form>
         </div>
