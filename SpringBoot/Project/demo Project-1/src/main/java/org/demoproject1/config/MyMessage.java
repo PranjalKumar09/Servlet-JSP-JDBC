@@ -1,4 +1,10 @@
 package org.demoproject1.config;
 
-public class Message {
+import org.springframework.stereotype.Component;
+
+@Component
+public class MyMessage {
+    public String getMessage() {
+        return "Hello, Kumar";
+    }
 }
