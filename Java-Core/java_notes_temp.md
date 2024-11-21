@@ -1,159 +1,60 @@
-Improved Program
-Passing Reference
+Method Overriding
+• A mechanism used by derived class, to change functionalities
+of the same method present in base class.
+• Two necessities for overriding a method
+1. Inheritance
+2. Prototype (Same visibility, return type and name)
+• It is generally done when the derived class wants to have a
+more specialized or specific version of the method inherited
+from the base class.
 
-class Demo
+Overloading v/s Overriding
+• Although Overloading and Overriding sound similar, but are
+completely different.
+1. Overriding can only occur in case of inheritance, whereas
+Overloading is done within the same class as well as across
+inheritance.
+1. Overriding occurs when prototype(return type, name,
+arguments) of a method is same in both base and derived
+class while, overloading occurs when name of method is
+same but they differ in terms of arguments.
 
+
+class Circle
 {
-
-private int x;
-
-private int y;
-
-public Demo(int i, int j)
-
+private int rad;
+public Circle(int rad)
 {
-
-x=i;
-
-y=j;
-
+this.rad=rad;
+}
+public int getRadius( )
+{
+return rad;
+}
+public double getArea( )
+{
+double area=Math.PI*rad*rad;
+return area;
+}
+public double getCircum( )
+{
+double circ=2*Math.PI*rad;
+return circ;
+}
+}
+class Cylinder extends Circle
+{
+private int height;
+public Cylinder(int r, int h)
+{
+super(r);
+height=h;
+}
+public double getArea( )
+{
+double area=2*super.getArea( )+getCicrcum( )*height;
+return area;
+}
 }
 
-public void increment(Demo D)
-
-{
-
-D.x++;
-
-D.y++;
-
-}
-
-public void show( )
-
-{
-
-System.out.println(“x= ”+x);
-
-System.out.println(“y= ”+y);
-
-}
-Passing Array Reference
-
-class Demo
-
-{
-
-public void doubler(int [ ] brr)
-
-{
-
-for(int i=0; i<brr.length; i++)
-
-brr[i]=brr[i]*2;
-
-}
-
-}
-
-class Test
-
-{
-
-public static void main(String [ ] args)
-
-{
-
-int [] arr={10,20,30,40,50};
-
-Demo d=new Demo( );
-
-d.doubler(arr);
-
-for(int i=0;i<arr.length;i++)
-
-S.O.P(arr[i]);
-
-}
-
-}
-Returning Array Reference
-
-class Demo
-
-{
-
-public int[ ] createArray(int n)
-
-{
-
-int [ ] brr=new int [n];
-
-return brr;
-
-}
-
-}
-
-class Test
-
-{
-
-public static void main(String [ ] args)
-
-{
-
-Demo d=new Demo( );
-
-int [ ] arr=d.createArray(5);
-
-System.out.println(“Length of array is ”+arr.length);
-
-}
-
-}
-The “this” Keyword
-
-The “this” keyword in java is a predefined object reference
-available inside every non static method of a class.
-
-On calling a method, the java compiler transfers the address
-of the object to the called method.
-
-This address is copied inside the “this” reference. In short
-“this” reference points to the object which is currently being
-used to call a method.
-
-Two major benefits of using “this” reference
-
-1. We can use the local variables by using the same name as
-that of the data members of class.
-
-2. We can perform inter constructor call using “this”.
-
-class Box
-
-{
-
-private int l,b,h;
-
-public Box( int l, int b, int h)
-
-{
-
-this.l=l;
-
-this.b=b;
-
-this.h=h;
-
-
-static data members
-
-static methods
-
-static blocks
-
-static classes(Can be used only with nested class or
-inner class and not the outer class)
 

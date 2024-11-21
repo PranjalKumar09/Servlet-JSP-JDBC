@@ -125,3 +125,17 @@ public boolean isEnabled() {
     return user.isEnabled();
 }
 ```
+
+### 6. **Dependency for Email**:
+Implement dynamic checking for the `enabled` field.
+
+```java
+@Override
+public boolean isEnabled() {
+    return user.isEnabled();
+}
+```
+ <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-mail</artifactId>
+        </dependency>

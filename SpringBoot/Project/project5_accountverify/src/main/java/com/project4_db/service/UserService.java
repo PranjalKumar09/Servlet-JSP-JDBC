@@ -7,7 +7,10 @@ public interface UserService {
     User saveUser(User user, String url);
     void removeSessionMessage();
     void sendEmail(User user, String path);
-    public boolean verifyAccount(String verficationCode);
+    boolean verifyAccount(String verficationCode);
 
-
+    void increaseFailedAttemp(User user);
+    void resetAttempt(String email);
+    void lock(User user);
+    boolean unlockAccountTimeExpired(User user);
 }

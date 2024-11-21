@@ -14,7 +14,13 @@ public class CustomUser implements UserDetails {
         this.user = user;
     }
 
+    public User getUser() {
+        return user;
+    }
 
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -39,7 +45,8 @@ public class CustomUser implements UserDetails {
 
     @Override
     public boolean isAccountNonLocked() {
-        return true;
+
+        return user.isAccountNotLocked();
     }
 
     @Override

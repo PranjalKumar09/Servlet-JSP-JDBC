@@ -19,6 +19,8 @@ public class SecurityConfig {
 
     @Autowired
     public SuccessHandler successHandler;
+    @Autowired
+    public CustomFailureHandler customFailureHandler;
 
     @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
@@ -52,6 +54,7 @@ public class SecurityConfig {
                         .loginPage("/login")  // Define custom login page
                         .loginProcessingUrl("/userLogin")  // URL that processes the login form submission
                         .defaultSuccessUrl("/user/profile", true)  // Redirect to profile page upon successful login
+                        .failureHandler(customFailureHandler)
                         .successHandler(successHandler)
                         .permitAll()  // Allow public access to the login page and form
                 );

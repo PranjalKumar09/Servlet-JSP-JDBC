@@ -5,6 +5,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
+import java.util.Date;
+
 @Entity
 public class User {
     @Id
@@ -18,6 +20,33 @@ public class User {
     private String role;
     private boolean enabled;
     private String verficationCode;
+    private boolean isAccountNotLocked;
+    private int failedAttempt;
+    private Date LockedTime;
+
+    public int getFailedAttempt() {
+        return failedAttempt;
+    }
+
+    public void setFailedAttempt(int failedAttempt) {
+        this.failedAttempt = failedAttempt;
+    }
+
+    public boolean isAccountNotLocked() {
+        return isAccountNotLocked;
+    }
+
+    public void setAccountNotLocked(boolean accountNotLocked) {
+        isAccountNotLocked = accountNotLocked;
+    }
+
+    public Date getLockedTime() {
+        return LockedTime;
+    }
+
+    public void setLockedTime(Date lockedTime) {
+        LockedTime = lockedTime;
+    }
 
     @Override
     public String toString() {
