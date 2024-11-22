@@ -1,4 +1,11 @@
 package com.project4_db.service;
 
-public class UserService {
+
+import com.project4_db.entity.User;
+
+public interface UserService {
+    User saveUser(User user);
+    void removeSessionMessage();
+
+
 }
