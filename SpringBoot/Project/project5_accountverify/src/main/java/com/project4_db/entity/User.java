@@ -16,6 +16,38 @@ public class User {
     private String mobileNumber;
     private String password;
     private String role;
+    private boolean enabled;
+    private String verficationCode;
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "email='" + email + '\'' +
+                ", id=" + id +
+                ", fullName='" + fullName + '\'' +
+                ", mobileNumber='" + mobileNumber + '\'' +
+                ", password='" + password + '\'' +
+                ", role='" + role + '\'' +
+                ", enabled=" + enabled +
+                ", verficationCode='" + verficationCode + '\'' +
+                '}';
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    public String getVerficationCode() {
+        return verficationCode;
+    }
+
+    public void setVerficationCode(String verficationCode) {
+        this.verficationCode = verficationCode;
+    }
 
     public String getRole() {
         return role;
@@ -65,15 +97,4 @@ public class User {
         this.password = password;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "email='" + email + '\'' +
-                ", id=" + id +
-                ", fullName='" + fullName + '\'' +
-                ", mobileNumber='" + mobileNumber + '\'' +
-                ", password='" + password + '\'' +
-                ", role='" + role + '\'' +
-                '}';
-    }
 }

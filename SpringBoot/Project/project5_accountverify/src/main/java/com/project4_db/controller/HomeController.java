@@ -3,8 +3,10 @@ package com.project4_db.controller;
 import com.project4_db.entity.User;
 import com.project4_db.repository.UserRepo;
 import com.project4_db.service.UserService;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -46,8 +48,13 @@ public class HomeController {
     }
 
     @RequestMapping(path = "/saveUser",method = RequestMethod.POST )
-    public String saveUser(@ModelAttribute User user, HttpSession session) {
-        User user1 = userService.saveUser(user);
+    public String saveUser(@ModelAttribute User user, HttpSession session, HttpServletRequest request) {
+        String url = request.getRequestURL().toString(); // http://localhost:8080/saveUser
+
+
+        url = url.replace(request.getServletPath(), "");
+
+        User user1 = userService.saveUser(user, url);
         if (user1 != null) {
 //            System.out.println("Successfully saved user");
             session.setAttribute("msg" , "Registered Successfully");
@@ -55,9 +62,19 @@ public class HomeController {
         else
 //            System.out.println("Failed to save user");
             session.setAttribute("msg" , "Failed to Register");
-
         return "redirect:/register";
     }
 
+    @GetMapping("/verify")
+    public String verifyAccount(@Param("code") String code, Model model) {
+       boolean f = userService.verifyAccount(code);
+       if  (f){
+           model.addAttribute("msg" , "Account Verified");
+       }else {
+           model.addAttribute("msg" , "Account Verification Failed");
+       }
+
+        return "message";
+    }
 
 }
