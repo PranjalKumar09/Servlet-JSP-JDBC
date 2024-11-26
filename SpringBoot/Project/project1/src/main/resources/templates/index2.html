@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Index Page</title>
+    <link th:href="@{/css/style.css}" rel="stylesheet" />
+</head>
+<body>
+<h1>Index Page</h1>
+<div th:replace="~{head::fragment1}"></div>
+        <h1>Index Page</h1>
+    <h1 data-th-text="#{name.full}"></h1>
+    <p th:text="#{name.full}"></p>
+    <p th:utext="#{name.full}"></p>
+    <p>Today is: [[${today}]]</p>
+    <p th:text="${today}"></p>
+
+    <br>
+    <h3 th:text="${u1.name}"></h3>
+    <h3 th:text="${u1.address}"></h3>
+    <h3 th:text="${u1.id}"></h3>
+
+    <br><br>
+    <div th:object="${u1}">
+        <h4>Name: <span th:text="*{name}"></span></h4>
+        <h4>Address: <span th:text="*{address}"></span></h4>
+        <h4>Id: <span th:text="*{id}"></span></h4>
+
+    </div>
+    <br><br>
+    <a th:href="@{/profile}">Profile Page normal link</a>
+    <br>
+    <a th:href="@{/profile/{id}(id=${u1.id})}">Profile Page with user id</a>
+
+<div th:replace="~{footer::footer}"></div>
+
+<br><br>
+
+<p>In Two years , it will be <span th:text="2024+2"></span></p>
+
+    <div th:if="${2<3}">true block</div>
+<div th:if="${2+10<3}">true block</div>
+
+<br><br>
+    <h4 th:text="hello"></h4>
+    <h4 th:text="'hello guys i am '+${u1.name}"></h4>
+
+    <div th:with="num=${10+10}">
+        num=[[${num}]]
+        <th:block th:with="even=${num%2==0}">
+            even block
+        </th:block>
+
+    </div>
+<div th:if="${2 le 3}">true block</div>
+<!--<div th:if="${2+10<3}">true block</div>-->
+
+
+   <p>
+
+    [[${u1?.name}]]
+   </p>
+</body>
+</html>
