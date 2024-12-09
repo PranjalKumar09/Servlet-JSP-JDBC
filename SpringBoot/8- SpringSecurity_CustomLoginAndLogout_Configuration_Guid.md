@@ -124,4 +124,8 @@ public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 - **Separate Error Page**:
   - Optionally, redirect to a separate error page for failed logins using `.failureUrl("/invalid")` in `SecurityConfig`.
 
+-  `` for custom error messages
+
+
+
 
