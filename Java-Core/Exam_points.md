@@ -1,3 +1,5 @@
+
+
 nextLine() -> It consumes the entire line of input including the newline character.
 
 Given that Student is a class, how many reference variables and objects are created by the following code?
@@ -26,3 +28,4 @@ Which of the following exceptions is not an unchecked exception-> B)FileNotFound
 abstract class have a constructor -> Yes
 
 
+Javadoc comments are used to document Java code for generating API documentation.
