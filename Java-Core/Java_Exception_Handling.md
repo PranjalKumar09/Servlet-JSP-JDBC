@@ -1,3 +1,4 @@
+
 ### Exception Handling in Java
 
 **Exception** in programming refers to errors that occur during the runtime of a program. These errors might be due to user input mistakes or logical flaws in the program itself. In Java, exception handling is a mechanism to deal with runtime errors, ensuring that the program doesn't terminate unexpectedly and can continue running even after an error occurs.
@@ -152,7 +153,6 @@ finally {
 
 By using proper exception handling, Java programs can provide more robust error recovery, improving user experience and allowing programs to run smoothly even when unexpected situations arise. 
 
-===
 ===
 
 ### Handling Multiple Exceptions in Java
