@@ -132,7 +132,7 @@ Java provides three primary ways to initialize an object:
 - **Characteristics**:
   - Executed before the constructor.
   - Runs each time an object is created.
-  - Useful for anonymous classes without constructors.
+  - Useful for a    s classes without constructors.
 - **Syntax**:
   ```java
   class Test {
@@ -387,7 +387,7 @@ class Employee {
 }
 ```
 
-#### Static Methods
+#### Static Methods -> Class Variable
 A method should be made static in the following situations:
 1. **Accessing only static data**: The method only works with static variables.
 2. **Using only method arguments**: The method does not depend on instance variables.
