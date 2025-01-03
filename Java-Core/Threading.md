@@ -2,7 +2,7 @@
 
 **Threads and Processes**  
 - **Process:** A self-contained execution environment, representing a program or application.  
-- **Thread:** A lightweight process that shares resources of its parent process and requires fewer resources to create.
+- **Thread:** A lightweight process that shares resources of its parent process and requires fewer resources to c   reate.
 
 ---
 
