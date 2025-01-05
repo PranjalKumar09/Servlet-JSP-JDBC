@@ -116,3 +116,17 @@ Always use try-catch blocks for exception handling to capture any issues during 
 ---
 ---
 ---
+
+
+
+### **Key Differences**
+| **Aspect**           | **Request Parameters**                | **Request Body**                     |
+|-----------------------|---------------------------------------|---------------------------------------|
+| **Location**          | In the URL (query string or path)    | In the body of the HTTP request       |
+| **Visibility**        | Visible in the URL                   | Not visible in the URL               |
+| **Use Case**          | Filtering, identifying resources     | Sending structured or large data     |
+| **HTTP Methods**      | Mostly GET (sometimes DELETE)        | POST, PUT, PATCH, DELETE             |
+| **Data Size**         | Limited by URL length                | Can handle large payloads            |
+
+
+

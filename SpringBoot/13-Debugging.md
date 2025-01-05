@@ -14,3 +14,7 @@ we can even change/set at runtime at value
 
 we can see varibale upto declared in terminal also
 
+sdfwe
+
+s
+efs

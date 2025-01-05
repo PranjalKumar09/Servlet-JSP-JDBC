@@ -1,11 +1,6 @@
 ### **Collections in Java**
 
-A **collection** is a group of objects, also known as its elements. Common examples include:  
-- List of email IDs  
-- List of names  
-- List of phone numbers  
-- Records of students  
-- Records of books, etc.
+A **collection** is a group of objects, also known as its elements. 
 
 To handle such collections efficiently, Java provides a robust set of predefined **classes and interfaces** called the **Collections Framework**, available in the `java.util` package.  
 
