@@ -1,0 +1,41 @@
+
+spring:
+  application:
+    name: spring-profile-app
+  profiles:
+    active:
+      - dev
+
+
+---
+# dev config
+spring:
+  config:
+    activate:
+      on-profile:
+      - dev
+my:
+  config: dev-config-becoder
+
+---
+
+# test config
+spring:
+  config:
+    activate:
+      on-profile:
+        - test
+my:
+  config: test-config-becoder
+
+---
+
+# prod config
+spring:
+  config:
+    activate:
+      on-profile:
+        - prod
+my:
+  config: prod-config-becoder
+
