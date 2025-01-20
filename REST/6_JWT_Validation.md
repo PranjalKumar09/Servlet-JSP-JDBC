@@ -1,9 +1,33 @@
-### Enhanced Notes: JWT Validation with Spring Security
+###  JWT Validation with Spring Security
 
 #### Overview
 
 To implement **JWT (JSON Web Token)** validation in a Spring Boot application, several components and configurations are required. This ensures secure stateless authentication using tokens. Below is a comprehensive explanation of all components, their roles, and the necessary configurations.
 
+
+Firstly we need to import dependencies
+
+```xml
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-api</artifactId>
+            <version>0.12.6</version>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-impl</artifactId>
+            <version>0.12.6</version>
+            <scope>runtime</scope>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt-jackson -->
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-jackson</artifactId>
+            <version>0.12.6</version>
+            <scope>runtime</scope>
+        </dependency>
+
+```
 ---
 
 ### Components and Classes
@@ -160,6 +184,7 @@ public class JwtService {
         Map<String, Object> claims = new HashMap<>();
         claims.put("username", username); // Add claims
         return Jwts.builder()
+            
                 .setClaims(claims)
                 .setSubject(username) // Set subject
                 .setIssuedAt(new Date(System.currentTimeMillis())) // Issue time
@@ -193,6 +218,27 @@ public class JwtService {
         return Keys.hmacShaKeyFor(decodedKey); // Generate secret key
     }
 }
+```
+Or 
+``` java
+    @Override
+    public String generateToken(User user) {
+
+        Map<String, Object> claims = new HashMap<>();
+        claims.put("role", user.getRoles());
+        claims.put("status", user.getStatus().getIsActive());
+
+        String token = Jwts.builder()
+                .claim("id", user.getId())
+                .claims(claims)
+                .subject(user.getEmail())
+                .issuedAt(new Date((System.currentTimeMillis())))
+                .expiration(new Date((System.currentTimeMillis() + 60*60*1000)))
+                .signWith(getKey())
+                .compact();
+        return token;
+    }
+
 ```
 
 ---
@@ -283,6 +329,29 @@ public String login(UserRequest userRequest) {
     }
     return null;
 }
+```
+
+Or 
+
+``` java
+@Override
+    public LoginResponse login(LoginRequest loginRequest) {
+
+        Authentication authentication =   authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getEmail(), loginRequest.getPassword()));
+
+            if (authentication.isAuthenticated()) {
+            CustomUserDetails customUserDetails = (CustomUserDetails) authentication.getPrincipal();
+            String token = jwtService.generateToken(customUserDetails.getUser());
+            UserDto userDto = modelMapper.map(customUserDetails.getUser(), UserDto.class);
+
+            return LoginResponse.builder()
+                    .token(token)
+                    .user(userDto)
+                    .build();
+        }
+        return null;
+
+    }
 ```
 
 ---

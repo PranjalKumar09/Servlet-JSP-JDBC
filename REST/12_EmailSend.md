@@ -111,22 +111,113 @@ Always use try-catch blocks for exception handling to capture any issues during 
 
 
 
-
+### **Enhanced Concise Notes**
 
 ---
----
----
-
-
 
 ### **Key Differences**
 | **Aspect**           | **Request Parameters**                | **Request Body**                     |
 |-----------------------|---------------------------------------|---------------------------------------|
-| **Location**          | In the URL (query string or path)    | In the body of the HTTP request       |
-| **Visibility**        | Visible in the URL                   | Not visible in the URL               |
-| **Use Case**          | Filtering, identifying resources     | Sending structured or large data     |
-| **HTTP Methods**      | Mostly GET (sometimes DELETE)        | POST, PUT, PATCH, DELETE             |
-| **Data Size**         | Limited by URL length                | Can handle large payloads            |
+| **Location**          | In URL (query string or path)         | In body of the HTTP request          |
+| **Visibility**        | Visible in the URL                    | Not visible in the URL               |
+| **Use Case**          | Filtering, identifying resources      | Sending structured or large data     |
+| **HTTP Methods**      | Mostly GET (sometimes DELETE)         | POST, PUT, PATCH, DELETE             |
+| **Data Size**         | Limited by URL length                 | Can handle large payloads            |
 
+---
 
+### **Handling Email with Attachment**
+
+#### **Controller Methods**
+```java
+@PostMapping("/email")
+private ResponseEntity<?> sendMail2(@RequestParam String email, @RequestParam(required = false) MultipartFile file) {
+    try {
+        emailService.sendEmailAndAttachment(email, file);
+        return new ResponseEntity<>("Email Sent Successfully", HttpStatus.OK);
+    } catch (Exception e) {
+        System.out.println(e.getMessage());
+        return new ResponseEntity<>("Email Send Failed", HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+}
+
+@PostMapping("/email2")
+private ResponseEntity<?> sendMail3(@RequestParam String email, @RequestParam(required = false) MultipartFile[] file) {
+    try {
+        emailService.sendEmailAndAttachment2(email, file);
+        return new ResponseEntity<>("Email Sent Successfully", HttpStatus.OK);
+    } catch (Exception e) {
+        System.out.println(e.getMessage());
+        return new ResponseEntity<>("Email Send Failed", HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+}
+```
+
+#### **Email Service Methods**
+```java
+@Override
+public void sendEmailAndAttachment2(String email, MultipartFile[] fileList) throws IOException, MessagingException {
+    ObjectMapper objectMapper = new ObjectMapper();
+    EmailRequest emailRequest = objectMapper.readValue(email, EmailRequest.class);  // Deserialize JSON email request
+
+    MimeMessage mimeMessage = mailSender.createMimeMessage();
+    MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true);
+
+    helper.setFrom("coderkumarshukla@gmail.com", emailRequest.getTitle());
+    helper.setTo(emailRequest.getRecipentEmail());
+    helper.setSubject(emailRequest.getSubject());
+    helper.setText(emailRequest.getBody(), true);
+
+    for (MultipartFile file : fileList) {
+        System.out.println(file.getOriginalFilename());
+        ByteArrayResource byteArrayResource = new ByteArrayResource(file.getBytes());
+        helper.addAttachment(file.getOriginalFilename(), byteArrayResource);
+    }
+
+    mailSender.send(mimeMessage);
+}
+
+@Override
+public void sendEmailAndAttachment(String email, MultipartFile file) throws MessagingException, IOException {
+    ObjectMapper objectMapper = new ObjectMapper();
+    EmailRequest emailRequest = objectMapper.readValue(email, EmailRequest.class);  // Deserialize JSON email request
+
+    MimeMessage mimeMessage = mailSender.createMimeMessage();
+    MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true);
+
+    helper.setFrom("coderkumarshukla@gmail.com", emailRequest.getTitle());
+    helper.setTo(emailRequest.getRecipentEmail());
+    helper.setSubject(emailRequest.getSubject());
+    helper.setText(emailRequest.getBody(), true);
+
+    if (file != null) {
+        ByteArrayResource byteArrayResource = new ByteArrayResource(file.getBytes());
+        helper.addAttachment(file.getOriginalFilename(), byteArrayResource);
+    }
+
+    mailSender.send(mimeMessage);
+}
+```
+
+---
+
+### **Notes on Handling JSON Format and File Uploads**
+- **Email as JSON**: The email content (`email`) is passed in JSON format in the request body. The `ObjectMapper` is used to deserialize it into the `EmailRequest` object.
+  
+  **JSON Format Example:**
+  ```json
+  {
+    "email": "cadet66364@example.com",
+    "title": "Title",
+    "recipentEmail": "recipient@example.com",
+    "subject": "Subject",
+    "body": "Body of the email"
+  }
+  ```
+
+- **Multipart File Upload**: The method handles **single** (`MultipartFile file`) and **multiple** (`MultipartFile[] file`) file uploads. Ensure the form data is correctly set for file uploads.
+
+- **File Size Limitation**: For large files, set the max file size limit of multipart  max file properites
+  ```properties|
+---
 

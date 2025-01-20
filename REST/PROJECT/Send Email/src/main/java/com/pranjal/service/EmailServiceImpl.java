@@ -1,5 +1,6 @@
 package com.pranjal.service;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.pranjal.model.EmailRequest;
 import jakarta.mail.MessagingException;
@@ -18,9 +19,35 @@ import java.io.UnsupportedEncodingException;
 @Service
 public class EmailServiceImpl implements EmailService {
     @Override
-    public void sendEmailAndAttachment(EmailRequest emailRequest, MultipartFile file) throws MessagingException, IOException {
+    public void sendEmailAndAttachment2(String email, MultipartFile[] fileList) throws IOException, MessagingException {
         ObjectMapper objectmapper = new ObjectMapper();
-        EmailRequest emailRequest1 = objectmapper.readValue((DataInput) emailRequest, EmailRequest.class);
+        EmailRequest emailRequest = objectmapper.readValue( email, EmailRequest.class);
+
+
+        MimeMessage mimeMessage = mailSender.createMimeMessage();
+        MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true);
+
+        helper.setFrom("coderkumarshukla@gmail.com", emailRequest.getTitle());
+        helper.setTo(emailRequest.getRecipentEmail());
+        helper.setSubject(emailRequest.getSubject());
+        helper.setText(emailRequest.getBody(), true);
+
+
+        for (MultipartFile file : fileList) {
+            System.out.println(file.getOriginalFilename());
+            ByteArrayResource byteArrayResource = new ByteArrayResource(file.getBytes());
+
+            helper.addAttachment(file.getOriginalFilename(), byteArrayResource);
+
+        }
+
+        mailSender.send(mimeMessage);
+    }
+
+    @Override
+    public void sendEmailAndAttachment(String email, MultipartFile file) throws MessagingException, IOException {
+        ObjectMapper objectmapper = new ObjectMapper();
+        EmailRequest emailRequest = objectmapper.readValue( email, EmailRequest.class);
 
 
         MimeMessage mimeMessage = mailSender.createMimeMessage();

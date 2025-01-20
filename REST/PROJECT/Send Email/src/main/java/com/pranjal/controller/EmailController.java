@@ -32,10 +32,23 @@ public class EmailController {
     }
 
     @PostMapping("/email")
-    private ResponseEntity<?> sendMail2(@RequestParam EmailRequest emailRequest, MultipartFile file)
+    private ResponseEntity<?> sendMail2(@RequestParam String email, @RequestParam(required = false) MultipartFile file)
     {
         try {
-            emailService.sendEmailAndAttachment(emailRequest, file);
+            emailService.sendEmailAndAttachment(email   , file);
+
+            return  new ResponseEntity<>("Email Send Succes", HttpStatus.OK);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return new ResponseEntity<>("Email Send Failed", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @PostMapping("/email2")
+    private ResponseEntity<?> sendMail3(@RequestParam String email, @RequestParam(required = false) MultipartFile[] file)
+    {
+        try {
+            emailService.sendEmailAndAttachment2(email   , file);
 
             return  new ResponseEntity<>("Email Send Succes", HttpStatus.OK);
         } catch (Exception e) {

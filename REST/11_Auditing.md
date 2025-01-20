@@ -66,3 +66,6 @@ The `AuditorConfig` is set up with a static value (like `1` in this example), bu
 
 #### Summary
 Auditing in Spring helps track the creation and modification details of entities. By using `@CreatedBy`, `@CreatedDate`, `@LastModifiedBy`, and `@LastModifiedDate`, along with the `AuditorAware` configuration, we can maintain a transparent log of changes in the system.
+
+
+- @EnableJpaAuditing should done application main class
