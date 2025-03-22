@@ -35,29 +35,34 @@ JAVA features (12 BuzzWords)
   from C++, no pointerg
 2 Secure
   Test.java => test.java (compiler) => Bytecode => machine code (jvm)
-  inside jvm: bytecode ve
+  inside jvm: bytecode verifier + secuirty manager
+  java.lang.VerifyError
+    sandbox checking
 
-3 Portable
-s
-
+3 Portable => Mobile portability
 
 4 Object Oriented
+  Encapsulation (Security), Inheritance => Reusablity ,Polymorphism (Flexibility)
 5 Robust
-6 Multi thread
-7 Architectural
-s
+  change of failing is very rare
+  incompataible lossy conversion
+  int i = 10.0;
+  error , strong typed checking, 
+  java is strong typed programming language
 
-8 Interpreted
-9 High Performance
-10 Distributed
-11 Dynamic
-12 Platform depkwnr
-aaeraeserawfrq
+  Garbage collector => memory relate problem less
+  Exception handle
+  Som program is different device (Independence)
 
-  
+6 Multi thread => Simultaneously, java program -> multiple program
+7 Architectural neutral => if today , will run tomorrow
 
-
-
+8 Interpreted => Compile & Interpreted -> Both advantage
+9 High Performance => Relatively faster, close to C++
+10 Distributed => Load balancing, fail over
+11 Dynamic => Unlike C, or C++ nothing include like #include .. at starting,, in java nothing will loading when that line come,, import java.util.*
+Date d = new.... <- this line when come then only this will imported
+12 Platform Independence => Write once & run anywhere (WORA)
 
 
 ---
@@ -84,6 +89,14 @@ Java Program -> JavaC -> ByteCode
 In terminal 
   $ javac Test.java          
   $ java Test
+
+
+Java Source file  (Test.java) Developer (Develop + Run)
+Java compiler  (javaC Test.java) Client (Run)
+Byte Code (Test.class) JVM
+
+Version: JavaC <= jvm
+otherwise unsupported exceptional error
 
 ## **Java Components**
 - **JVM (Java Virtual Machine)**: 
@@ -248,25 +261,3 @@ In terminal
   ```
 
 ---
-
-## **Type Conversions**
-
-- **Implicit Conversion**:
-  - Performed automatically by the compiler if compatible.
-  - Example:
-    ```java
-    int x = 'A'; // Valid, as 'A' is converted to its ASCII value.
-    ```
-- **Explicit Conversion** (Type Casting):
-  - Done manually by the programmer.
-  - Example:
-    ```java
-    double d = 10.5;
-    int i = (int) d; // Explicit conversion from double to int.
-    ```
-
-### **Conditions for Implicit Conversion**:
-1. The values must be compatible.
-2. The target data type should be larger than the source data type.
-
-
