@@ -277,45 +277,6 @@ Here are some core Java topics that often appear in tests, especially if they we
 
 ---
 
-===
-Data conversion in Java involves changing data from one type to another. Java provides both implicit (automatic) and explicit (manual) conversions. Here’s a summary of the common data conversion types you’ll encounter:
-
----
-
-### 1. **Implicit (Automatic) Type Conversion**
-Java automatically handles conversions between compatible types in a process known as **widening conversion** (from smaller to larger data types). For example:
-
-- **Examples of widening conversions**:
-    - `byte` → `short` → `int` → `long` → `float` → `double`
-    - `char` → `int`
-
-**Example**:
-```java
-int myInt = 10;
-double myDouble = myInt; // Implicit conversion, no data loss
-System.out.println(myDouble); // Outputs: 10.0
-```
-
-Since Java handles widening conversions without data loss, there’s no need to manually specify the conversion.
-
----
-
-### 2. **Explicit (Manual) Type Conversion (Casting)**
-In cases where data may be lost, Java requires explicit casting, often used for **narrowing conversion** (from a larger to a smaller data type).
-
-- **Examples of narrowing conversions**:
-    - `double` → `float` → `long` → `int` → `short` → `byte`
-    - **Explicit casting** is necessary to prevent unintended data loss.
-
-**Example**:
-```java
-double myDouble = 9.78;
-int myInt = (int) myDouble; // Explicit cast from double to int
-System.out.println(myInt); // Outputs: 9 (decimal part is truncated)
-```
-
-**Note**: This truncation can cause loss of information, as the fractional part is discarded in the conversion.
-
 ---
 
 ### 3. **String Conversion**
