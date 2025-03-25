@@ -151,6 +151,22 @@ public class GlobalExceptionHandler {
 }
 ```
 
+###  `@RestControllerAdvice`
+- Specialization of `@ControllerAdvice` that targets `@RestController` (JSON APIs).
+- Automatically adds `@ResponseBody` to all methods, ensuring **JSON/XML responses** instead of views.
+
+``` java
+@RestControllerAdvice
+public class GlobalApiExceptionHandler {
+
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<String> handleException(Exception ex) {
+        return new ResponseEntity<>("Error: " + ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+}
+```
+
+
 ---
 
 ## **Project Setup**
