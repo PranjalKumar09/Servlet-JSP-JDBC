@@ -12,7 +12,7 @@ In your `pom.xml`, include the dependency for Spring Boot OAuth2 Client:
 
 #### Step 2: Configure Security
 Create a `SecurityConfig` class to enable OAuth2 login.
-
+  
 ```java
 @Configuration
 @EnableWebSecurity
