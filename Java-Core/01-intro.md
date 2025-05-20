@@ -62,7 +62,7 @@ JAVA features (12 BuzzWords)
 10 Distributed => Load balancing, fail over
 11 Dynamic => Unlike C, or C++ nothing include like #include .. at starting,, in java nothing will loading when that line come,, import java.util.*
 Date d = new.... <- this line when come then only this will imported
-12 Platform Independence => Write once & run anywhere (WORA)
+12 Platform Indejvmpendence => Write once & run anywhere (WORA)
 
 
 ---
