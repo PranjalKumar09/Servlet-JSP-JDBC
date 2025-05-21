@@ -6,25 +6,15 @@
 ---
 
 ### Key Pillars of Object-Oriented Programming (OOP)
-1. **Abstraction**: Focus on essential characteristics, hiding unnecessary implementation details.
+1. **Abstraction**
 2. **Encapsulation**: Combines data and methods that operate on that data into a single unit or *class*.
-3. **Polymorphism**: Means "many forms"; allows entities to take multiple forms, a concept derived from biology.
+3. **Polymorphism**
 4. **Inheritance**: Enables code *reusability*, *extensibility*, and organizes information in a hierarchical structure.
 
 ---
 
 ### Creating a Class and Its Object in Java
 
-- **Class Syntax**:
-  ```java
-  class <ClassName> {
-      <access modifier> <data type> <variable name> = value;
-
-      <access modifier> <return type> <method name>(parameters) {
-          // Method body
-      }
-  }
-  ```
 - **Encapsulation in Java**: 
   - Encapsulation is implemented by defining methods within a class to access or modify its data.
 
@@ -92,31 +82,6 @@ Java provides three primary ways to initialize an object:
   ```
 
 ### 2. Constructors
-- **Definition**: Special methods that initialize an object when created.
-- **Characteristics**:
-  - Same name as the class
-  - It returns object address intenally when called
-  - No return type
-  - Automatically called with the `new` keyword
-  - If not defined by the programmer, Java provides a default constructor.
-- **Example**:
-  ```java
-  class Account {
-      private int accid;
-      private String name;
-      private double balance;
-
-      public Account(int id, String name, double balance) {
-          accid = id;
-          this.name = name;
-          this.balance = balance;
-      }
-
-      public void show() {
-          System.out.println("ID: " + accid + "\nName: " + name + "\nBalance: " + balance);
-      }
-  }
-  ```
 
 #### Initializing Multiple Objects with Constructor
 - To initialize multiple objects efficiently, use an *array of references*.
@@ -165,50 +130,11 @@ Java provides three primary ways to initialize an object:
 - **Drawback**:
   - Cannot accept arguments or return values.
 
----
-
-### Method Overloading in Java
-- **Definition**: Method overloading allows multiple methods with the same name but different parameters within a class.
-- **Example**: Java’s `println()` method can print various data types (e.g., integers, strings, booleans, doubles) using a single method name.
-
-#### Rules for Method Overloading
-1. Methods must differ in their *arguments* (either in *number*, *data type*, or *order* of parameters).
-2. Overloading is not based on the method’s return type.
-
-#### Example Code
-```java
-class OverloadDemo {
-    public void show(int a) {
-        System.out.println("In show with int argument: " + a);
-    }
-    public void show(double b) {
-        System.out.println("In show with double argument: " + b);
-    }
-    public void show(String s) {
-        System.out.println("In show with String argument: " + s);
-    }
-}
-
-class Test {
-    public static void main(String[] args) {
-        OverloadDemo obj = new OverloadDemo();
-        obj.show(10);       // Calls show(int)
-        obj.show(3.14);     // Calls show(double)
-        obj.show("Amit");   // Calls show(String)
-    }
-}
-```
-
-#### Selection of Overloaded Methods
-- The compiler matches the method based on argument type.
-- If an exact match is not found, it selects the next *higher data type*.
-- If no suitable method is found, a syntax error occurs.
 
 ---
 
 ### Constructor Overloading
-- **Definition**: Similar to method overloading, constructors can be overloaded to offer various ways to initialize an object.
-- **Benefits**: Allows flexibility in object creation by providing multiple initialization options.
+
 
 ---
 
@@ -646,32 +572,11 @@ class AddNum extends Num {
 **Method Overriding**: A subclass can override a superclass method, and `super` can be used to call the original method if necessary.
 
 
-
-
 ===
-
 
 ---
 
 ### Method Overriding
-- **Definition**: Allows a derived class to provide a specific implementation for a method inherited from a base class.
-- **Requirements**:
-  1. **Inheritance**: The derived class must inherit from the base class.
-  2. **Method Prototype**: Same method name, return type, and visibility as in the base class.
-- **Purpose**: To give a derived class a more specialized version of a base class method.
-
----
-
-### Overloading vs. Overriding
-- **Overriding**:
-  - Requires inheritance.
-  - Same method signature (name, return type, parameters) in both base and derived classes.
-- **Overloading**:
-  - Can occur within a single class or across inheritance.
-  - Methods share the same name but differ in parameters.
-
----
-
 ### Example: Overriding with `Circle` and `Cylinder`
 
 ```java
@@ -695,20 +600,6 @@ class Cylinder extends Circle {
     }
 }
 ```
-
----
-
-### Relationship between Base Class References and Derived Class Objects
-- **Rule**: A base class reference can hold a derived class object, but a derived class reference cannot hold a base class object.
-    - Example: `Employee e = new Manager();` is valid, but `Manager m = new Employee();` is not.
-- **Access Limitation**: A base class reference pointing to a derived class object can only access members from the base class.
-    - Example:
-      ```java
-      Employee e = new Manager();
-      e.salary = 12000.0; // Accessible
-      e.name = "Amit"; // Accessible
-      e.bonus = 10000.0; // Not accessible if only in Manager class
-      ```
 
 ---
 
@@ -752,11 +643,8 @@ class UseBox {
 
 
 ### Polymorphism
-- **Definition**: Polymorphism allows objects to take on multiple forms or behaviors depending on the context.
-    - **Poly** - Many, **Morphs** - Forms.
-- **Types**:
-    - **Method Overloading**: Multiple methods in the same class with the same name but different parameters.
-    - **Method Overriding**: Redefining a base class method in a derived class.
+    - **Method Overloading**
+    - **Method Overriding**
 - **Dynamic Method Dispatch**: Achieves polymorphic behavior by calling methods on a base class reference that points to derived class objects. The correct method is chosen at runtime.
 
 ---
@@ -764,10 +652,8 @@ class UseBox {
 ### Binding
 - **Binding**: Process by which the compiler decides which method or function to call.
 - **Types of Binding**:
-  1. **Early Binding (Static/Compile-time)**: Method resolution is done at compile-time.
-  2. **Late Binding (Dynamic/Runtime)**: Method resolution occurs at runtime, based on the actual object, not just the reference.
-      - Example: Non-static methods in Java use late binding to ensure that the overridden method in the derived class is called.
-
+  1. Early Binding
+  2. Late Binding\\
 ---
 
 ### Example of Late Binding with `A` and `B`
@@ -796,74 +682,6 @@ class Test {
     }
 }
 ```
-
-### Polymorphism Example with `Shape`
-
-```java
-class Shape {
-    private int dim1, dim2;
-    public Shape(int dim1, int dim2) {
-        this.dim1 = dim1;
-        this.dim2 = dim2;
-    }
-    public double area() { return 0.0; }
-    public String name() { return "Unknown"; }
-    public int getDim1() { return dim1; }
-    public int getDim2() { return dim2; }
-}
-
-class Rectangle extends Shape {
-    public Rectangle(int l, int b) { super(l, b); }
-    public double area() { return getDim1() * getDim2(); }
-    public String name() { return "Rectangle"; }
-}
-
-class Triangle extends Shape {
-    public Triangle(int b, int h) { super(b, h); }
-    public double area() { return 0.5 * getDim1() * getDim2(); }
-    public String name() { return "Triangle"; }
-}
-
-class UseShape {
-    public static void main(String[] args) {
-        Shape s;
-
-        s = new Rectangle(5, 10);
-        System.out.println("Shape is " + s.name());   // Outputs: Shape is Rectangle
-        System.out.println("Its area is " + s.area()); // Outputs area of Rectangle
-
-        s = new Triangle(15, 20);
-        System.out.println("Shape is " + s.name());    // Outputs: Shape is Triangle
-        System.out.println("Its area is " + s.area()); // Outputs area of Triangle
-    }
-}
-```
-
----
-
-**Abstract Methods and Classes**
-
-1. **Abstract Methods**:  
-   - Some methods in a base class are defined without implementation because their functionality is meant to vary in derived classes. To declare such methods without defining them, we use the keyword `abstract`.
-   - When a method is declared `abstract`, two requirements follow:
-     1. The class containing the abstract method must also be prefixed with `abstract`.
-     2. Objects of an abstract class cannot be instantiated directly; however, references can be created.
-
-   **Example:**
-   ```java
-   abstract class Shape {
-       private int dim1;
-       private int dim2;
-       abstract public String name();
-       abstract public double area();
-   }
-   ```
-
-2. **Restrictions on Abstract Methods**:
-   - **Static methods**: Cannot be abstract because static methods have predefined functionality independent of any object.
-   - **Constructors**: Cannot be abstract as they are not inherited and hence not overridden.
-   - **Private methods**: Cannot be abstract because they are inaccessible in derived classes.
-   - **Derived Classes**: Any class inheriting an abstract method must override it, or the derived class itself must be declared abstract.
 
 ---
 
@@ -907,16 +725,12 @@ class UseShape {
   }
   ```
 
-- **Abstract vs. Final Methods**: Methods cannot be both `abstract` and `final`. Abstract methods allow modification in derived classes, while final methods prevent modification.
-
 - **Main Method**: Even `main()` can be made `final` to prevent overriding.
 
 ---
 
 **Final Classes**
 
-- A class marked `final` cannot be inherited. For example, `String` is a final class in Java, meaning no other class can extend it.
-- **Use Case**: Classes are made final when data members or methods are sensitive and should not be altered.
 - **Alternative to Final Classes**: A class can also be made non-inheritable by making its constructor `private`.
   **Example:**
   ```java
@@ -939,45 +753,18 @@ class UseShape {
 
 ---
 
-### Interfaces
-
-- **Purpose**: An interface in Java serves as an alternative to a pure abstract class, supporting runtime polymorphism by allowing classes to share a common structure without specifying behavior.
-- **Key Characteristics**:
-  1. **Data Members**: Any data members in an interface are implicitly `public`, `static`, and `final`.
-  2. **Methods**: All methods in an interface are `public` and `abstract` by default.
-  3. **Visibility**: Interface members are always public, and this visibility cannot be changed.
-
-- **Syntax**:
-  ```java
-  interface InterfaceName {
-      int CONSTANT = 10;          // public, static, final by default
-      void method();              // public and abstract by default
-  }
-  
-  class A implements InterfaceName {
-      // Implement all methods from the interface
-  }
-  ```
-
 #### Using Interfaces as Global Constants
-
-- Interfaces can be used to store global constants, providing a standardized way to define fixed values across multiple classes.
 
   **Example**:
   ```java
   interface Conversions {
       double KG_TO_G = 1000;
-      double INCHES_TO_MM = 25.4;
       double kgToGrams(double kg);
-      double inchesToMm(double inches);
   }
 
   class TryConversions implements Conversions {
       public double kgToGrams(double kg) {
           return kg * KG_TO_G;
-      }
-      public double inchesToMm(double inches) {
-          return inches * INCHES_TO_MM;
       }
   }
   ```
@@ -992,217 +779,11 @@ class UseShape {
       }
   }
   ```
-
----
-
-### Multiple Interface Implementation
-
-- Java allows a class to implement multiple interfaces, providing a way to achieve multiple inheritance.
-  
-  **Example**:
-  ```java
-  interface Point { /* methods */ }
-  interface Shape { /* methods */ }
-  
-  class Circle implements Point, Shape {
-      // Implement methods from both interfaces
-  }
-  ```
-
----
-
-### New Features in Interfaces (Java 8 Onward)
-
-- **Default Methods**: Starting with Java 8, interfaces can include `default` methods, which have a defined implementation.
-  - **Purpose**: Useful for backward compatibility when an interface is extended with additional methods without forcing all implementing classes to provide an implementation.
-  - **Benefit**: Classes that don’t need a specific logic can skip overriding the default method.
-  
-  **Example**:
-  ```java
-  interface Shape {
-      double area();
-      default String getName() {
-          return "Shape";
-      }
-  }
-  ```
-
----
 
 ### Interface-Based Runtime Polymorphism
 
-- Similar to abstract classes, interfaces can enable polymorphic behavior. By using an interface reference, we can invoke overridden methods of the implementing classes at runtime.
-
-  **Example**:
-  ```java
-  interface Shape {
-      double area();
-      String getName();
-  }
-
-  class Rectangle implements Shape {
-      private double length, breadth;
-
-      public Rectangle(double length, double breadth) {
-          this.length = length;
-          this.breadth = breadth;
-      }
-
-      public double area() {
-          return length * breadth;
-      }
-
-      public String getName() {
-          return "Rectangle";
-      }
-  }
-
-  class Triangle implements Shape {
-      private double base, height;
-
-      public Triangle(double base, double height) {
-          this.base = base;
-          this.height = height;
-      }
-
-      public double area() {
-          return 0.5 * base * height;
-      }
-
-      public String getName() {
-          return "Triangle";
-      }
-  }
-  ```
-
-  **Example Usage with Polymorphism**:
-  ```java
-  class UseShape {
-      public static void main(String[] args) {
-          Shape s = new Rectangle(10, 20);
-          System.out.println("Shape is " + s.getName());
-          System.out.println("Its area is " + s.area());
-
-          s = new Triangle(5, 10);
-          System.out.println("Shape is " + s.getName());
-          System.out.println("Its area is " + s.area());
-      }
-  }
-  ```
-
-This example demonstrates how interfaces can enable runtime polymorphism, allowing different shapes to be treated uniformly while invoking their specific implementations for `area()` and `getName()`.
-
-
-===
-===
-
-
-### Final Classes
-
-- **Definition**: A `final` class in Java cannot be inherited. This prevents other classes from extending or modifying its functionality.
-  
-  **Example:**
-  ```java
-  final class A {
-      // class code
-  }
-  // Error: class B cannot extend a final class
-  class B extends A {
-      // class code
-  }
-  ```
-  
-- **Inheritance**: Although a `final` class cannot be inherited, it can itself inherit from other classes. For example, all Java classes, including final ones, inherit from the `Object` class.
-
 ---
 
-### Interfaces
-
-- **Purpose**: An interface in Java serves as an alternative to a pure abstract class, supporting runtime polymorphism by allowing classes to share a common structure without specifying behavior.
-- **Key Characteristics**:
-  1. **Data Members**: Any data members in an interface are implicitly `public`, `static`, and `final`.
-  2. **Methods**: All methods in an interface are `public` and `abstract` by default.
-  3. **Visibility**: Interface members are always public, and this visibility cannot be changed.
-
-- **Syntax**:
-  ```java
-  interface InterfaceName {
-      int CONSTANT = 10;          // public, static, final by default
-      void method();              // public and abstract by default
-  }
-  
-  class A implements InterfaceName {
-      // Implement all methods from the interface
-  }
-  ```
-
-#### Using Interfaces as Global Constants
-
-- Interfaces can be used to store global constants, providing a standardized way to define fixed values across multiple classes.
-
-  **Example**:
-  ```java
-  interface Conversions {
-      double KG_TO_G = 1000;
-      double INCHES_TO_MM = 25.4;
-      double kgToGrams(double kg);
-      double inchesToMm(double inches);
-  }
-
-  class TryConversions implements Conversions {
-      public double kgToGrams(double kg) {
-          return kg * KG_TO_G;
-      }
-      public double inchesToMm(double inches) {
-          return inches * INCHES_TO_MM;
-      }
-  }
-  ```
-
-- **Example Usage**:
-  ```java
-  class TestConversions {
-      public static void main(String[] args) {
-          Conversions co = new TryConversions();
-          System.out.println("Weight in grams: " + co.kgToGrams(5));
-          System.out.println("Height in mm: " + co.inchesToMm(10));
-      }
-  }
-  ```
-
----
-
-### Multiple Interface Implementation
-
-- Java allows a class to implement multiple interfaces, providing a way to achieve multiple inheritance.
-  
-  **Example**:
-  ```java
-  interface Point { /* methods */ }
-  interface Shape { /* methods */ }
-  
-  class Circle implements Point, Shape {
-      // Implement methods from both interfaces
-  }
-  ```
-
----
-
-### New Features in Interfaces (Java 8 Onward)
-
-- **Default Methods**: Starting with Java 8, interfaces can include `default` methods, which have a defined implementation.
-  - **Purpose**: Useful for backward compatibility when an interface is extended with additional methods without forcing all implementing classes to provide an implementation.
-  - **Benefit**: Classes that don’t need a specific logic can skip overriding the default method.
-  
-  **Example**:
-  ```java
-  interface Shape {
-      double area();
-      default String getName() {
-          return "Shape";
-      }
-  }
-  ```
   ``` java
     interface A {
         default void foo() {
@@ -1232,141 +813,9 @@ This example demonstrates how interfaces can enable runtime polymorphism, allowi
         }
     }
     ```
-    ---
-
-    ### Interface-Based Runtime Polymorphism
-
-    - Similar to abstract classes, interfaces can enable polymorphic behavior. By using an interface reference, we can invoke overridden methods of the implementing classes at runtime.
-
-    **Example**:
-    ```java
-    interface Shape {
-        double area();
-        String getName();
-    }
-
-    class Rectangle implements Shape {
-        private double length, breadth;
-
-        public Rectangle(double length, double breadth) {
-            this.length = length;
-            this.breadth = breadth;
-        }
-
-        public double area() {
-            return length * breadth;
-        }
-
-        public String getName() {
-            return "Rectangle";
-        }
-    }
-
-    class Triangle implements Shape {
-        private double base, height;
-
-        public Triangle(double base, double height) {
-            this.base = base;
-            this.height = height;
-        }
-
-        public double area() {
-            return 0.5 * base * height;
-        }
-
-        public String getName() {
-            return "Triangle";
-        }
-    }
-  ```
-
-  **Example Usage with Polymorphism**:
-  ```java
-  class UseShape {
-      public static void main(String[] args) {
-          Shape s = new Rectangle(10, 20);
-          System.out.println("Shape is " + s.getName());
-          System.out.println("Its area is " + s.area());
-
-          s = new Triangle(5, 10);
-          System.out.println("Shape is " + s.getName());
-          System.out.println("Its area is " + s.area());
-      }
-  }
-  ```
-
-This example demonstrates how interfaces can enable runtime polymorphism, allowing different shapes to be treated uniformly while invoking their specific implementations for `area()` and `getName()`.
+    
 
 ===
-===
-### Inheriting One Interface into Another
-- **Interface Inheritance**: Just like a class can inherit another class, an interface can inherit one or more interfaces.
-- **Multiple Interface Inheritance**: Unlike classes, a class cannot extend more than one class, but an interface can extend multiple interfaces.
-- **Compilation**: Each interface has its own `.class` file after compilation.
-  
-**Example**:
-```java
-interface Shape {
-    double area();
-}
-
-interface Figure {
-    String name();
-}
-
-interface MyShape extends Shape, Figure {
-    // Additional methods can be added
-}
-```
-
----
-
-### Packages in Java
-- Packages are nothing but a fancy name for a folder i.e. a official or professional name for a folder by Java
-- **Definition**: Packages are used to group related classes and interfaces into a directory structure. They help organize and manage code effectively.
-- **Benefits**:
-  1. **Avoid Naming Conflicts**: Classes in different packages can have the same name.
-  2. **Importing**: Classes must be part of a package to be imported into other programs.
-  3. **Organized Structure**: Packages provide better organization and maintainability of large applications.
-
-- **Package Naming Convention**: Java recommends using lowercase names for packages (e.g., `java.lang`, `java.util`).
-
-**Standard Java Program Structure**:
-```java
-package <package_name>;
-
-import <other_packages>;  // Import other packages
-
-class <class_name> {
-    // class definition
-}
-```
-
----
-
-### Creating Packages and Compiling Java Files
-
-**Example**:
-1. **Package Creation**:
-   ```java
-   package myjavacodes;
-
-   class Test {
-       public static void main(String[] args) {
-           System.out.println("This is a message from myjavacodes");
-       }
-   }
-   ```
-
-2. **Compiling**:
-   - Command: `javac myjavacodes\Test.java`
-
-3. **Execution**:
-   - Command: `java myjavacodes.Test`
-
-4. **Compiling Multiple Java Files**: 
-   - If two files are in the same package (e.g., `Num.java` and `UseNum.java`), compiling one will automatically compile the other if it depends on it. (like Num class object in UseNum class)
-   - **Wildcard Compilation**: Use `javac myjavacodes\*.java` to compile all `.java` files in the package.
 
 ---
 
@@ -1419,29 +868,10 @@ class UseNum {
 ---
 
 ### Key Points:
-- **Interface Inheritance**: One interface can extend multiple interfaces.
-- **Packages**: Help organize related classes and interfaces, resolve naming conflicts, and provide structure.
 - **Access Control**: Only `public` classes and members can be accessed outside their package.
 - **File Structure**: Each `public` class should be in its own `.java` file, and the file name should match the class name.
 
 ===
-===
-
-### Access Modifiers in Java
-
-| Access Modifier | Same Class | Non-Subclass, Same Package | Subclass, Same Package | Non-Subclass, Different Package | Subclass, Different Package |
-|-----------------|------------|----------------------------|-------------------------|---------------------------------|-----------------------------|
-| **private**     | Yes        | No                         | No                      | No                              | No                          |
-| **default**     | Yes        | Yes                        | Yes                     | No                              | No                          |
-| **protected**   | Yes        | Yes                        | Yes                     | No                              | Yes                         |
-| **public**      | Yes        | Yes                        | Yes                     | Yes                             | Yes                         |
-
-### Method Overriding and Access Modifiers
-- **Overriding Rules**: When overriding a superclass method, the access modifier in the subclass can be *the same or more permissive*.
-  - Example: A `default` method in the superclass can be overridden as `protected` or `public`, but not as `private`.
-
----
-
 ### Java Recursion
 
 - **Definition**: Recursion is a technique where a method calls itself to solve a problem in smaller, manageable steps.
@@ -1461,25 +891,6 @@ public class Main {
         } else {
             return 0;
         }
-    }
-}
-```
-
----
-
-### `instanceof` Operator
-
-- **Purpose**: The `instanceof` operator checks if an object is an instance of a specific class, subclass, or interface.
-- **Result**: Returns `true` if the object matches the specified type, and `false` if it doesn’t or if the object is `null`.
-
-**Example**:
-```java
-class Animal {}
-class Dog extends Animal {
-    public static void main(String[] args) {
-        Dog d = new Dog();
-        System.out.println(d instanceof Animal); // true
-        System.out.println(d instanceof Dog); // true
     }
 }
 ```
