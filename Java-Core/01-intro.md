@@ -90,6 +90,17 @@ In terminal
   $ javac Test.java          
   $ java Test
 
+```bash
+$ java Test arg1 arg2 arg3
+```
+  JVM will start, create & start main thread
+    main thread search for Test.class if not found => no class def found error
+  main thread local test.class
+  & execute main main method
+  unload Test.class file  <= here static will destroyed
+  Terminate main thread
+  shutdown JVM
+
 
 Java Source file  (Test.java) Developer (Develop + Run)
 Java compiler  (javaC Test.java) Client (Run)
@@ -125,8 +136,7 @@ otherwise unsupported exceptional error
 - **Static Methods**: 
   - Can be invoked without an object instance.
   
-- **Command-Line Arguments**: 
-  - Passed to the `main()` method as an array of Strings (`String[] args`).
+
 
 ---
 
@@ -144,63 +154,6 @@ otherwise unsupported exceptional error
 
 ---
 
-## **Arithmetic Operations in Java**
-
-1. **Integer Division**:
-   - If both numerator and denominator are integers, the result is an integer (e.g., `10 / 4 = 2`).
-
-2. **Floating Point Division**:
-   - If either operand is a float or double, the result is a floating-point value (e.g., `10 / 4.0 = 2.5`).
-
-3. **Modulo Operator (%)**:
-   - Returns the remainder of a division.
-   - Example:
-     - Integer: `10 % 3 = 1`
-     - Floating-point: `10.5 % 5.0 = 0.5`
-
-4. **String Concatenation**:
-   - The `+` operator can concatenate strings with other data types.
-   - Example: `String message = "The result is: " + 10;` results in "The result is: 10".
-
----
-
-## **Variable Types in Java**
-
-1. **Local Variables**:
-   - Declared within methods; must be initialized before use.
-   - Example:
-     ```java
-     class Test {
-         public static void main(String args[]) {
-             int a; 
-             System.out.println("Value of a is: " + a);  // Error: Variable 'a' might not have been initialized
-         }
-     }
-     ```
-
-2. **Instance Variables (Class-Level Variables)**:
-   - Declared inside a class but outside any method.
-   - Automatically initialized with default values (0 for numbers, false for booleans).
-   - Example:
-     ```java
-     class Student {
-         int roll;  // Default value is 0
-         public void show() {
-             System.out.println("Roll is: " + roll);  // Prints default value of 0
-         }
-     }
-     ```
-
-3. **Static Variables**:
-   - Shared across all instances of a class and can be accessed without creating an object.
-   - Example:
-     ```java
-     class Counter {
-         static int count = 0;  // Static variable
-     }
-     ```
-
----
 
 ## **Static Methods and Math Operations**
 
