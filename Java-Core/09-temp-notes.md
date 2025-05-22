@@ -9,13 +9,6 @@
      - Most operators are left-associative (evaluated left to right).
      - Assignment operators (like `=`, `+=`) are right-associative.
 
----
-
-### 3. **Control Flow Statements**
-   - **Conditionals**: `if`, `else if`, `else`, `switch`
-   - **Loops**: `for`, `while`, `do-while`, `for-each`
-   - **Switch Statements**:
-     - Can handle `int`, `char`, `String`, and enums (be mindful of `break` usage).
 
 ---
 
@@ -37,17 +30,10 @@
 
 
 ### 7. **Method Overloading and Overriding**
-   - **Overloading**: Same method name, different parameters within the same class.
-   - **Overriding**: Redefining a method in a subclass with the same name and parameters as in the superclass (requires the method to be non-static).
+   - **Overriding**
    - **`@Override` Annotation**: Ensures the method is correctly overridden.
 
 ---
-
-### 8. **Access Modifiers**
-   - **Modifiers**: `public`, `protected`, `default` (no modifier), `private`
-   - **Visibility**: Be clear on access control in various contexts (same class, subclass, same package, different package).
-
-
 
 ---
 
@@ -57,17 +43,6 @@
    - **Method Binding**: Method calls are resolved at runtime based on the actual object, not the reference type.
 
 ---
-
-### 12. **Interfaces and Abstract Classes**
-   - **Interfaces**: Fully abstract types, cannot have constructors or non-final fields.
-   - **Abstract Classes**: Can have abstract methods and concrete methods; allows some common implementation.
-   - **Differences**: Know when to use an interface vs. an abstract class (interfaces are for “can do” relationships, abstract classes for shared behavior).
-
----
-
-### 13. **Java Keywords**
-   - Familiarize yourself with keywords like `final`, `static`, `abstract`, `synchronized`, `volatile`, `transient`, `this`, `super`, `new`.
-
 ---
 
 ### 14. **Java Collections Framework Basics**
@@ -117,12 +92,6 @@
    - Useful in programs requiring calculations or randomization.
 
 ---
-
-
-
-The `Math` class in Java is part of the `java.lang` package, so it’s accessible without needing an import statement, and it provides a collection of static methods for performing mathematical operations. Since all methods and constants in `Math` are `static`, they can be accessed directly using `Math.methodName()` or `Math.CONSTANT_NAME` without needing to create an instance of the class.
-
-Here's a quick look at the most commonly used features of the `Math` class:
 
 ### 1. **Constants in Math Class**
    - **`Math.PI`**: Represents the value of π (3.14159...), useful for trigonometric calculations.

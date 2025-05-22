@@ -298,7 +298,7 @@ Java exceptions are divided into two main categories based on whether the progra
 
 #### 1. **Unchecked Exceptions**
    - These are exceptions that Java does not require you to handle.
-   - They include `RuntimeException` and all of its subclasses, such as `ArithmeticException` and `NullPointerException`.
+   - They `RuntimeException` and all of its subclasses, + 'Error' and its childcases
    - The program will compile and run even if they are not explicitly handled.
 
 #### 2. **Checked Exceptions**
@@ -398,7 +398,6 @@ In this example:
 | **Usage**             | Inside a method body                          | In the method signature                           |
 | **Syntax**            | `throw new ExceptionType("message");`         | `public void methodName() throws ExceptionType`   |
 | **Number of Exceptions** | Throws **one specific exception** instance | Can declare **multiple exceptions** separated by commas |
-| **Flow Control**      | Terminates execution within the method at that point | Signals to callers that they need to handle or declare the exception |
 | **Type Requirement**  | Requires an instance of `Throwable`           | Lists checked exceptions that the method might throw |
 | **Checked Exception Requirement** | Not required to handle checked exceptions | Mandatory for checked exceptions if method may throw them |
 | **Common Use**        | To throw custom or pre-defined exceptions under specific conditions | Used in method declarations to indicate potential exceptions to caller |
