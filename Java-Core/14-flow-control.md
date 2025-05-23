@@ -1,129 +1,215 @@
-Flow control
-    Selection: 1)if else, else if, 2)Switch
-    Iterative: 1)while, 2)for , 3)do while, 4)for each
-    Transfer: 1)break , 2)continue, 3)return ,4) try-catch-finally, 5)assert
+# 🔁 **Flow Control in Java 
+---
 
-else if(...)only boolean
+## ✅ **1. Selection Statements**
 
-switch
-    nothing is compulsory
-    int x = 10;
-    switch(x){
-    // nothing} // valid
+### **if / else if / else**
 
-    curly braces mandatory in switch only rest all place its optional
-    byte, short, int , char, enum, string
-        max no of cases -> int range
+* `else if(condition)` → **condition must be boolean**.
+* Curly braces `{}` are **optional**, but recommended for clarity.
 
-    long, float, double boolean   Not possible
+### **switch**
 
-    in case, case ... variable not allowed
+* **Syntax**:
 
-    wrapper classes are also possible as switch parameter
+  ```java
+  switch(expression) {
+      case value1:
+          // statements
+          break;
+      ...
+      default:
+          // statements
+  }
+  ```
 
+* Nothing is compulsory: **Curly braces `{}` are mandatory** in `switch` only.
+``` java
+ switch(x){
+    // nothing
+ } // Valid
+```
 
+* `switch` expression types allowed:
+
+  * `byte`, `short`, `int`, `char`, `enum`, `String`
+  * **Wrapper classes** of these types are also allowed.
+* Not allowed: `long`, `float`, `double`, `boolean`.
+
+### **Cases**
+
+* Case labels must be **compile-time constants**.
+
+  ```java
+  final int x = 3;
+  switch(x + 1) {
+      case x + 0: // valid (evaluates to constant)
+      ...
+  }
+  ```
+* **No variables allowed** in `case` labels.
+* **Max number of cases**: Limited to `int` range.
+* Case fall-through behavior:
+
+  * If no `break`, all following cases execute.
+* `default`:
+
+  * Optional.
+  * Can be placed **anywhere**, including first.
+
+* For `byte` it should be in `byte range`
+``` java
 byte b = 2;
-switch (b){
-    case .. // case value must be range only
-}
-
-
-int x = 0;
-switch(x){
-    case 0:
-        s.o.p(0);
-    case 1:
-        s.o.p(1);
+switch (b) {
+    case 1: // valid
+    case 127: // valid
+    case -128: // valid
         break;
-    case 2:
-        s.o.p(2);
-    default:
-        s.o.p("def");
+    // case 200: // ❌ Compilation error:
 }
-// 0
-// 1
+```
 
-if x = 2
-then o/p: 2
-          def
-fall through switch once case match then it execute all thing until break matched
+#### **Example:**
 
-
-default (optional) -> can place anywhere even at first
-
-
+```java
 int x = 0;
-switch(x){
-    default:
-        s.o.p("def");
-    case 0:
-        s.o.p(0);
-    case 1:
-        s.o.p(1);
-        break;
-    case 2:
-        s.o.p(2);
+switch(x) {
+    default: System.out.println("def");
+    case 0: System.out.println(0);
+    case 1: System.out.println(1); break;
+    case 2: System.out.println(2);
 }
-0
-// default will of 0 when no
+```
 
-if x = 1;
-o/p: 1
-     2
+* If `x = 0` → `def`, `0`, `1`
+* If `x = 1` → `1`, `2`
+* If `x = 3` → `def`, `0`, `1`
 
-if x = 3:
-o/p: def
-      0
+---
+
+## 🔁 **2. Iterative Statements**
 
 
-switch(x+10) // expression possible in parameter as it evaluates single value
+- **Entry-Controlled Loops**: Condition checked before loop execution, e.g., `while` and `for` loops.
+- **Exit-Controlled Loops**: Condition checked after loop execution, e.g., `do-while` loop, ensuring the loop executes at least once.
+### **while**
 
-case value should compile time constant other wise error
-exception -> final
-
-final int x = 3;
-switch (x+1){
-    default:
-        s.o.p("def")
-    case x+0: valid bcz its like 3+0
-        ---
+```java
+while(condition) {
+    // executes while condition is true
 }
+```
 
-for (int i = 0; ; i++)  // true , without condition
+### **do-while**
 
-for (s.o.s("anytime"); i< 3; s.o.s("--")){ // any statement is possible
-    /// 
+```java
+do {
+    // executes at least once
+} while(condition);
+```
+
+### **for**
+
+```java
+for(initialization; condition; update) {
+    // body
 }
+```
 
-int i;
-i = 0;
-for (s.o.s("start"); i< 2; s.o.s("continue"))
-    i++;
-o/p:
-start
-continue
-continue
+* All three parts (**init, condition, update**) are optional:
 
-all three are optional
+  ```java
+  for(;;) {
+      // infinite loop
+  }
+  ```
+* Statements allowed in any section:
 
-for (;;)
-   -- // infinite times rune 
+  ```java
+  int i = 0;
+  for(System.out.println("start"); i < 2; System.out.println("continue"))
+      i++;
+  // Output: start, continue, continue
+  ```
 
-for each 
-    int []x = {10, 20, 30};
-    for (int x1:x)
-        s.o.p(x1)
+### **Enhanced for-each**
 
-    for array (normal order)
-        not possible to patternize the iteration
+```java
+int[] arr = {10, 20, 30};
+for(int val : arr)
+    System.out.println(val);
+```
 
-break
-    inside switch to stop full through
-    inside loops to break loop execution
-    labelled block
+* Iterates over arrays/collections in normal order.
+* Cannot modify or pattern control iteration (e.g., skipping indices).
 
-    int x = 10;
-    l1:
-    {
-        s.o.p("begin")
+---
+
+## 🔁 **3. Transfer Statements**
+
+### **break**
+
+* Exits:
+
+  * The **current loop**.
+  * The **current switch**.
+  * A **labeled block**:
+
+    ```java
+    l1: {
+        System.out.println("begin");
+        break l1;
+        System.out.println("end"); // unreachable
     }
+    System.out.println("hi");
+    // Output: begin, hi
+    ```
+
+### **continue**
+
+* Skips current loop iteration and proceeds to next.
+* Must not be followed by unreachable code:
+
+  ```java
+  if(condition) {
+      continue;
+      System.out.println("unreachable"); // compile error
+  }
+  ```
+
+### **return**
+
+* Exits from a method.
+* Can be used with or without a value depending on method return type.
+
+### **try-catch-finally**
+
+* Treated as **control flow**, though primarily used for exception handling.
+
+### **assert**
+
+* Used for testing assumptions during development.
+* Throws `AssertionError` if the condition is false (when enabled with `-ea`).
+
+---
+
+## 📌 **Other Key Points**
+
+* **Unreachable Code**:
+  Java does not allow code that will **never be executed**.
+
+* **switch(expression)**:
+
+  * The expression can be an evaluated result like `x + 10`, as long as it resolves to a **single constant value**.
+
+* **Multiple Case Labels**:
+
+  ```java
+  case 1: case 2:
+      // shared code // Clubbing Cases allowed
+      break;
+  ```
+
+* **while(i < size)**:
+
+  * Final `i` becomes `== size` after the loop ends.
