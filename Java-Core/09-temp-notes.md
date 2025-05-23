@@ -1,17 +1,3 @@
-### 1. **Ranges and Sizes of Primitive Data Types**
-### 1. **Ranges and Sizes of Primitive Data Types**
-   - Be familiar with Java’s eight primitive data types: `byte`, `short`, `int`, `long`, `float`, `double`, `char`, and `boolean`.
-   - **Ranges and Sizes**:
-     - `byte`: 1 byte, -128 to 127
-     - `short`: 2 bytes, -32,768 to 32,767
-     - `int`: 4 bytes, -2^31 to 2^31-1
-     - `long`: 8 bytes, -2^63 to 2^63-1
-     - `float`: 4 bytes, approx ±3.40282347E+38F
-     - `double`: 8 bytes, approx ±1.79769313486231570E+308
-     - `char`: 2 bytes (0 to 65535, Unicode characters)
-     - `boolean`: 1 bit (true or false)
-
----
 
 ### 2. **Operator Precedence and Associativity**
    - Know the order in which operations are evaluated, especially when multiple operators are in a single expression.
@@ -48,12 +34,7 @@
 
 ---
 
-### 6. **Arrays and ArrayList**
-   - **Arrays**: Fixed-size, can store primitives or objects.
-   - **ArrayList**: Dynamic size, part of `java.util`, can only store objects (use wrappers for primitives).
-   - **Common Methods**: `.add()`, `.get()`, `.size()`, `.remove()`
 
----
 
 ### 7. **Method Overloading and Overriding**
    - **Overloading**: Same method name, different parameters within the same class.
@@ -66,19 +47,7 @@
    - **Modifiers**: `public`, `protected`, `default` (no modifier), `private`
    - **Visibility**: Be clear on access control in various contexts (same class, subclass, same package, different package).
 
----
 
-### 9. **Static vs. Instance Members**
-   - **Static Variables and Methods**: Belong to the class, not to instances, and can be accessed without creating an object.
-   - **Instance Variables and Methods**: Each object has its own copy.
-   - **Static Initialization Blocks**: Used to initialize static fields, run once when the class is loaded.
-
----
-
-### 10. **Exception Handling Basics**
-   - **Try-Catch-Finally**: Syntax, purpose, and when each block is executed.
-   - **Common Exceptions**: `ArithmeticException`, `NullPointerException`, `ArrayIndexOutOfBoundsException`, `ClassCastException`
-   - **Custom Exceptions**: Creating custom exceptions by extending `Exception` or `RuntimeException`.
 
 ---
 
@@ -273,8 +242,6 @@ This `Math` class provides most of the mathematical functionality you’ll need 
 
 
 ====
-Here are some core Java topics that often appear in tests, especially if they weren’t covered in class. This list includes fundamental concepts, common pitfalls, and nuances that can help you feel well-prepared:
-
 ---
 
 ---
@@ -356,5 +323,3 @@ Java provides wrapper classes (like `Integer`, `Double`, etc.) for converting be
         ```
 
 ---
-
-These data conversion techniques are key when handling Java data types effectively, especially when different types are used together in complex expressions or data structures.
