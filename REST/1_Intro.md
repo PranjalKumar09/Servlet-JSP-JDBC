@@ -1,7 +1,3 @@
-Here are enhanced, well-structured notes summarizing the content provided:
-
----
-
 ## **API (Application Programming Interface)**
 
 ### **Definition**
