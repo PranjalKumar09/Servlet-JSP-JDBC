@@ -60,7 +60,7 @@ run(String... args) Method: This method is implemented when using CommandLineRun
   ```
 
 ### Spring Boot Starters
-- **spring-boot-starter-parent**: 
+- **spring-boot-starter-parent**:  
   ```xml
   <parent>
       <groupId>org.springframework.boot</groupId>
@@ -69,9 +69,18 @@ run(String... args) Method: This method is implemented when using CommandLineRun
       <relativePath/>
   </parent>
   ```
-  - The parent POM manages dependencies and configurations for Spring Boot projects.
+  - Manages dependencies and configurations for Spring Boot projects  
+  - Sets default Java version to 1.8 and UTF-8 encoding  
+  - Preconfigures plugins: surefire, jar, failsafe  
+  - Executes `repackage` goal with `repackage` execution ID  
+  - Supports resource filtering and profile-specific configs
+
+
+
+
+
 - **Popular Starters**:
-  - **spring-boot-starter-wmappedByeb**: For web applications
+  - **spring-boot-starter-mappedByeb**: For web applications
   - **spring-boot-starter-security**: For security features
 
 This setup provides a flexible, loosely coupled application structure, ideal for building and configuring Spring Boot projects.

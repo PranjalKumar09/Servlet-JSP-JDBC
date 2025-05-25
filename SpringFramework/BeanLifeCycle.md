@@ -133,3 +133,15 @@ public Student(Address address) {
 private Address address;
 ```
 **Note**: If only one bean is present, `@Autowired` will work without `@Qualifier`.
+
+
+## 🌱 Bean Life Cycle in Spring
+
+1. **Container starts**
+2. **Bean object is created**
+3. **Dependencies are created**
+4. **Dependencies are injected**
+5. **Initialization method is called**
+6. **Destruction method is called when container closes**
+
+

@@ -7,7 +7,8 @@
   - Responsible for **instantiating**, **configuring**, and **assembling** objects based on XML or annotations.
   - Two main types:
     a. **BeanFactory**: Basic container with limited functionality.
-    b. **ApplicationContext**: Advanced container used in large-scale applications.
+    b. **ApplicationContext**: Extends `BeanFactory` with auto-registration of `BeanPostProcessor`, `BeanFactoryPostProcessor`, and support for `ApplicationEvent` publishing. Advanced container used in large-scale applications.
+    
 #### Its Functions:
   - Instantiates application classes.
   - Configures objects and dependencies between them.
@@ -22,6 +23,24 @@ public class Ram implements Action {
     public void eat() { System.out.println("Ram eats"); }
     public void sleep() { System.out.println("Ram sleeps"); }
 }
+```
+
+##### With basic BeanFactory
+``` java
+import org.springframework.beans.factory.BeanFactory;
+import org.springframework.beans.factory.xml.XmlBeanFactory;
+import org.springframework.core.io.ClassPathResource;
+
+public class App {
+    public static void main(String[] args) {
+        ClassPathResource resource = new ClassPathResource("beans.xml");
+        BeanFactory factory = new XmlBeanFactory(resource);
+
+        Ram ramBean = (Ram) factory.getBean("ram");
+        ramBean.sleep();
+    }
+}
+
 ```
 
 #### Main Class with Dependency Injection:
