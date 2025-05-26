@@ -37,7 +37,7 @@ Hibernate
     Caching.md
 
     NOT INDEXED
-        Configuration.md
+        .md
         
 
 SpringFramework
