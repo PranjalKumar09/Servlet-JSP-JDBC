@@ -1,56 +1,15 @@
 
 ### 2. **Operator Precedence and Associativity**
-   - Know the order in which operations are evaluated, especially when multiple operators are in a single expression.
    - **Examples**:
-     - Arithmetic operators (`*`, `/`, `%` have higher precedence than `+` and `-`)
-     - Logical operators (`&&` has higher precedence than `||`)
      - Assignment has the lowest precedence.
    - **Associativity**:
      - Most operators are left-associative (evaluated left to right).
      - Assignment operators (like `=`, `+=`) are right-associative.
 
 
----
-
-### 4. **String Manipulations and String Pool**
-   - **String Pool**: `String` literals are stored in a special pool; identical literals point to the same memory location.
-   - **Common Methods**: `.length()`, `.charAt()`, `.substring()`, `.indexOf()`, `.toLowerCase()`, `.toUpperCase()`, `.equals()` vs. `==`
-
-   .equals -> check value
-   == -> by reference
-
----
-
-### 5. **Wrapper Classes and Autoboxing/Unboxing**
-   - **Wrapper Classes**: `Integer`, `Double`, `Character`, etc., allow primitives to be used as objects.
-   - **Autoboxing/Unboxing**: Automatic conversion between primitives and their wrapper classes (e.g., `int` to `Integer` and vice versa).
-
----
-
-
-
 ### 7. **Method Overloading and Overriding**
    - **Overriding**
    - **`@Override` Annotation**: Ensures the method is correctly overridden.
-
----
-
----
-
-### 11. **Polymorphism and Type Casting**
-   - **Upcasting**: Implicit casting from a subclass type to a superclass type.
-   - **Downcasting**: Explicit casting from a superclass type to a subclass type (requires `instanceof` check).
-   - **Method Binding**: Method calls are resolved at runtime based on the actual object, not the reference type.
-
----
----
-
-### 14. **Java Collections Framework Basics**
-   - Know commonly used classes like `ArrayList`, `HashMap`, `HashSet`, `LinkedList`.
-   - **Common Methods**:
-     - **List**: `.add()`, `.remove()`, `.get()`, `.size()`
-     - **Map**: `.put()`, `.get()`, `.keySet()`, `.values()`
-   - **Iteration Techniques**: `for-each`, `Iterator`, `for` loop.
 
 ---
 
@@ -61,29 +20,11 @@
 
 ---
 
-### 16. **Basic Recursion**
-   - Understand how recursive calls work and how to write a base case to prevent infinite loops.
-   - Simple examples: factorial calculation, Fibonacci sequence, sum of natural numbers.
-
----
-
-### 17. **`final`, `finally`, `finalize` Differences**
-   - **`final`**: Can be used with classes, methods, or variables to prevent modification.
-   - **`finally`**: A block in exception handling to ensure code executes regardless of exceptions.
-   - **`finalize`**: A method in `Object` class called by garbage collector before destroying an object.
-
----
-
 ### 18. **Garbage Collection Basics**
    - **Purpose**: Automatic memory management.
    - **Reference Types**: Strong, weak, soft, phantom references.
    - **`System.gc()`**: Suggests garbage collection but does not guarantee it.
 
----
-
-### 19. **Java’s `this` and `super` Keywords**
-   - **`this`**: Refers to the current object; useful for distinguishing between instance variables and parameters.
-   - **`super`**: Refers to the superclass’s constructor or method; useful for accessing superclass fields or methods.
 
 ---
 
@@ -151,6 +92,9 @@
      - `Math.round(double a)` or `Math.round(float a)`
      - Rounds to the nearest integer, returning an `int` for `float` and `long` for `double`.
      - Example: `Math.round(2.7)` returns `3`.
+   2-decimal rounding:
+    `Math.round((double) a / b * 100) / 100.0;`
+
    - **Ceiling and Floor**:
      - `Math.ceil(double a)`: Returns the smallest integer greater than or equal to `a` as a `double`.
      - `Math.floor(double a)`: Returns the largest integer less than or equal to `a` as a `double`.
@@ -240,28 +184,7 @@ Java provides convenient ways to convert other data types to `String` and vice v
 
 **Note**: This conversion will throw a `NumberFormatException` if the string is not formatted correctly.
 
----
 
-### 4. **Wrapper Class Conversion**
-Java provides wrapper classes (like `Integer`, `Double`, etc.) for converting between primitives and objects. These are especially useful for data conversion in collections and generics.
-
-- **Boxing** (primitive to wrapper):
-    - Java automatically wraps primitives into objects of their corresponding wrapper class.
-    - Example:
-        ```java
-        int num = 5;
-        Integer numObj = num; // Auto-boxing
-        ```
-
-- **Unboxing** (wrapper to primitive):
-    - Wrapper objects are automatically converted back to primitives.
-    - Example:
-        ```java
-        Integer numObj = 5;
-        int num = numObj; // Auto-unboxing
-        ```
-
----
 
 ### 5. **Conversion Between Numeric Types and Characters**
 - **Convert `int` to `char`**:
