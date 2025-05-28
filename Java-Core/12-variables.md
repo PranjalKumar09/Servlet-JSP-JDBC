@@ -99,6 +99,10 @@ public static void main(String[] args) {
 }
 ```
 
+``` java
+int a;
+int b = a; // error
+```
 ```java
 if (args.length > 0)
     x = 10;
