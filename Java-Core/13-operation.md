@@ -1,5 +1,8 @@
 ---
 
+# [!Java-Core/13-operation.md Java-Core/operator_prescdence.png]
+
+
 ### **Unary Operators & Primitive Types**
 
 ```java
@@ -20,8 +23,7 @@ while (b++ < 128)
 ```
 
 * Loops: `0 → 127`, then wraps to `-128 → 127` (byte range = -128 to 127).
-* **No error on overflow**.
-
+* *No error on overflow. It just cycles similar to this follows in all data types in their data range*
 ---
 
 ### **Arithmetic Operations**
@@ -150,8 +152,13 @@ System.out.println(!4);    // Compile-time error
 
 ### **Logical vs Bitwise**
 
-* `&` → **Always evaluates both sides**.
-* `&&` → **Short-circuit**: evaluates second operand **only if needed**.
+* `&&`, `||` → **Short-circuit** logical ops: second operand evaluated **only if needed**
+
+  * Example: `a != 0 && (10/a > 1)` → avoids division by zero
+* `&`, `|`, `^` → **Full evaluation** (both sides always evaluated)
+
+  * Also used for **bitwise operations**
+
 
 ---
 
@@ -200,5 +207,75 @@ String s = "Hello";
 s.toLowerCase();         // creates new String (immutable)
 s.equalsIgnoreCase("hELLo"); // true (case ignored)
 ```
+
+---
+
+Absolutely, Pranjal! Let's clarify Java's bitwise shift operators with concise **examples and visual explanations**, especially focusing on:
+
+* `>>`  → Signed right shift
+* `>>>` → **Unsigned** right shift
+* `<<`  → Left shift
+
+---
+
+### 🔢 Initial Setup:
+
+```java
+int a = 5;    // binary: 00000000 00000000 00000000 00000101
+int b = -5;   // binary: 11111111 11111111 11111111 11111011 (2's complement)
+```
+
+---
+
+## 🔸 1. **Signed Right Shift (`>>`)**
+
+* Fills leftmost bits with the **sign bit** (preserves sign).
+* Divides by 2ⁿ.
+
+```java
+System.out.println(a >> 1);  // 5 >> 1 → 2
+System.out.println(b >> 1);  // -5 >> 1 → -3
+```
+
+### 👇 Explanation:
+
+* `a = 5` → `000...0101` → after `>> 1`: `000...0010` = 2
+* `b = -5` → `111...1011` → after `>> 1`: `111...1101` = -3 (sign bit kept)
+
+---
+
+## 🔸 2. **Unsigned Right Shift (`>>>`)**
+
+* Fills leftmost bits with **0** (ignores sign).
+* Works differently for negative numbers.
+
+```java
+System.out.println(a >>> 1);  // 5 >>> 1 → 2 (same as >>)
+System.out.println(b >>> 1);  // -5 >>> 1 → 2147483645 (positive!)
+```
+
+### 👇 Explanation:
+
+* `a = 5` → `>>> 1` behaves like `>>` since sign bit is 0.
+* `b = -5` (binary `111...1011`) → shifts right with `0`s in front:
+
+  New binary: `01111111...111101` = 2147483645
+
+---
+
+## 🔸 3. **Left Shift (`<<`)**
+
+* Shifts bits to the left, adds 0s at the end.
+* Multiplies by 2ⁿ.
+
+```java
+System.out.println(a << 1);  // 5 << 1 → 10
+System.out.println(b << 1);  // -5 << 1 → -10
+```
+
+### 👇 Explanation:
+
+* `a = 5` → `000...0101` → `000...1010` = 10
+* `b = -5` → `111...1011` → `111...0110` = -10
 
 ---

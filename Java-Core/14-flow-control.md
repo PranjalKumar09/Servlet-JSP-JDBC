@@ -182,9 +182,6 @@ for(int val : arr)
 * Exits from a method.
 * Can be used with or without a value depending on method return type.
 
-### **try-catch-finally**
-
-* Treated as **control flow**, though primarily used for exception handling.
 
 ### **assert**
 
@@ -213,3 +210,55 @@ for(int val : arr)
 * **while(i < size)**:
 
   * Final `i` becomes `== size` after the loop ends.
+
+
+------
+
+
+Switch with yield
+  yield only used with switch
+  if variable called yield exist else where that code wont break
+
+
+### 🔁 `switch` + `yield` (Java 17)
+
+#### ✅ **Switch Expression with `yield`**
+
+* Use when case has a block (`{}`) and you need to **return a value**.
+
+```java
+int result = switch (day) {
+    case MONDAY, SUNDAY -> 1; // OK, no block, no yield needed
+    case TUESDAY -> 2;
+    case FRIDAY -> cost+=1;
+    default -> {
+        yield 0;
+    }
+};
+```
+
+#### 🔹 `yield`
+
+* **Keyword** to return a value from a block in a `switch` expression & stop to fall through case
+* Needed **only in block-style** cases.
+
+---
+
+### ⚠️ Rules & Tips
+
+* `switch` can return a value (expression form).
+* Use `->` for concise cases.
+* Use `yield` inside `{}` when logic is more complex.
+* Works with `String`, `enum`, primitive types, wrapper classes.
+
+---
+* Both could use `:` or `->`
+
+
+**All are same**
+``` java
+case 1, 2: --;
+case 1, 2-> --;
+case 1: case 2: --;
+case 1: case 2-> --;
+```
