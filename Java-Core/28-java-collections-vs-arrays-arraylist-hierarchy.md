@@ -137,10 +137,12 @@ l.add(p);
 
 int f = l.indexOf(new Patient("Mike")); // equals() overridden then 0 else -1
 int f = l.indexOf(p);                   // 0
+// int f = l.indexOf(Patient("Mike")); // ERROR
 Patient p1 = new Patient("Mike");
 int f = l.indexOf(p1);                  //  equals() overridden then 0 else -1
 if (f >= 0) System.out.println("found");
 ```
+
 
 * `indexOf()` internally uses `equals()` method. Override it in custom classes for proper comparison.
 
@@ -198,5 +200,12 @@ l.remove(new Integer(2)); // Removes element with value 2
 * **RandomAccess interface**: Implemented by `ArrayList` and `Vector` for fast access by index.
 * In collections, you can add objects of either the **current class or its subclasses**.
 
+* `ArrayList` provides constructors to initialize with a specific capacity or copy elements from an existing collection.
+### **Additional Constructors**
+
+* `ArrayList(int capacity)`: Creates an `ArrayList` with the specified initial capacity.
+* `ArrayList(Collection c)`: Creates an `ArrayList` containing the elements of the specified collection.
+
 ---
+
 
