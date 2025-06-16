@@ -328,34 +328,13 @@ class Account {
   1. **Calling the base class constructor**.
   2. **Resolving method overriding** (when the subclass overrides a method and calls the superclass method).
 
-**Example: Resolving Method Overriding**:
-```java
-class Employee {
-    public double getSalary() {
-        return 50000;
-    }
-}
-
-class Manager extends Employee {
-    private double bonus;
-
-    public void setBonus(double bonus) {
-        this.bonus = bonus;
-    }
-
-    @Override
-    public double getSalary() {
-        return super.getSalary() + bonus; // Resolving method overriding
-    }
-}
-```
-
----
-
 ---
 
 ### Method Overriding
 ### Example: Overriding with `Circle` and `Cylinder`
+
+> **Note**: The `@Override` annotation is optional but recommended. It ensures that the method in the subclass correctly overrides a method from the superclass. If the method signature doesn’t match, the compiler will throw an error.
+
 
 ```java
 class Circle {
@@ -459,43 +438,6 @@ class Test {
   }
   ```
 
-### Interface-Based Runtime Polymorphism
-
----
-
-  ``` java
-    interface A {
-        default void foo() {
-            System.out.println("A's implementation of foo");
-        }
-    }
-
-    interface B extends A {
-        default void foo() {
-            System.out.println("B's implementation of foo");
-        }
-    }
-
-    interface C extends A {
-        default void foo() {
-            System.out.println("C's implementation of foo");
-        }
-    }
-
-    class D implements B, C {
-        @Override
-        public void foo() {
-            // Resolve the ambiguity by choosing one explicitly or combining them
-            B.super.foo();  // Calling B's version
-            C.super.foo();  // Calling C's version
-            System.out.println("D's additional implementation of foo");
-        }
-    }
-    ```
-    
-
-===
-
 
 ### Singleton Class in Java
 
@@ -536,4 +478,5 @@ Both objects are the same instance.
 
 ===
 ===
-1200+
+1200
+
