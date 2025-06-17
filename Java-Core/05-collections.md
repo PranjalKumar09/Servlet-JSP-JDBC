@@ -69,7 +69,7 @@ Override the `equals()` method in your class:
 @Override
 public boolean equals(Object obj) {
     if (this == obj) return true;
-    if (obj == null || getClass() != obj.getClass()) return false;
+    if (obj == null || getClass() != obj.getClass() ) return false;
     Emp emp = (Emp) obj;
     return id == emp.id && name.equals(emp.name) && salary == emp.salary;
 }
@@ -407,11 +407,35 @@ public class HashSetDemo {
 - If the hash code matches but the `equals()` method indicates inequality, the object is treated as unique.  
 
 #### **What is a Hash Code?**
+>- By convention, if an object's field is `null`, it contributes `0` to the hash code computation.
 - A hash code is an integer uniquely identifying an object, calculated using the `hashCode()` method (inherited from the `Object` class).  
 - In collections, **if two objects are equal, their hash codes must also be equal**.  
 
+- However, **hash codes are not guaranteed to be unique**. Two different objects can still produce the same hash code, leading to potential collisions.  
+- Example:
+  ```java
+  String s1 = "FB";
+  String s2 = "Ea";
+  
+  System.out.println(s1.hashCode()); // 2236
+  System.out.println(s2.hashCode()); // 2236
+  ```
+  Both strings yield the same hash code (2236) despite being different, demonstrating a hash collision.
+
+- For scenarios requiring **secure or collision-resistant hashes**, consider using `java.security.MessageDigest` instead of relying on `hashCode()`.  
+- `MessageDigest` provides cryptographic hash functions like SHA-256 and MD5 for more robust hashing needs.
+
 #### **The HashCode-Equals Contract**:
 - To prevent duplicate entries in `HashSet`, override both `hashCode()` and `equals()` in your class.  
+
+- The method `Objects.hash(Object... values)` can be used to generate a composite hash code for multiple fields:
+  ```java
+  @Override
+  public int hashCode() {
+      return Objects.hash(name, price);
+  }
+  ```
+- This approach is concise and ensures a consistent hash code based on relevant object fields.
 
 ---
 
@@ -596,4 +620,8 @@ Higher than 30: 40
 
 
 
-937
+
+
+
+
+
