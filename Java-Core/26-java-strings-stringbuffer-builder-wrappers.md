@@ -13,7 +13,7 @@
 
 ```java
 Test t = new Test();
-System.out.println(t);              // <ClassName>@<Hexadecimal_HashCode>
+System.out.println(t);              // <Package>.<ClassName>@<Hexadecimal_HashCode>
 System.out.println(t.toString());   // Same as above
 System.out.println(Integer.toHexString(t.hashCode()));
 ```
