@@ -234,41 +234,13 @@ class Box {
 A method should be made static in the following situations:
 1. **Accessing only static data**: The method only works with static variables.
 2. **Using only method arguments**: The method does not depend on instance variables.
-3. **Factory Methods**: Static methods used to create objects conditionally.
+3. **Factory Methods**
 
 **Example of Static Method**:
 ```java
 class MyMath {
     public static int max(int a, int b) {
         return (a > b) ? a : b;
-    }
-}
-```
-
-#### Factory Methods
-- Used when object creation depends on conditions.
-- The class constructor is usually private, and the static method controls object creation.
-- Factory methods usually create and return Object
-- Example: If age is less than or equal to zero, the `createPerson` method will return `null`.
-
-**Example**:
-```java
-class Person {
-    private int age;
-    private String name;
-    
-    private Person(int age, String name) {
-        this.age = age;
-        this.name = name;
-    }
-
-    public void show() {
-        System.out.println(age + ", " + name);
-    }
-
-    public static Person createPerson(int age, String name) {
-        if (age <= 0) return null;
-        return new Person(age, name);
     }
 }
 ```

@@ -15,6 +15,4 @@ Which of the following exceptions is not an unchecked exception-> B)FileNotFound
 
 
 abstract class have a constructor -> Yes
-
-
-Javadoc comments are used to document Java code for generating API documentation.
+they can called in base class constructor
