@@ -3,7 +3,7 @@
 ### 1. **Use of `this()` and `super()`**
 
 * `this()` and `super()` are **constructor calls**.
-* They must be used **only inside constructors**.
+* They must be used **only inside *constructors***.
 * If used, they must be the **first statement** in the constructor.
 * **Only one** of them can appear in a constructor.
 

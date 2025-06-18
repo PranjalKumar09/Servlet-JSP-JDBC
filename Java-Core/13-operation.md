@@ -103,6 +103,9 @@ System.out.println(t instanceof Thread);   // true  // Only false if t is null(h
 System.out.println(t instanceof Runnable); // true  
 System.out.println(t instanceof Object);   // true  
 System.out.println(t instanceof String);   // false
+
+Parent p = new Child();
+boolean result = p instanceof Child; // result is true
 ```
 
 ---
