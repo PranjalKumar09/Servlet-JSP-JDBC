@@ -7,12 +7,6 @@
      - Assignment operators (like `=`, `+=`) are right-associative.
 
 
-### 7. **Method Overloading and Overriding**
-   - **Overriding**
-   - **`@Override` Annotation**: Ensures the method is correctly overridden.
-
----
-
 ### 15. **File I/O Basics**
    - **Classes**: `File`, `FileReader`, `FileWriter`, `BufferedReader`, `BufferedWriter`
    - **Streams**: Basic knowledge of `InputStream` and `OutputStream` classes.
