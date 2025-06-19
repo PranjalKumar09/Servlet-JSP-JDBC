@@ -99,7 +99,7 @@ System.out.println("abc".equals(s5)); // false (safe)
 ```java
 Thread t = new Thread();
 
-System.out.println(t instanceof Thread);   // true  
+System.out.println(t instanceof Thread);   // true  // Only false if t is null(here it is not)
 System.out.println(t instanceof Runnable); // true  
 System.out.println(t instanceof Object);   // true  
 System.out.println(t instanceof String);   // false
