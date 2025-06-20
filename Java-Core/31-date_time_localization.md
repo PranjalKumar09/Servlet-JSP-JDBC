@@ -99,14 +99,13 @@ System.out.println(dt.format(DateTimeFormatter.ISO_DATE)); // "2014-08-31"
 
 ```java
 Locale locale = new Locale("en", "GB");
-ResourceBundle bundle = ResourceBundle.getBundle("resources.messages", locale);
+ResourceBundle bundle = ResourceBundle.getBundle("package.messages", locale);
 
 String pattern = bundle.getString("product");
 String result = MessageFormat.format(pattern, name, price, quantity, bestBefore);
 ```
 
 * `MessageFormat` supports:
-
   * Formatting values into text
   * Parsing values from text
 
