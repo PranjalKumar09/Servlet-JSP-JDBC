@@ -66,7 +66,7 @@ interface Right {
 
 class Test implements Left, Right {
     public void m1() {
-        Left.super.m1(); // Required to resolve ambiguity
+        Left.super.m1(); //Must Required to resolve ambiguity
     }
 }
 ```
