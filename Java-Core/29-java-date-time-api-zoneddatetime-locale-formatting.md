@@ -208,6 +208,7 @@ Locale locale = new Locale("en", "GB");
 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEEE dd MMM yyyy", locale);
 LocalDate date = LocalDate.of(2019, Month.APRIL, 1);
 String formatted = date.format(formatter);  // Monday 01 Apr 2019
+// or: formatter.format(date)
 ```
 
 ### ✅ **Parsing**
