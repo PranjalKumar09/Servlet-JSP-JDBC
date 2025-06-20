@@ -103,6 +103,7 @@
 abstract class P {
     public abstract void m1();
     public abstract void m2();
+    // public void m3(); // concrete method cant be like this => ERROR
 }
 
 class C extends P {
