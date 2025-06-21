@@ -217,7 +217,7 @@ a[0] = new Object();
 a[1] = new String("Kumar");    // Valid
 a[2] = "Kumar";      // Valid
 
-Runnable[] r = new Runnable[10];  // Interface reference array
+Runnable[] r = new Runnable[10];
 ```
 
 ---
