@@ -135,6 +135,18 @@ super();
 ```
 
 ---
+``` java
+class P {
+    public P(int i) {}  // Only constructor in P takes an int
+}
+
+class C extends P {
+    // No constructor defined here
+    // Compiler tries to insert: super(); ← ERROR!
+}
+```
+**ERROR** gives here
+
 
 ### Proper Constructor Chaining in Inheritance
 
