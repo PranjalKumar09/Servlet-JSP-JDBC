@@ -134,7 +134,7 @@ ZonedDateTime laTime = londonTime.withZoneSameInstant(la);
 ```java
 Locale uk = new Locale("en", "GB");
 Locale th = new Locale("th", "TH", "TH"); // Thai digits variant
-Locale fr = new Locale("fr", "FR");
+Locale fr = new Locale("fr", "FR");// or  = Locale.FRANCE  or = Locale.forLanguageTag("fr-FR");
 Locale cf = new Locale("fr", "CA");
 Locale current = Locale.getDefault();
 ```
@@ -190,6 +190,7 @@ String formattedQty = number.format(qty);        // 12,345
 ### ✅ **Parsing**
 
 ```java
+percent.setMaximumFractionDigits(2);
 BigDecimal p = BigDecimal.valueOf((Double) currency.parse("£1.70"));  // 1.75 
 Double t = (Double) percent.parse("12%");  0.12
 int q = number.parse("54,321").intValue();  // 54321
@@ -214,7 +215,7 @@ String formatted = date.format(formatter);  // Monday 01 Apr 2019
 ### ✅ **Parsing**
 
 ```java
-LocalDate date = LocalDate.parse("Tuesday 31 Mar 2020", formatter);
+LocalDate date = LocalDate. ("Tuesday 31 Mar 2020", formatter);
 ```
 
 ### ✅ **Localized Format**

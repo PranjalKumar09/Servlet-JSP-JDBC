@@ -234,6 +234,7 @@ System.out.println((s1.toString()).equals(s2));       // true
 | `toUpperCase()`                 | `String`    | Uppercase version                   | ❌          |
 | `trim()`                        | `String`    | Removes leading/trailing spaces     | ❌          |
 | `indexOf(char c)`               | `int`       | First index of character            | ✅          |
+| `indexOf(char c, int startIdex)`               | `int`       | First index of character            | ✅          |
 | `lastIndexOf(char c)`           | `int`       | Last index of character             | ✅          |
 | `contains(CharSequence s)` | `boolean`   | Checks if substring exists in string | ❌         |
 ---
@@ -290,3 +291,12 @@ hello
   - `\s` → space (only in text blocks)
   - `\` (end of line) → prevent automatic line break
   - `\"""` → escape triple quotes in text blocks
+
+
+NEW KNOWLEDGE
+  even toString new method
+
+  String str = " ";
+  str.trim();
+  S.o.p(str.equals("")+" " +str.empty()); /// false false
+
