@@ -71,8 +71,28 @@ class Test implements Left, Right {
 }
 ```
 
-* **Cyclic inheritance** is not allowed in Java.
+* **Cyclic inheritance** is not allowed in Java. Not even cyclic constructor calling.
 
+``` java
+class Test{
+  Test(int i){
+    Test()
+  }
+  Test(){
+    Test(5);
+  }
+} // not valid
+```
+
+``` java
+class Test{
+  Test(int i){
+  }
+  Test(){
+    Test(5);
+  }
+} // valid
+```
 ---
 
 ## **Has-A (Composition / Aggregation)**

@@ -178,7 +178,7 @@ NumberFormat number = NumberFormat.getNumberInstance(locale);
 ### ✅ **Formatting**
 
 ```java
-BigDecimal price = BigDecimal.valueOf(2.99);
+BigDecimal price = BigDecimal.valueOf(2.99); // or BigDecimal.ONE
 Double tax = 0.2;
 int qty = 12345;
 
