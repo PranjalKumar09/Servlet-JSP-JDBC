@@ -28,7 +28,7 @@ A b = c;
 A b = (C) d;
 ```
 
-* If actual object is not compatible with **C** →
+* If actual object is not compatible with **C** → The **JVM** checks whether the object **d** points to is actually an instance of **C**
   ➤ **Runtime Exception: ClassCastException (CCE)**
 
 ---
