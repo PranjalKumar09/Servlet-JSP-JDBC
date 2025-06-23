@@ -57,10 +57,13 @@ class A implements InterfaceA {
 ```java
 interface Interf {
     int x = 88;
+    int y = 87;
 }
 
 class Test implements Interf {
     public static void main(String[] args) {
+        // System.out.println(x); // invalid
+        System.out.println(y); // 87
         int x = 99;
         System.out.println(x);         // 99
         System.out.println(Interf.x);  // 88
@@ -179,6 +182,7 @@ class Test implements Interf {
 
 * **Static + default** not allowed on the same method.
 * Interface **can have static main method**.
+* No multiple parent conflict possible
 
 ---
 
@@ -212,3 +216,12 @@ public class X {
 ```
 
 ---
+
+Extra knowledge
+
+Context	Can use interface field by name?	Must use InterfaceName.field?
+Instance method	Yes (if not shadowed)	Optional
+Static method	No	Yes
+
+
+clonaable as type marker
