@@ -17,6 +17,9 @@ System.out.println(t);              // <ClassName>@<Hexadecimal_HashCode>
 System.out.println(t.toString());   // Same as above
 System.out.println(Integer.toHexString(t.hashCode()));
 ```
+> - The `toString()` method can be **overridden** to provide a meaningful textual representation of an object.  
+> - By default, it returns: `<ClassName>@<hashcode in hex>`.  
+> - All classes inherit `toString()` from `Object`, but it's common practice to override it in custom classes for debugging or logging purposes.
 
 ---
 
@@ -128,6 +131,16 @@ System.out.println(i1.equals(i2));   // true (content comparison)
 
 ## **7. String Creation Techniques**
 
+- Example highlighting common misconceptions:
+  ```java
+  String str = " ";
+  str.trim(); // returns an empty string, but doesn't modify `str`
+  System.out.println(str.equals("") + " " + str.isEmpty()); // false false
+  ```
+  - `str.trim()` returns a trimmed version, but `str` remains unchanged unless reassigned.
+  - `.equals("")` checks content; `isEmpty()` returns true only if `length() == 0`.
+
+
 ```java
 String s1 = new String();                          // Empty string, default
 String s2 = new String(s1);                        // From another String
@@ -196,6 +209,10 @@ System.out.println(s3 == s4);       // true (reused from SCP)
 
 * `.equals()` **never gives an error**, even across unrelated types (e.g., `StringBuffer` and `String`).
 * Comparison between `StringBuffer` and `String` using `==` gives **compile-time error** (incompatible types).
+- Even across unrelated types, `.equals()` does **not throw an exception** — it simply returns `false`.  
+- Example: comparing a `String` with a `StringBuffer` using `.equals()` is valid and safe, though it will return `false` unless converted properly.
+
+
 
 ```java
 StringBuffer s1 = new StringBuffer("Durga");
@@ -300,3 +317,4 @@ NEW KNOWLEDGE
   str.trim();
   S.o.p(str.equals("")+" " +str.empty()); /// false false
 
+  string class if final cant be exteneded
