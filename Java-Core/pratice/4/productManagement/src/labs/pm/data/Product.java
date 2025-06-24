@@ -19,7 +19,7 @@ import java.util.Objects;
  */
 
 
-public sealed abstract class Product permits Food, Drink {
+public sealed abstract class Product implements Rateable<Product> permits Food, Drink {
 
     private final int id;
 
