@@ -33,6 +33,17 @@
         }
     }
     ```
+#### `@FunctionalInterface`
+* `Purpose`: Explicitly marks an interface as a functional interface (compile-time check).
+* The interface must have exactly one abstract method (SAM).
+``` java
+@FunctionalInterface  
+interface MathOperation {  
+    int calculate(int a, int b); // SAM  
+    // int subtract(int a, int b); // ❌ Compile error (violates SAM rule)  
+    default void log() { System.out.println("Logged"); } // Allowed (non-abstract)  
+}  
+```
 
 ## Lambda with Threads
 - **Without Lambda**:
@@ -130,3 +141,8 @@
 - Lambda expressions are commonly used with threads (`Runnable`) and predicates for concise code.
 
 ---
+
+
+
+EXTRA KNOWLEDTGE
+@FunctionalInterface annoation allowed for extaly 1 abstract method

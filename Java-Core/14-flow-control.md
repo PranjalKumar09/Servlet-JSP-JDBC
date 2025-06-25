@@ -177,6 +177,16 @@ for(int val : arr)
   }
   ```
 
+#### Labeled continue
+``` java
+outer:  
+for(int i=0; i<3; i++) {  
+    inner:  
+    for(int j=0; j<3; j++) {  
+        if(j == 1) continue outer; // Skips to next iteration of 'outer' loop  
+    }  
+}  
+```
 ### **return**
 
 * Exits from a method.
@@ -214,10 +224,6 @@ for(int val : arr)
 
 ------
 
-
-Switch with yield
-  yield only used with switch
-  if variable called yield exist else where that code wont break
 
 
 ### 🔁 `switch` + `yield` (Java 17)
