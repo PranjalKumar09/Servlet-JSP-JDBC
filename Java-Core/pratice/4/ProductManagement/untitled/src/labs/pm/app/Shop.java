@@ -4,6 +4,8 @@ import labs.pm.data.*;
 
 import java.math.BigDecimal;
 
+import static labs.pm.data.Rating.*;
+
 /**
 @author oracle
  **/
@@ -11,11 +13,10 @@ import java.math.BigDecimal;
 
 public class Shop {
     public static void main(String[] args) {
-        Product product =new Product();
-        product.setId(0xf__2_3);
-        product.setName("Tea");
-//        product.setPrice(BigDecimal.valueOf(1.99));
+        Product product =new Product(101, "TEA", BigDecimal.valueOf(333));
+        Product p2 =new Product(101, "TEA", BigDecimal.valueOf(333), FOUR_STAR);
 
-        System.out.println(product.getId() + " " + product.getName() + " " + product.getPrice());
+        Product p3 = p2.applyRating(Rating.FOUR_STAR);
+        System.out.println(p3.getId() + " " + p3.getRating().getStars() + " " + p3.getPrice());
     }
 }
