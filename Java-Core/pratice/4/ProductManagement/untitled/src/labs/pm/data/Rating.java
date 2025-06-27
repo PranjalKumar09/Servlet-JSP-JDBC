@@ -21,5 +21,7 @@ public enum Rating {
     }
 
     private String stars;
-    Rating(String stars) {}
+    Rating(String stars) {
+        this.stars = stars;
+    }
 }
