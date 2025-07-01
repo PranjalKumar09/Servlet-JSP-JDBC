@@ -26,6 +26,13 @@
     - `sort()`  
     - `copy()`  
     - `binarySearch()`  
+    - `reverse()`  
+    - `shuffle()`
+    - `fill()`: Replaces **all** elements of a list with the specified object.  
+  ```java
+  Collections.fill(list, "default"); // All elements become "default"
+
+
 
 ---
 
@@ -138,6 +145,20 @@ Collections.sort(empList, salaryComparator);
 ```
 
 ---
+*Alternative Comparator Syntax**:  
+Pass a `Comparator` object directly to `Collections.sort()`:  
+```java
+class LengthCompare implements Comparator<String> {
+    @Override
+    public int compare(String s1, String s2) {
+        return s1.length() - s2.length();
+    }
+}
+
+// Usage:  
+
+
+Collections.sort(menu, new LengthCompare()); // Sorts by string length
 
 ### **Using the `Comparable` Interface**
 
@@ -300,7 +321,20 @@ An `Iterator` allows sequential access to elements in a collection.
 
 2. **`next()`**:  
    - Moves the internal cursor to the next element and returns it.  
-   - Throws `NoSuchElementException` if no element is present.  
+   - Throws `NoSuchElementException` if no element is present.
+3. **`remove()`**:  
+   - Removes the current element from the collection.  
+   - Must be called **after** `next()` (i.e., per iteration).  
+
+**Example**:  
+```java
+Iterator<String> itr = list.iterator();
+while (itr.hasNext()) {
+    String item = itr.next();
+    if (item.equals("target")) {
+        itr.remove(); // Removes "target"
+    }
+}
 
 ---
 
@@ -406,6 +440,9 @@ public class HashSetDemo {
 - When adding an object, Java calculates the hash code and checks for duplicates in the hash table.  
 - If the hash code matches but the `equals()` method indicates inequality, the object is treated as unique.  
 
+**Null Handling in `hashCode()`**:  
+- If an object's field is `null`, it conventionally contributes `0` to the hash code.  
+
 #### **What is a Hash Code?**
 >- By convention, if an object's field is `null`, it contributes `0` to the hash code computation.
 - A hash code is an integer uniquely identifying an object, calculated using the `hashCode()` method (inherited from the `Object` class).  
@@ -460,6 +497,9 @@ public class TreeSetDemo {
     }
 }
 ```
+**Restriction**:  
+- `TreeSet` cannot store `null` values (throws `NullPointerException`).  
+- All elements must be mutually comparable (homogeneous).
 
 ---
 
@@ -617,11 +657,3 @@ Higher than 30: 40
 2. Use `TreeSet` for ordered collections and `HashSet` for fast lookups without order.  
 3. Implement both `hashCode()` and `equals()` in custom classes when using `HashSet`.  
 4. `TreeSet` provides additional methods like `first()`, `last()`, `lower()`, and `higher()` for handling sorted elements effectively.  
-
-
-
-
-
-
-
-

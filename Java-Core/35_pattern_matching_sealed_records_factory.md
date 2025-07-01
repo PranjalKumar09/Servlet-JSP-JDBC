@@ -19,6 +19,18 @@
 * Downsides: **reduces readability**, especially with complex types.
 
 ---
+* **Limitations of `var`**:
+  * Type is fixed at compile-time and **cannot be changed at runtime**
+  * Cannot be used for **instance variables** (only local variables)
+  * Example:
+    ```java
+    var x = 10;   // Compiler infers 'int'
+    x = "hello";  // ❌ Compile error (cannot change from int to String)
+    
+    class Test {
+        var y = 20;  // ❌ Compile error (cannot use 'var' for instance variables)
+    }
+    ```
 
 ### 🔹 **Restricting Reassignment with `final`**
 

@@ -1,7 +1,7 @@
 ## **Java String, StringBuffer, StringBuilder & Wrapper Classes**
 
 ### **1. `java.lang` Package**
-
+* Default imported
 * Only includes:
 
   * `String`, `StringBuilder`, `StringBuffer`

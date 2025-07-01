@@ -13,6 +13,31 @@
   - **Arguments**: Supports zero or multiple parameters (comma-separated for multiple, empty `()` for none).
   - **Body**: Single expression (no braces) or multiple statements (with braces and `return` if needed).
 
+  ### **Lambda Syntax Variations**  
+- **Parameter Modifiers**:  
+  ```java
+  list.removeIf((final String s) -> s.equals("remove"));  // Explicit type  
+  list.removeIf((final var s) -> s.equals("remove"));     // Inferred type (Java 10+)  
+  ```
+- **Simplified Forms**:  
+  ```java
+    Comparator<String> sortText = (s1, s2) -> s1.compareTo(s2);  // Brackets optional for single inferred-type param  
+    Runnable r = () -> System.out.println("No params");           // Empty brackets for zero params
+  ```
+- **Predefined Expressions**:  
+  ```java
+    Predicate<String> filter = s -> s.startsWith("A");
+    list.removeIf(filter);  // Reuse lambda expression
+  ```
+
+
+**Note**:  
+- Lambda variables **must not conflict** with variables from the enclosing scope:  
+  ```java
+  String conflict = "test";  
+  Predicate<String> invalid = conflict -> conflict.isEmpty();  // ❌ Compile error (name clash)  
+  Predicate<String> valid = s -> s.equals(conflict);          // ✅  
+
 ## Functional Interfaces
 - **Definition**: An interface with exactly **one abstract method** (SAM - Single Abstract Method).
 - **Examples**:
@@ -44,6 +69,27 @@ interface MathOperation {
     default void log() { System.out.println("Logged"); } // Allowed (non-abstract)  
 }  
 ```
+### **Method References**  
+- **Semantic shorthand** for lambda expressions invoking existing methods.  
+- **Syntax**:  
+  ```java
+  Class::staticMethod      // Math::max  
+  instance::instanceMethod // System.out::println  
+  Class::instanceMethod    // String::length  
+  ```
+- **Example**:
+  ```java
+    // Lambda:
+    Collections.sort(list, (s1, s2) -> s1.compareToIgnoreCase(s2));  
+    // Method reference equivalent:  
+    Collections.sort(list, String::compareToIgnoreCase);  
+
+    // Lambda:  
+    list.forEach(s -> System.out.println(s));  
+    // Method reference equivalent:  
+    list.forEach(System.out::println);    
+  ```
+
 
 ## Lambda with Threads
 - **Without Lambda**:
@@ -103,6 +149,20 @@ interface MathOperation {
       }
   }
   ```
+### **Predicate Operations**  
+- **Static Methods**:  
+  ```java
+  Predicate.isEqual(obj)  // Tests equality with target object  
+  Predicate.not(predicate) // Negates a predicate (Java 11+)  
+  ```
+-**Chaining**:  
+  ```java
+    Predicate<Product> isFood = p -> p instanceof Food;  
+    Predicate<Product> isCheap = p -> p.getPrice() < 2.0;  
+    menu.removeIf(isFood.negate().or(isCheap));  // Remove non-food OR cheap items  
+    menu.removeIf(Predicate.isEqual(new Food("Cake")));  // Remove exact match  
+  ```
+
 
 ### Predicate Joining
 - **Methods** (default methods in `Predicate`):
@@ -141,8 +201,3 @@ interface MathOperation {
 - Lambda expressions are commonly used with threads (`Runnable`) and predicates for concise code.
 
 ---
-
-
-
-EXTRA KNOWLEDTGE
-@FunctionalInterface annoation allowed for extaly 1 abstract method

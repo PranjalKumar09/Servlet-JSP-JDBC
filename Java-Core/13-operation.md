@@ -174,7 +174,7 @@ System.out.println(!4);    // Compile-time error
 * **Right-associative**
 
 ```java
-a = b = c = d = 2;
+a = b = c = d = 20;
 a += b -= c *= d /= 2;
 
 // Step-wise:
@@ -282,3 +282,9 @@ System.out.println(b << 1);  // -5 << 1 → -10
 * `b = -5` → `111...1011` → `111...0110` = -10
 
 ---
+
+
+new knowledge
+
+ the * (multiplication) and % have same prescenduce  => L to R
+ only () these bracket can be apply to change the order of expression

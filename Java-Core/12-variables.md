@@ -71,7 +71,7 @@
 
 * Declared inside methods, constructors, or blocks.
 * Stored in stack memory.
-* Must be initialized before use.
+* Must be initialized before use. So no default
 
 ---
 

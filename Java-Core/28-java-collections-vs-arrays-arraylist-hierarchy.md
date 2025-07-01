@@ -67,7 +67,9 @@
 * **ListIterator**:
 
   * Supports both forward and **backward traversal**.
-
+**Note**:  
+- For **arrays**: `reviews[0]` (indexed access).  
+- For **lists**: `reviews.get(0)` (method access).  
 ---
 
 ## **ArrayList (Class)**
@@ -82,6 +84,11 @@
 
 ```java
 ArrayList l = new ArrayList(); // Default capacity = 10
+ArrayList<Product> list1 = new ArrayList<>();
+ArrayList<Product> list2 = new ArrayList<>(20);       // Custom initial capacity  
+ArrayList<Product> list3 = new ArrayList<>(set1);     // Initialize from existing collection  
+List<Product> list4 = Arrays.asList(p1, p2);          // Fixed-size (backed by array)  
+List<Product> list5 = List.of(p1, p2);                // Immutable (varargs)  
 ```
 
 * When full, new capacity: `newCapacity = (currentCapacity * 3) / 2 + 1`
@@ -175,6 +182,15 @@ l.remove(new Integer(2)); // Removes element with value 2
   * `LinkedHashSet`: Maintains insertion order.
   * `TreeSet` (SS): Sorted order, no duplicates.
 
+### **Set Implementations**  
+```java
+Set<Product> set1 = new HashSet<>();                  // Default capacity (16), load factor (0.75)  
+Set<Product> set2 = new HashSet<>(20);                // Custom initial capacity  
+Set<Product> set3 = new HashSet<>(20, 0.85f);        // Custom capacity + load factor  
+Set<Product> set4 = new HashSet<>(list);              // Initialize from existing collection  
+Set<Product> set5 = Set.of(p1, p2);                   // Immutable (varargs)  
+```
+- **Note**: `HashSet` doubles capacity when threshold (capacity × load factor) is reached.
 ---
 
 ## **Queue Interface**
@@ -182,7 +198,27 @@ l.remove(new Integer(2)); // Removes element with value 2
 * Follows **FIFO** (First-In, First-Out).
 * Used in scenarios like job scheduling, buffering, etc.
 
+### **Deque Interface**  
+- **Double-ended queue** (supports insertion/removal at both ends).  
+- Common methods:  
+  ```java  
+  Deque<Product> menu = new ArrayDeque<>();  
+  menu.offerFirst(p1);       // Insert at head  
+  menu.offerLast(p2);        // Insert at tail  
+  Product tea = menu.pollFirst();  // Remove and return head (null if empty)  
+  Product cake = menu.peekFirst(); // Retrieve head without removal  
+  ```
 ---
+- **Key Methods:**
+``` java
+items.put(k, v);                 // Insert/replace key-value pair  
+items.putIfAbsent(k, v);         // Insert only if key absent  
+items.remove(k);                 // Remove by key  
+items.remove(k, v);              // Remove only if key-value match  
+items.replace(k, newV);          // Replace value for key  
+```
+
+
 
 ## **Map Interface**
 
@@ -208,4 +244,22 @@ l.remove(new Integer(2)); // Removes element with value 2
 
 ---
 
+#### **5. Thread Safety & Legacy Collections**
+ 
 
+### **Thread Safety**  
+- **Modern collections (e.g., `ArrayList`, `HashMap`) are not thread-safe by default**.  
+- **Solutions**:  
+  ```java  
+  Set<Product> readOnlySet = Collections.unmodifiableSet(set);  // Immutable view  
+  Map<Product, Integer> syncMap = Collections.synchronizedMap(map); // Synchronized wrapper  
+  List<Product> copyOnWriteList = new CopyOnWriteArrayList<>(list); // Thread-safe with copy-on-write  
+  ```
+* Legacy Alternatives:
+  `Vector` (thread-safe `ArrayList`).
+  `Hashtable` (thread-safe `HashMap`).
+
+* Prevent collection corruption
+  - unmodifiable (fast, read only)
+  - synchornized (slow, unsclable)
+  - copy-on-write (fast, SC increase)

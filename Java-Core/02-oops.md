@@ -52,9 +52,9 @@ Java provides three primary ways to initialize an object:
 ### 3. Initializer Blocks
 - **Definition**: Blocks of code used to initialize instance variables.
 - **Characteristics**:
-  - Executed before the constructor.
+  - Executed **before** the constructor.
   - Runs each time an object is created.
-  - Useful for a    s classes without constructors.
+  - Useful for as classes without constructors.
 - **Syntax**:
   ```java
   class Test {

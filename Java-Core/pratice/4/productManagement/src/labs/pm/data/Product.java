@@ -103,7 +103,7 @@ public sealed abstract class Product implements Rateable<Product> permits Food, 
         if (this == o) return true;
         if (o == null ) return false;
         Product product = (Product) o;
-        return id == product.id && Objects.equals(name, product.name) && Objects.equals(price, product.price) && rating == product.rating;
+        return id == product.id;
     }
 
     @Override
