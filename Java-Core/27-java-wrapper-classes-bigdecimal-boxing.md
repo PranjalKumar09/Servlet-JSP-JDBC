@@ -90,7 +90,7 @@ Wrapper classes are used to convert primitive types into objects and vice versa.
 
 #### ** boxing and Unboxing**
 
-* **Autoboxing:** Conversion from primitive to wrapper object.
+* **Autoboxing:** Conversion from **primitive** to wrapper object.
 
   ```java
   Integer i = 10;  // int is automatically boxed into Integer

@@ -288,3 +288,25 @@ new knowledge
 
  the * (multiplication) and % have same prescenduce  => L to R
  only () these bracket can be apply to change the order of expression
+
+ <<< not exist as doing signed, unsigned here same
+
+
+
+ Callable.call() allows you to declare checked exceptions while Runnable.run() does not. So if your task throws a checked exception, it would be more appropriate to use a Callable
+
+
+ to run modular approach
+  modular application stored in c:\modules\movies.jar
+  ->-p c:\modules\movies.jar or 
+
+
+
+
+
+  --module or -m: This option specifies the module that you want to run. For example, if you want to run abc.utils.Main class of abc.math.utils module, you should write --module abc.math.utils/abc.utils.Main
+If a module jar specifies the Main-Class property its MANIFEST.MF file, you can omit the main class name from  --module option. For example, you can write, --module abc.math.utils instead of --module abc.math.utils/abc.utils.Main.
+
+
+otected members of a class are accessible outside the package only in subclasses of that class, and only when they are fields of objects that are being implemented by the code that is accessing them.
+Basically, it implies that a protected member is accessible in the subclass only using a reference whose declared type is of the same subclass (or its subclass.).

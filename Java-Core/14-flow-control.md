@@ -7,6 +7,17 @@
 
 * `else if(condition)` → **condition must be boolean**.
 * Curly braces `{}` are **optional**, but recommended for clarity.
+* `else` binds to the nearest unmatched `if`
+**Valid**
+``` java
+if (temperature >= 4)          // Outer if
+    if (humidity < 6)          // Inner if (nested)
+        System.out.println("Too Low");
+    else                       // This 'else' belongs to 'if (humidity < 6)'
+        System.out.println("Just Right");
+else                           // This 'else' belongs to 'if (temperature >= 4)'
+    System.out.println("Too High");
+``` 
 
 ### **switch**
 
@@ -32,19 +43,22 @@
 
 * `switch` expression types allowed:
 
-  * `byte`, `short`, `int`, `char`, `enum`, `String`
+  * `byte`, `short`, `int`, `char`, `enum`, `String`, `var` 
   * **Wrapper classes** of these types are also allowed.
-* Not allowed: `long`, `float`, `double`, `boolean`.
+* Not allowed: `long`, `float`, `double`, **`boolean`**.
 
 ### **Cases**
 
 * Case labels must be **compile-time constants**.
 
   ```java
+  void fn(final int y){
   final int x = 3;
   switch(x + 1) {
       case x + 0: // valid (evaluates to constant)
+      // case y: // compilation error, as this is not compile time constant 
       ...
+  }
   }
   ```
 * **No variables allowed** in `case` labels.
@@ -142,7 +156,8 @@ for(int val : arr)
 
 * Iterates over arrays/collections in normal order.
 * Cannot modify or pattern control iteration (e.g., skipping indices).
-
+* Right side cant be: `Map`, `Object`
+* Can be `[]`, `List`, `Set`
 ---
 
 ## 🔁 **3. Transfer Statements**
@@ -218,13 +233,9 @@ for(int i=0; i<3; i++) {
   ```
 
 * **while(i < size)**:
-
   * Final `i` becomes `== size` after the loop ends.
 
-
 ------
-
-
 
 ### 🔁 `switch` + `yield` (Java 17)
 

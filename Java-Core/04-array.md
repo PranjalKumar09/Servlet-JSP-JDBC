@@ -29,7 +29,7 @@
   * Homogeneous (same data type only)
   * Arrays are **objects** in Java
   * Default values:
-
+int 
     * `int` → 0, `boolean` → false, `Object` → null
 
 ---

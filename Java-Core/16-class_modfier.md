@@ -281,3 +281,10 @@ class E extends D {}
 
 ---
 
+NEW KNOWLEDGE
+
+inner classes can be inside function too
+
+An abstract class (or any class for that matter) can implement any number of interface
+
+Fields of an interface are always public, static, and final. Fields of an abstract class can be static or instance and may have any accessibility (i.e. public, private, protected, or default).

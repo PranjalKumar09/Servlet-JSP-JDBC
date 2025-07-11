@@ -67,11 +67,6 @@ catch (IOException e) {       // Parent
 
 Java exceptions are divided into two main categories based on whether the programmer must handle them:
 
-#### 1. **Unchecked Exceptions**
-
-
-#### 2. **Checked Exceptions**
-
 
 
 

@@ -173,3 +173,18 @@ $31 ==> "6.5%"
 * ✅ Use `CompactNumberFormat` and `PercentFormat` for locale-specific, concise number output.
 
 ---
+
+========
+An instance of java.time.Instant represents time elapsed since Java epoch
+
+Instant.now() will return the time as of UTC, while LocalDateTime.now() will return the time as per the time shown by the operating system clock, depend on timezone
+
+Neither Instant nor LocalDateTime contain time zone information. 
+
+
+
+
+java.time.temporal.TemporalAccessor is the base interface that is implemented by LocalDate, LocalTime, and LocalDateTime concrete classes. This interface defines read-only access to temporal objects, such as a date, time, offset or some combination of these, which are represented by the interface TemporalField.
+
+
+resource bundle is immutable

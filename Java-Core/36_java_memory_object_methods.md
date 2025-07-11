@@ -139,3 +139,7 @@ class Person {
 - Example: If `age <= 0`, `createPerson` returns `null`.
 
 ---
+
+EXTRA INFORMATION
+
+A record cannot define any instance field explicitly.

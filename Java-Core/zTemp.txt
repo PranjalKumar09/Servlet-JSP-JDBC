@@ -13,6 +13,57 @@ Your task is to enhance these notes by making them more concise, improving the f
 
     To start p-60 16
 
+3
+    p-144 8
+    p-145 10
+    p-150 18
+    p-151 21 22
+    p-153 26 27     
+    p-154 26 29  
+    
+4
+    p-210 1 2 3
+    p-211 6
+    p-212 7 8 9F
+    p-213 10 12
+    p-214 14 15
+    p-215 16 18 19
+    p-216 20 22
+
+5
+    p-265 4
+    p-266 7E 8
+    p-267 9C 10
+    p-270 14 16 17 18 19
+    p-273 19
+    p-274 21
+
+6
+    p-330 1
+    p-331 3 4 5
+    p-332 6
+    p-333 7
+    p-333 11 12
+    p-337 14 15 16 18
+    p-339 19 21
+    p-341 22
+    p-342 24
+    p-343 25
+    
+
+
+
+    
+
+    
+
+
+
+
+
+TO RESUME: 3/16/148
+    theory: 163
+
 
 23
 21
@@ -34,3 +85,33 @@ Your task is to enhance these notes by making them more concise, improving the f
 
 
 426
+
+===============================
+
+
+ANN -> 4 Credit (3 classes)
+AML -> 4 Credit (3 classes)
+AWS -> 4 Credit (3 classes)
+Competative coding practices -> 3 credit (2 classes)
+Community Project -> 2 Credit (No classes, 3 reviews in 3.5 months)
+Indian Constitution -> 2 credit (Online, 1 classes), Non graded
+UHV2 -> 2 Credit (Online , 2 classes)
+NPTEL -> Assumption course 
+
+ANN -> Artificial Neural Network 
+AML -> Applied Machine Learning
+AWS -> Amazon web service
+ 
+
+* I have maximum classes in wenesday (3 offline + 1 online)
+* my timetable is like mostly evening slot
+* Wednesday > Tuesday > Thursday = Friday > Monday
+
+
+* Relative grading -> very tough competion
+* Non grading matters less -> as mostly online test
+
+
+sem starting -> 3rd july
+mid term -> 18-28 august
+term end -> 1-18 oct

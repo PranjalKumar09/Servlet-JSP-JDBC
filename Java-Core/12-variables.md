@@ -198,3 +198,7 @@ System.exit(non-zero); // Abnormal termination
 ```
 
 ---
+
+extra knowledge
+
+can be a variable, a constant or a method.

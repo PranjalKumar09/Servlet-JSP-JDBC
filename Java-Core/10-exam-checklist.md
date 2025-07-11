@@ -16,3 +16,7 @@ Which of the following exceptions is not an unchecked exception-> B)FileNotFound
 
 abstract class have a constructor -> Yes
 they can called in base class constructor
+
+
+Anonymous classes cannot be declared static.
+

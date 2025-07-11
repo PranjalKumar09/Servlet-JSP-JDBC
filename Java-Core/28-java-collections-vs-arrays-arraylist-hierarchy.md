@@ -57,7 +57,7 @@
   ```java
   void add(int index, Object o);
   boolean addAll(int index, Collection c);
-  Object  et(int index);
+  Object get(int index);
   Object set(int index, Object newElement);
   Object remove(int index);
   int indexOf(Object o);
@@ -263,3 +263,11 @@ items.replace(k, newV);          // Replace value for key
   - unmodifiable (fast, read only)
   - synchornized (slow, unsclable)
   - copy-on-write (fast, SC increase)
+
+
+
+EXTRA POINT
+Map<String, Integer> map = Map.of("a", 1, "b", 2);
+Set<String> keys = map.keySet(); // keys = ["a", "b"]
+
+

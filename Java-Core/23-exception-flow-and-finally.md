@@ -155,3 +155,7 @@ catch() { }  // ❌ Not allowed (must specify exception type)
 
 ---
 
+
+
+NEW KNOWLEDGE
+If a catch block contains a return statement, the finally block will still execute before the method actually returns. However, after the finally block finishes, the method will return as directed by the catch, and the rest of the code after the try-catch-finally block will not execute 
