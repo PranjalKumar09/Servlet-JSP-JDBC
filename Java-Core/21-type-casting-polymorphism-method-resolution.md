@@ -25,7 +25,7 @@ A b = c;
 #### Rule 3 – **Runtime (JVM Type Check)**
 
 ```java
-A b = (C) d;
+A b = (C) d;    
 ```
 
 * If actual object is not compatible with **C** → The **JVM** checks whether the object **d** points to is actually an instance of **C**

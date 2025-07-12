@@ -202,3 +202,6 @@ System.exit(non-zero); // Abnormal termination
 extra knowledge
 
 can be a variable, a constant or a method.
+
+Local variables remain uninitialized unless and until they are initialized explicitly. It will be a compilation error if a local variable is accessed without getting initialized explicitly. (FYI, a local variable, aka, an automatic variable, is a variable that is defined within a method.)
+

@@ -143,3 +143,10 @@ class Person {
 EXTRA INFORMATION
 
 A record cannot define any instance field explicitly.
+cant extend any class, or not  record, 
+record can implement any no of interface
+
+
+inner class can be sealed too
+
+record cant be sealed

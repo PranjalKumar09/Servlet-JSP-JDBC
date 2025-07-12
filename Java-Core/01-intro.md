@@ -1,4 +1,3 @@
-# **Java Certification Notes (Java 17)**
 
 ## 🛠️ **C vs C++ Overview**
 
@@ -52,7 +51,6 @@
    * Platform-independent bytecode enables cross-device execution.
 4. **Object-Oriented**
 
-   * OOP principles: **Encapsulation** (Security), **Inheritance** (Reusability), **Polymorphism** (Flexibility)
 5. **Robust**
 
    * Strong type-checking: `int i = 10.0;` → Compile Error
@@ -146,10 +144,8 @@ Java source code (`Test.java`) goes through the following execution flow:
 
 ```bash
 javac -d . Test.java        # Compiles and creates appropriate package directory
-javac -cp /path -d /path Source.java   # Use -cp if external dependencies exist
 ```
 
-> **Note**: Classpath (default = current directory) specifies where to look for classes. (its  not recommended practice)
 
 ### **Running with Classpath**
 
@@ -159,8 +155,9 @@ java -cp /project/classes demos.Whatever John
 ```
 
 ``` bash
-javac -cp <dependency_path> -d <output_directory> <your_source_file>
+javac -cp <dependency_path> -d <output_directory> <your_source_file> # Use -cp if external dependencies exist
 ```
+> **Note**: Classpath (default = current directory) specifies where to look for classes. (its  not recommended practice)
 
 > Use **fully qualified class name** (`package.ClassName`) without `.class` extension.
 

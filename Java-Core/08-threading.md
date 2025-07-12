@@ -2,7 +2,7 @@
 
 **Threads and Processes**  
 - **Process:** A self-contained execution environment, representing a program or application.  
-- **Thread:** A lightweight process that shares resources of its parent process and requires fewer resources to c   reate.
+- **Thread:** A lightweight process that shares resources of its parent process and requires fewer resources to create.
 
 ---
 
@@ -17,6 +17,13 @@
 3. Independence: One thread's execution does not affect others.
 
 ---
+#### Concurrency vs. Parallelism
+- **Concurrency**: Multiple execution paths appear to run simultaneously, managed by thread scheduling (may share a single CPU).
+- **Parallelism**: Multiple execution paths run simultaneously, leveraging multiple CPU cores.
+
+- Java threads execute as concurrent paths, with parallelism depending on available CPU cores.
+- Check available processors: `Runtime.getRuntime().availableProcessors()`.
+
 
 ### **Creating Threads in Java**  
 Threads can be implemented via:  
@@ -53,29 +60,24 @@ class MyRunnable implements Runnable {
     }
 }
 ```
-
----
-
-### **Thread Lifecycle**  
-Threads transition through the following states:  
-
-1. **Newborn State**  
-   - Thread is created but not started.  
-   - Actions:  
+#### Thread Lifecycle
+Threads transition through these states (`Thread.State` enum):
+- **NEW**: Thread created but not started.
      - Start it using `start()`  
      - Kill it using `stop()`  
+- **RUNNABLE**: Thread is executing or ready to execute when CPU is available.
+- **BLOCKED**: Thread is waiting for a monitor lock to enter a synchronized block/method.
+- **WAITING**: Thread is waiting indefinitely (e.g., via `wait()`, `join()`).
+- **TIMED_WAITING**: Thread is waiting with a timeout (e.g., via `sleep(timeout)`, `wait(timeout)`).
+- **TERMINATED**: Thread has completed execution or been stopped.
 
-2. **Runnable State**  
-   - Ready for execution but waiting for CPU.  
+#### Thread State Transitions
+- **RUNNABLE → TIMED_WAITING**: `Thread.sleep(timeout)`, `wait(timeout)`.
+- **TIMED_WAITING → RUNNABLE**: Timeout expires or interrupted.
+- **RUNNABLE → WAITING**: `wait()`, `join()`.
+- **WAITING → BLOCKED → RUNNABLE**: `notify()`, `notifyAll()`, or `interrupt()`.
+- **Check State**: Use `Thread.getState()` to retrieve current state.
 
-3. **Running State**  
-   - Actively executing code.  
-
-4. **Blocked State**  
-   - Temporarily inactive due to `sleep()`, `wait()`, or suspension.  
-
-5. **Dead State**  
-   - Thread completes execution or is explicitly stopped.
 
 ---
 ![Threading Picture](Thread_LifeCycle.png)
@@ -84,12 +86,33 @@ Threads transition through the following states:
 
 | **Method**         | **Description**                                                                 |
 |---------------------|---------------------------------------------------------------------------------|
-| `start()`          | Starts thread execution by invoking `run()` method.                            |
-| `run()`            | Contains the code to execute.                                                  |
+| `start()`          | Starts thread execution by invoking `run()` method.    Cannot be called twice on the same thread (throws `IllegalThreadStateException`).|
+| `run()`            | The `run()` method controls lifecycle decisions, checking interruption status or handling `InterruptedException` to decide whether to continue or terminate.|
 | `sleep(int ms)`    | Suspends the thread for specified milliseconds.                                |
 | `yield()`          | Pauses the current thread to allow others to execute.                         |
 | `join()`           | Makes the current thread wait until another thread finishes execution.        |
 | `isAlive()`        | Checks if the thread is still running.                                         |
+
+#### Thread Interruption
+- **RUNNABLE State**: Thread must check `Thread.currentThread().isInterrupted()` to detect and handle interruption.
+- **WAITING/TIMED_WAITING State**: Methods like `sleep()`, `wait()`, or `join()` throw `InterruptedException`, moving the thread to RUNNABLE. The thread decides whether to terminate.
+- Example:
+```java
+Runnable r = () -> {
+    Thread ct = Thread.currentThread();
+    while (!ct.isInterrupted()) {
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            return; // Terminate on interrupt
+        }
+    }
+};
+Thread t = new Thread(r);
+t.start();
+t.interrupt();
+```
+- **TIMED_WAITING**: Thread waits with a timeout (e.g., `sleep(timeout)`, `wait(timeout)`). Returns to RUNNABLE when the timeout expires or interrupted, but only executes when the scheduler allocates CPU time.
 
 ---
 
@@ -103,15 +126,43 @@ Threads transition through the following states:
   - `MAX_PRIORITY = 10`
 
 ---
+### Thread Properties
+- **Name**: Set via constructor (`new Thread(r, "name")`) or `setName()`.
+- **ID**: Unique identifier via `getId()`.
+- **Daemon Thread**: Set via `setDaemon(true)` before starting. Daemon threads terminate when all user threads finish.
+- **Priority**: Set via `setPriority(int)` (1–10). Does not guarantee execution order.
+- **Join**: `join()` makes a thread wait for another to terminate.
+- **Example**:
+```java
+Runnable r = () -> {};
+Thread t = new Thread(r, "MyThread");
+t.setDaemon(true);
+t.setPriority(Thread.NORM_PRIORITY);
+t.start();
+if (t.isDaemon()) {
+    // Terminates when all user threads end
+}
+try {
+    t.join(); // Wait for t to finish
+} catch (InterruptedException e) {}
+```
 
 ### **Synchronization**  
 - Prevents concurrent threads from conflicting over shared resources.  
-- Achieved using the `synchronized` keyword:  
+- **Monitors**: Any object or class can serve as a monitor to coordinate thread execution.
+- **Synchronized Keyword**: Enforces mutual exclusion via an intrinsic lock. The first thread to acquire the lock stays in RUNNABLE state; others attempting to access the same lock enter BLOCKED state until the lock is released.
+- **Example**:
 ```java
-synchronized (lockObject) {
-    // Critical section
-}
+Object lock = new Object();
+Runnable r = () -> {
+    synchronized(lock) {
+        // Critical section
+    }
+};
+new Thread(r).start();
+new Thread(r).start(); // Second thread blocks until lock is released
 ```
+
 
 **Deadlock:** Occurs when two or more threads are waiting indefinitely for each other's resources.  
 
@@ -121,131 +172,22 @@ Example:
 
 ---
 
-By leveraging multithreading and synchronization techniques, Java enables efficient and concurrent program execution while managing resource conflicts effectively.
-
-NEW KNOWLEDGE
-    NEW
-    RUNNABLE
-    BLOCKED
-    WAITING
-    TIMED_WAITING
-    TERMINATED
-
-    Thread cant we started twice
-
-parallism describe different execution paths that runs simultaneously, such as when executed    using multiple CPU cores
-term concurenncy descirbe different execution pahts that look that run simultanously    , which may or may not be really case
-
-java thread is an execution path that feels like it is performed in parallel with other execution paths. may or not be parralle depend on how much phuscial machine used
-
-Runtime r = Runtime.getDefault();
-int noOfHardWare = r.availableProcessors();
+- Synchronized blocks ensure a thread completes the critical section before another thread can acquire the same lock.
+- **Example** (combined with above):
+```java
+class Some {
+    void a() {}
+    static void b() {}
+    void c() {}
+}
+Some s = new Some();
+Runnable r = () -> {
+    s.a();
+    Some.b();
+    synchronized(s) { s.c(); } // Exclusive access
+};
+new Thread(r).start();
+new Thread(r).start();
+```
 
 
-if thread is running state, its our responsibility to check interrupt signal & decide whether it should terminate or not,thread that enter waiting state     must catch interuptted execption    ,when exception thrown and control is passed to exectpion handler, thread goes back to running state and again can make descion whether to terminate or not
-
-after timed wait expires , threda goes back back to running sate. however it would not happen at very moment, but rather when thread schueldar allocates next variable CPU time slot for this thread
-Interrupted Thread
-    Logic of run method is in charge lifecycle decisions
-        A thread in runnable state may check if it has received an interrupt signal
-        A thread that has entering waiting or timed waiting state must catch InterruptedException, which puts it back to runnable state, and then decide what it should do
-
-    Runnable r = () -> {
-        Thread ct = Thread.currentThread(); // locate thread object
-        while(!ct.isInterrupted()){ // check interuppt signal when running
-            try{
-                Thread.sleep(1000); // waiting  time fo 1000 milliseconds
-            } catch (InterruptedException ex) {
-                return ;
-            }
-        }
-    };
-    Thread t = new Thread(r);
-    t.start();
-    t.interrupt(); // when Thread is in running state it is not forced to check this signal
-
-Block Thread
-    Monitor object helps to coordinate order of execution of threads
-    Any objects or class can be used as monitor
-    It allows thread to enter blocked or waiting states
-    It enables mutual exclusion of threads & signalling mechanism
-    keyword synchronized enforces exclusive access to block of code 
-    A thread that first enters synchornized block remain in runnable state
-    All other threads accessing same block enter blocked state
-    When runnable thread exit synchornized block, when lock is released
-    Another thread is not allowed to enter runnable  state and place a new lock
-
-    Some s = new Some();
-    Runnable r = () -> {
-        s.a();
-        Some.b();
-        synchronized(a){
-            s.c();
-        }
-    };
-    new Thread(r).start();
-    new Thread(r).start();
-
-synchornized word enofrces exclusive, establish order accessing locked object , intrisic lock
-ensure that thread of complete sequence of aciton of synchornized block before  thread is allowdd to neter this block of code
-
-Make Thread wait until notified
-    Suspend thread waiting indedinterly
-    wait method put thread into waiting state against specific monitor
-    no of thread can be waiting
-    notify wakes up one of waiting thread
-    notifyAll wakes up all of waiting thread
-
-
-    Object obj = new Object();
-    Runnable r = () -> {
-        try{
-            synchronized(obj){
-                obj.wait();
-            }
-        } catch (InterruptedException ex){ ... }
-    };
-    Thread t = new Thread(r);
-    t.start();
-    try{
-        Thread.sleep(1000);
-    } catch (InterruptedException ex){...}
-    synchronized(obj){
-        obj.notify();
-    }
-
-void wait()
-void wait(long timeoutMillisecond)
-void wait(long timeoutMillisecond , int nanos)
-
-
-RUNNABLE -> TIMED_WAITING   Thread.sleep(timeout)
-RUNNABLE <- TIMED_WAITING   sleep method returns or is interuppted
-getsTate
-RUNNABLE -> WAITTING    wait()
-RUNNABLE <- BLOCKED <- WAITING  notify(), notifyAll(),interrupt()
-RUNNABLE -> TIMED_WAITING   <- wait(timeout)
-RUNNABLE <- BLOCKED <- TIMED_WAITING timeout expires , notify(), notifyAll() , interrupt()
-
-Common Thread Properties
-    Thread could be given custom name using constuctor and set/get name method
-    It has uniqueID
-    It can be marked as daemon or user (default) thread
-    It may wait for another thread to termite   
-    it could be assigned priority
-
-
-    priority not guarantee order of execution
-
-    Runnabler  r  = () -> {};
-    Thread t = new Thread(r, "My thread");
-    t.setDaemon(true);
-    t.start();
-    long id = t.getId();
-
-    if (t.isDaemon())
-    // it will autoerminate once all user thread  have terminated
-    try{
-        t.join();
-    }
-    catch (InterruptedException ex){}

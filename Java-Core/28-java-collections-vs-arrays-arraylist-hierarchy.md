@@ -271,3 +271,9 @@ Map<String, Integer> map = Map.of("a", 1, "b", 2);
 Set<String> keys = map.keySet(); // keys = ["a", "b"]
 
 
+
+map have values() method 
+
+
+HashMap, HashSet not thread safe
+ArrayLIst not thread safe

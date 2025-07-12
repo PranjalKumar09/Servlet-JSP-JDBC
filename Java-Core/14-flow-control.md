@@ -279,3 +279,7 @@ case 1, 2-> --;
 case 1: case 2: --;
 case 1: case 2-> --;
 ```
+
+==================================
+
+switch with arrow either return value or throw exception

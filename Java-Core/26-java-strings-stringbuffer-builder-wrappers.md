@@ -317,4 +317,20 @@ NEW KNOWLEDGE
   str.trim();
   S.o.p(str.equals("")+" " +str.empty()); /// false false
 
-  string class if final cant be exteneded
+  string class if final cant be extended
+
+  repeat(int) method is also there in string  
+
+
+  	
+	
+ 
+Since indexing starts with 0, the maximum value that you can pass to charAt is length-1.
+
+As per the API documentation for charAt, it throws IndexOutOfBoundsException if you pass an invalid value.
+
+
+
+
+
+

@@ -310,3 +310,6 @@ If a module jar specifies the Main-Class property its MANIFEST.MF file, you can 
 
 otected members of a class are accessible outside the package only in subclasses of that class, and only when they are fields of objects that are being implemented by the code that is accessing them.
 Basically, it implies that a protected member is accessible in the subclass only using a reference whose declared type is of the same subclass (or its subclass.).
+
+
+? both side have same data type, when have method , return type cant be void 
