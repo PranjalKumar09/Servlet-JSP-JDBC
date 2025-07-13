@@ -277,3 +277,6 @@ map have values() method
 
 HashMap, HashSet not thread safe
 ArrayLIst not thread safe
+
+
+in CopyOnWriteArrayList ->  Multiple threads can safely add and remove objects from sList simultaneousl

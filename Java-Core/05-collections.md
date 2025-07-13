@@ -72,15 +72,16 @@ When adding custom objects to an `ArrayList`, you must override the `equals()` m
 
 #### **Example**:
 Override the `equals()` method in your class:  
-```java
-@Override
-public boolean equals(Object obj) {
-    if (this == obj) return true;
-    if (obj == null || getClass() != obj.getClass() ) return false;
-    Emp emp = (Emp) obj;
-    return id == emp.id && name.equals(emp.name) && salary == emp.salary;
-}
-```
+        ```
+        @Override
+        public boolean equals(Object obj) {
+            if (this == obj) return true;
+            if (obj == null || getClass() != obj.getClass() ) return false;
+            Emp emp = (Emp) obj;
+            return id == emp.id && name.equals(emp.name) && salary == emp.salary;
+        }
+        ```
+    
 
 ---
 
@@ -89,9 +90,9 @@ public boolean equals(Object obj) {
 The `Collections` class in `java.util` provides a static `sort()` method to sort `ArrayList` elements:  
 
 #### **Prototype**:  
-```java
-public static void sort(List list)
-```
+    ``` java
+        public static void sort(List list)
+    ```
 
 #### **Natural Sorting Order**:
 - **Strings**: Alphabetical order.  
@@ -211,7 +212,6 @@ public int compareTo(Object obj)
 | **Memory Usage**    | Compact (contiguous storage)     | Higher (node pointers needed)   |
 
 ---
-Here’s an enhanced and concise version of your notes:
 
 ---
 
@@ -269,33 +269,13 @@ public boolean add(Object obj)
 
 ### **What is an Iterator?**
 
-An `Iterator` allows sequential traversal of elements in **List** and **Set** collections.
 
-#### **Key Features**:
-1. Acts as a pointer to iterate through elements in a collection.  
-2. Obtained by calling the `iterator()` method of a collection class.  
+Obtained by calling the `iterator()` method of a collection class.  
 
-**Prototype**:  
-```java
-public Iterator iterator()
-```
 
-3. Provides methods to traverse the collection:  
-   - `boolean hasNext()`: Returns `true` if more elements exist; otherwise, `false`.  
-   - `Object next()`: Returns the next element in the collection.
 
-#### **Example**:
-```java
-HashSet<String> hSet = new HashSet<>();
-hSet.add("C");
-hSet.add("A");
-hSet.add("B");
-
-Iterator<String> itr = hSet.iterator();
-while (itr.hasNext()) {
-    System.out.println(itr.next());
-}
-```
+   - `boolean hasNext()`
+   - `Object next()`
 
 ---
 
@@ -303,10 +283,8 @@ while (itr.hasNext()) {
 
 1. `Set` collections do not allow duplicates.  
 2. `HashSet` provides unordered storage, while `TreeSet` ensures sorted order.  
-3. Use `Iterator` for sequential access to elements in a `Set` or `List`.  
 
 
-### Enhanced Notes
 
 ---
 
@@ -335,6 +313,7 @@ while (itr.hasNext()) {
         itr.remove(); // Removes "target"
     }
 }
+```
 
 ---
 
@@ -346,11 +325,8 @@ while (itr.hasNext()) {
    ```
    - This initializes the cursor **before** the first element in the collection.
 
-2. **Traversal**:  
-   - Call `it.hasNext()` to check if the next element exists.  
-   - Call `it.next()` to move the cursor to the next element and retrieve it.  
 
-3. **Example**:
+2. **Example**:
    ```java
    HashSet<String> hs = new HashSet<>();
    hs.add("January");
@@ -369,9 +345,8 @@ while (itr.hasNext()) {
 
 ### **Steps to Use an `Iterator`**
 
-1. Obtain an iterator using `collection.iterator()`.  
-2. Use a loop to check `hasNext()` and iterate as long as it returns `true`.  
-3. Use `next()` to access each element during the loop.  
+Obtain an iterator using `collection.iterator()`.  
+
 
 ---
 
@@ -400,16 +375,7 @@ public class HashSetDemo {
 #### **Example 2:**
 ```java
 class Student {
-    private String name;
-
-    public Student(String name) {
-        this.name = name;
-    }
-
-    @Override
-    public String toString() {
-        return name;
-    }
+  // variable & method
 }
 
 public class HashSetDemo {
@@ -444,7 +410,6 @@ public class HashSetDemo {
 - If an object's field is `null`, it conventionally contributes `0` to the hash code.  
 
 #### **What is a Hash Code?**
->- By convention, if an object's field is `null`, it contributes `0` to the hash code computation.
 - A hash code is an integer uniquely identifying an object, calculated using the `hashCode()` method (inherited from the `Object` class).  
 - In collections, **if two objects are equal, their hash codes must also be equal**.  
 
@@ -545,24 +510,15 @@ To avoid `ClassCastException`, implement the `Comparable` interface in the custo
 import java.util.*;
 
 class Book implements Comparable<Book> {
-    private String title;
-    private String author;
-    private int price;
-
-    public Book(String title, String author, int price) {
-        this.title = title;
-        this.author = author;
-        this.price = price;
-    }
+   // variable & method
 
     @Override
     public int compareTo(Book other) {
         return this.price - other.price; // Ascending order by price
     }
-
     @Override
     public String toString() {
-        return "Book{" + "title='" + title + "', author='" + author + "', price=" + price + '}';
+      // code
     }
 }
 
@@ -595,16 +551,16 @@ public class TreeSetDemo {
 ### **Key `TreeSet` Methods**
 
 1. **`first()`**:  
-   Returns the smallest (lowest) element in the set.  
+   Returns  smallest (lowest) 
 
 2. **`last()`**:  
-   Returns the largest (highest) element in the set.  
+   Returns  largest (highest) 
 
 3. **`lower(Object obj)`**:  
-   Returns the largest element strictly less than the given object, or `null` if no such element exists.  
+   Returns  largest element strictly less than the given object, or `null` if no such element exists.  
 
 4. **`higher(Object obj)`**:  
-   Returns the smallest element strictly greater than the given object, or `null` if no such element exists.  
+   Returns  smallest element strictly greater than the given object, or `null` if no such element exists.  
 
 ---
 

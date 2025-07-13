@@ -152,8 +152,9 @@ javac -d . Test.java        # Compiles and creates appropriate package directory
 ```bash
 java -cp /project/classes demos.Whatever John
 # Output: Hello John
+java -cp <compiled_class_path_or_jar> <MainClassName>
 ```
-
+  
 ``` bash
 javac -cp <dependency_path> -d <output_directory> <your_source_file> # Use -cp if external dependencies exist
 ```
@@ -250,8 +251,3 @@ java /project/sources/Whatever.java
 
 
 
-``` bash
-java -cp <compiled_class_path_or_jar> <MainClassName>
-```
-
-  

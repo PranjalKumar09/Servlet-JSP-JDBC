@@ -1,6 +1,6 @@
-# Lambda Expressions & Functional Interfaces
+## Lambda Expressions & Functional Interfaces
 
-## Lambda Expressions
+### Lambda Expressions
 - **Purpose**: Enables concise code and functional programming in Java.
 - **Definition**: Anonymous (nameless) function with no return type or access modifier.
 - **Syntax**:
@@ -13,7 +13,7 @@
   - **Arguments**: Supports zero or multiple parameters (comma-separated for multiple, empty `()` for none).
   - **Body**: Single expression (no braces) or multiple statements (with braces and `return` if needed).
 
-  ### **Lambda Syntax Variations**  
+  #### **Lambda Syntax Variations**  
 - **Parameter Modifiers**:  
   ```java
   list.removeIf((final String s) -> s.equals("remove"));  // Explicit type  
@@ -38,7 +38,7 @@
   Predicate<String> invalid = conflict -> conflict.isEmpty();  // ❌ Compile error (name clash)  
   Predicate<String> valid = s -> s.equals(conflict);          // ✅  
 
-## Functional Interfaces
+### Functional Interfaces
 - **Definition**: An interface with exactly **one abstract method** (SAM - Single Abstract Method).
 - **Examples**:
   - `Runnable`: `run()`
@@ -57,26 +57,23 @@
             i.add(10, 20); // Output: Sum: 30
         }
     }
-    ```
-#### `@FunctionalInterface`
+##### `@FunctionalInterface`
 * `Purpose`: Explicitly marks an interface as a functional interface (compile-time check).
 * The interface must have exactly one abstract method (SAM).
-``` java
-@FunctionalInterface  
-interface MathOperation {  
-    int calculate(int a, int b); // SAM  
-    // int subtract(int a, int b); // ❌ Compile error (violates SAM rule)  
-    default void log() { System.out.println("Logged"); } // Allowed (non-abstract)  
-}  
-```
-### **Method References**  
+  ``` JAVA
+  @FunctionalInterface
+  interface MathOperation {  
+      int calculate(int a, int b); // SAM  
+      // int subtract(int a, int b); // ❌ Compile error (violates SAM rule)  
+      default void log() { System.out.println("Logged"); } // Allowed (non-abstract)  
+  }
+#### **Method References**  
 - **Semantic shorthand** for lambda expressions invoking existing methods.  
 - **Syntax**:  
   ```java
   Class::staticMethod      // Math::max  
   instance::instanceMethod // System.out::println  
   Class::instanceMethod    // String::length  
-  ```
 - **Example**:
   ```java
     // Lambda:
@@ -91,7 +88,7 @@ interface MathOperation {
   ```
 
 
-## Lambda with Threads
+### Lambda with Threads
 - **Without Lambda**:
   ```java
   class MyRunnable implements Runnable {
@@ -131,7 +128,7 @@ interface MathOperation {
   ```
   - **Advantage**: Reduces boilerplate code by directly defining the `run()` method using a lambda.
 
-## Predefined Functional Interfaces: Predicate
+### Predefined Functional Interfaces: Predicate
 - **Package**: `java.util.function.*`
 - **Definition**: A functional interface that evaluates a condition and returns a boolean.
   ```java
@@ -149,7 +146,7 @@ interface MathOperation {
       }
   }
   ```
-### **Predicate Operations**  
+#### **Predicate Operations**  
 - **Static Methods**:  
   ```java
   Predicate.isEqual(obj)  // Tests equality with target object  
@@ -164,7 +161,7 @@ interface MathOperation {
   ```
 
 
-### Predicate Joining
+#### Predicate Joining
 - **Methods** (default methods in `Predicate`):
   - `and()`: Combines two predicates (logical AND).
   - `or()`: Combines two predicates (logical OR).
@@ -194,10 +191,15 @@ interface MathOperation {
   }
   ```
 
-## Key Note
+### Key Note
 - Functional interfaces have exactly one abstract method.
 - Lambda expressions simplify functional interface implementation.
 - Predicates are boolean-valued functional interfaces used for filtering or testing conditions.
 - Lambda expressions are commonly used with threads (`Runnable`) and predicates for concise code.
 
 ---
+
+
+=====
+
+Predicate takes exactly one argument

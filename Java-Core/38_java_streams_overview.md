@@ -1,6 +1,6 @@
-# **Java Streams**
+## **Java Streams**
 
-## **Stream Overview**
+### **Stream Overview**
 - **Immutable** element flow
 - **Processing Modes**: Sequential or parallel (`list.stream().parallel()`).
 - **Element Access**: Elements are processed once and then unavailable.
@@ -10,18 +10,18 @@
 - **Lazy Evaluation**: Intermediate operations are deferred until a terminal operation triggers traversal.
 - **Finite/Infinite Streams**: Supports both (e.g., `Stream.generate()` for infinite).
 
-## **Stream Creation**
+### **Stream Creation**
 - From **collections**: `list.stream()`.
 - From **arrays**: `Arrays.stream(array)`.
 - From **Stream class**: `Stream.of()`, `Stream.generate()`, `Stream.iterate()`.
 - **Primitive Streams**: `IntStream`, `LongStream`, `DoubleStream` (extend `BaseStream`).
 
-## **Stream Operation Categories**
+### **Stream Operation Categories**
 1. **Intermediate**: Transform or filter streams, return a new stream.
 2. **Terminal**: End the pipeline, produce a result or side effect.
 3. **Short-Circuit**: Produce finite results, even with infinite input (e.g., `findFirst`, `takeWhile`).
 
-## **Functional Interfaces (`java.util.function`)**
+### **Functional Interfaces (`java.util.function`)**
 Streams use functional interfaces, often implemented as lambda expressions.
 
 | **Interface**      | **Purpose**                     | **Method**                     | **Example Use**                     |
@@ -32,14 +32,14 @@ Streams use functional interfaces, often implemented as lambda expressions.
 | `Consumer<T>`      | Process element, no return      | `void accept(T t)`            | ForEach: `p -> p.setDiscount(0.1)` |
 | `Supplier<T>`      | Produce element, no input       | `T get()`                     | Generate: `() -> Math.random()`    |
 
-### **Primitive Variants**
+#### **Primitive Variants**
 - **Input**: `IntPredicate`, `LongPredicate`, `DoublePredicate`, `IntConsumer`, etc.
 - **Output**: `ToIntFunction<T>`, `IntSupplier`, etc.
 - **Input-Output**: `IntToDoubleFunction`, `IntUnaryOperator`, etc.
 - **Bi-Variants**: `BiPredicate`, `BiFunction`, `BiConsumer` for two arguments.
 
-## **Key Stream Operations**
-### **Intermediate Operations**
+### **Key Stream Operations**
+#### **Intermediate Operations**
 - **Filter**: `filter(Predicate<T>)` – Retains elements matching condition.
 - **Map**: `map(Function<
 Stream handling operation categories
@@ -57,7 +57,7 @@ Stream handling operation categories
 - **TakeWhile**: `takeWhile(Predicate<T>)` – Takes elements while predicate is true.
 - **DropWhile**: `dropWhile(Predicate<T>)` – Drops elements while predicate is true.
 
-### **Terminal Operations**
+#### **Terminal Operations**
 - Returns single result
 - **ForEach**: `forEach(Consumer<T>)` – Applies action to each element.
   - `forEachOrdered`: Ensures order (useful in parallel streams).
@@ -70,14 +70,14 @@ Stream handling operation categories
   - `allMatch`, `anyMatch`, `noneMatch`: Return `boolean`.
   - `findAny`, `findFirst`: Return `Optional<T>`.
 
-## **Optional Class**
+### **Optional Class**
 - Represents a value that may or may not exist.
 - Methods:
   - `isPresent()`: Returns `true` if value exists.
   - `get()`: Retrieves value (throws exception if empty).
 
-## **Examples**
-### **Basic Stream Pipeline**
+### **Examples**
+#### **Basic Stream Pipeline**
 ```java
 List<Product> list = new ArrayList<>();
 list.stream()
@@ -86,7 +86,7 @@ list.stream()
     .forEach(p -> p.setDiscount(0.2)); // Terminal: Apply discount
 ```
 
-### **Equivalent Loop**
+#### **Equivalent Loop**
 ```java
 for (Product p : list) {
     if (p.getPrice() > 10) {
@@ -95,7 +95,7 @@ for (Product p : list) {
 }
 ```
 
-### **Complex Pipeline**
+#### **Complex Pipeline**
 ```java
 list.stream()
     .filter(p -> p.getDiscount() == 0)         // Filter zero-discount products
@@ -104,14 +104,14 @@ list.stream()
     .forEach(d -> d.plusDays(1));              // Add 1 day to date
 ```
 
-### **Primitive Stream**
+#### **Primitive Stream**
 ```java
 IntStream.generate(() -> (int)(Math.random() * 10)) // Random numbers
     .takeWhile(n -> n != 3)                        // Stop at 3
     .sum();                                        // Sum remaining
 ```
 
-### **FlatMap Example**
+#### **FlatMap Example**
 ```java
 List<Order> orders = new ArrayList<>();
 double total = orders.stream()
@@ -121,7 +121,7 @@ double total = orders.stream()
     .sum();                                        // Sum prices
 ```
 
-### **Predicate Combination**
+#### **Predicate Combination**
 ```java
 Predicate<Product> foodFilter = p -> p instanceof Food;
 Predicate<Product> priceFilter = p -> p.getPrice().compareTo(BigDecimal.valueOf(2)) < 0;
@@ -130,7 +130,7 @@ list.stream()
     .forEach(p -> p.setDiscount(0.1));             // Apply 10% discount
 ```
 
-### **Function Composition**
+#### **Function Composition**
 ```java
 Function<Product, String> nameMapper = p -> p.getName();
 UnaryOperator<String> trimMapper = String::trim;
@@ -141,7 +141,7 @@ list.stream()
     .sum();                                        // Sum lengths
 ```
 
-### **Sorting and Limiting**
+#### **Sorting and Limiting**
 ```java
 Stream.of("A", "C", "B", "D", "B", "D")
     .distinct()                                    // Remove duplicates
@@ -150,7 +150,7 @@ Stream.of("A", "C", "B", "D", "B", "D")
     .forEach(System.out::println);                 // Print each
 ```
 
-### **TakeWhile/DropWhile**
+#### **TakeWhile/DropWhile**
 ```java
 Stream.of("B", "C", "A", "E", "D", "F")
     .takeWhile(s -> !s.equals("D"))                // Take until "D" (B, C, A)
@@ -159,7 +159,7 @@ Stream.of("B", "C", "A", "E", "D", "F")
     .forEach(System.out::println);                 // Print: C, A
 ```
 
-### **Aggregation Operations**
+#### **Aggregation Operations**
 ```java
 List<Integer> numbers = List.of(10, 20, 30);
 long count = numbers.stream().count();             // 3
@@ -168,7 +168,7 @@ int sum = numbers.stream().mapToInt(i -> i).sum(); // 60
 OptionalDouble avg = numbers.stream().mapToInt(i -> i).average(); // 20.0
 ```
 
-## **Key Points**
+### **Key Points**
 - **BaseStream**: Defines core stream behavior (sequential/parallel).
 - **Generics**: `Stream<T>` supports generics; primitive streams avoid boxing.
 - **Parallel Streams**: Use `parallel()` for performance; `forEachOrdered` ensures order.v
