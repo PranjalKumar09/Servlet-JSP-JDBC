@@ -2,7 +2,7 @@ enhance & concise this notes , this is for oracle exam , every point is importan
 
 Your task is to enhance these notes by making them more concise, improving the format, and ensuring a proper flow of ideas. You should preserve all original information, remove repetitive content, and add any relevant details where applicable. 
 
-remember we in concixse
+remember we in concise
 
 
 1
@@ -53,7 +53,10 @@ remember we in concixse
     
 
 
-
+Today done
+    39
+    40
+    38
     
 
     
@@ -62,8 +65,6 @@ remember we in concixse
 
 
 
-TO RESUME: 3/16/148
-    theory: 163
 
 
 23

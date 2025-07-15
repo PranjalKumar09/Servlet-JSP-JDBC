@@ -20,13 +20,6 @@
    - **`System.gc()`**: Suggests garbage collection but does not guarantee it.
 
 
----
-
-### 20. **Math Library and Common Utility Methods**
-   - Familiarize yourself with common `Math` methods like `Math.abs()`, `Math.sqrt()`, `Math.pow()`, `Math.random()`.
-   - Useful in programs requiring calculations or randomization.
-
----
 
 ### 1. **Constants in Math Class**
    - **`Math.PI`**: Represents the value of π (3.14159...), useful for trigonometric calculations.

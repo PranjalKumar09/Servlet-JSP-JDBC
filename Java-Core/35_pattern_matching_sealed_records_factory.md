@@ -1,5 +1,3 @@
-## 🧠 **Core Java Concepts – Oracle Exam Prep**
-
 ### 🔹 **Object Creation & Memory**
 
 * When an object is created using `new`, **memory is allocated** on the **heap**.

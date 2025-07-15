@@ -191,7 +191,7 @@ public record Student(int id, String name){
 You can define a top level record i.e. directly under a package, a nested member record class i.e. within a class/interface, or a local record i.e. within a method.
 A nested record class is implicitly static. That is, every member record class and local record class is static. It is permitted for the declaration of a member record class to redundantly specify the static modifier, but it is not permitted for the declaration of a local record class.
 
-A record class is implicitly final. It is permitted for the declaration of a record class to redundantly specify the final modifier.
+A record class is implicitly final. It is permitted for the declaration of a record class to redundantly specify the final modifier. Means all variable are also final (one time initialized)
 
 
 difference between a record and a regular class with respect to constructors is that the compiler provides a canonical constructor for a record even when the programmer provides a non-canonical constructor and does not provide the canonical constructor. In a regular class, the compiler does not provide the default no-args constructor if the programmer provides any other constructor for the class.
@@ -202,4 +202,39 @@ A canonical constructor cannot have a throws clause (not even a throws clause wi
 
 
 interface can have nested sealed class, 
-nested sealed class must have permit
+
+
+public class TestClass {
+    sealed class NestedVehicle { // No permits clause
+        final class Car extends NestedVehicle { }
+        final class Truck extends NestedVehicle { }
+    }
+
+    public static void main(String[] args) {
+        NestedVehicle vehicle = new NestedVehicle.Car();
+        System.out.println(vehicle instanceof NestedVehicle.Car); // true
+    }
+}
+
+
+
+
+
+public class TestClass {
+    sealed class NestedVehicle permits TestClass.Car, OtherPackage.Truck { }
+    final class Car extends NestedVehicle { }
+}
+
+class OtherPackage {
+    final class Truck extends TestClass.NestedVehicle { }
+}
+
+
+
+
+It is ok for a nested sealed class to omit the permits clause
+
+
+
+
+
