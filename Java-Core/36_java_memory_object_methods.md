@@ -66,7 +66,7 @@ Product p1 = new Product("Tea", 1.99);
 Product p2 = new Product("Tea", 1.99);
 boolean same = p1.equals(p2);
 int hash = p1.hashCode();
-String name = p1.name();
+String name = p1.name(); // this method provided automatically
 String text = p1.toString();
 ```
 
@@ -145,6 +145,7 @@ EXTRA INFORMATION
 A record cannot define any instance field explicitly.
 The direct superclass type of a record class is Record. Thus, a record cannot have an extends clause and so it cannot extend any other class. not even other record
 record can implement any no of interface
+
 
 
 inner class can be sealed too

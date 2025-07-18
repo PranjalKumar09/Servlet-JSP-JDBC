@@ -302,7 +302,7 @@ System.out.println(x);       // Output: [I@<hashcode>
 * `java.util.Arrays` is a utility class for arrays.
 * Common methods:
 
-  * `Arrays.sort(array)`
+  * `Arrays.sort(array)`: Only works for array not lists
   * `Arrays.toString(array)`
   * `Arrays.equals(array1, array2)`
 

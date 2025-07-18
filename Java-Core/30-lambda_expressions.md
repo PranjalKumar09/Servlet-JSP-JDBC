@@ -203,3 +203,6 @@
 =====
 
 Predicate takes exactly one argument
+
+
+constructor can also be called <ClassName>
