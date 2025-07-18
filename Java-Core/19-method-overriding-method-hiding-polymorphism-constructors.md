@@ -197,3 +197,10 @@ class Test {
 * **Variables and static methods** use **reference type**, not object type.
 * **Polymorphism** enables flexibility via parent references pointing to child objects — especially useful in APIs and collections.
 
+
+====
+
+
+EXTRA KNOWLEDGE
+
+we can override with certain conditions , so we wrap it with try can catch
