@@ -206,3 +206,6 @@ Predicate takes exactly one argument
 
 
 constructor can also be called <ClassName>
+
+
+even lambda should not be condlict with earlier parameter

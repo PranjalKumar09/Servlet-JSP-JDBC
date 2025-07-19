@@ -178,3 +178,8 @@ OptionalDouble avg = numbers.stream().mapToInt(i -> i).average(); // 20.0
 - **Thread Safety**: Streams are not thread-safe; ensure proper synchronization in parallel processing.
 
 ---
+
+=====
+
+forEachOrdered works in both, in normal and parallel loop
+
