@@ -191,3 +191,11 @@ The `collect()` operation accumulates stream elements into a **result container*
   ```
 
 ---
+
+
+===
+
+.toList() doesnt take anything
+
+
+Collectors.joining() -> default is ""

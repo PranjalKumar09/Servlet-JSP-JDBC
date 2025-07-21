@@ -1,7 +1,5 @@
 ### Are Humans Objects?
 - **Yes**, humans can be considered as objects:
-  - We have *attributes* like name, height, and age.
-  - We also *exhibit behaviors* such as walking, talking, running, and eating.
 
 ---
 
@@ -268,22 +266,6 @@ class Account {
         System.out.println("Enter rate of interest:");
         rate_of_interest = sc.nextDouble();
     }
-
-    public Account() {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Enter account id, name, and balance:");
-        accid = sc.nextInt();
-        name = sc.next();
-        balance = sc.nextDouble();
-    }
-
-    public void show() {
-        System.out.println(name + "\n" + accid + "\n" + balance);
-    }
-
-    public static void showRate() {
-        System.out.println("Rate of interest is " + rate_of_interest);
-    }
 }
 ```
 ===
@@ -334,8 +316,8 @@ class Cylinder extends Circle {
 
 
 ### Polymorphism
-    - **Method Overloading**
-    - **Method Overriding**
+- **Method Overloading**
+- **Method Overriding**
 
 ---
 

@@ -28,7 +28,6 @@ interface A {
 ```
 
 * `final`, `private`, `protected` are **not allowed** with interface methods.
-
 ---
 
 ## **2. Implementing Interface**
@@ -225,3 +224,7 @@ Static method	No	Yes
 
 
 clonaable as type marker
+
+
+final not allowed anywhre in interface
+

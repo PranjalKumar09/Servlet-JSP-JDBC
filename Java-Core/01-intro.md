@@ -25,8 +25,6 @@
 
 * Java is a **technology** (not just a language) used for developing:
 
-  * **Object-Oriented**
-  * **Platform-Independent** applications
 
 ### **Platform**
 
