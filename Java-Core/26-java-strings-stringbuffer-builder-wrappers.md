@@ -315,7 +315,7 @@ NEW KNOWLEDGE
 
   String str = " ";
   str.trim();
-  S.o.p(str.equals("")+" " +str.empty()); /// false false
+  S.o.p(str.equals("")+" " +str.isEmpty()); /// false false
 
   string class if final cant be extended
 
