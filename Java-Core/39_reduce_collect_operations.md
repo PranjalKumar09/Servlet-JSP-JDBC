@@ -26,7 +26,7 @@ The `reduce()` operation combines stream elements into a **single result** (e.g.
 3. **Advanced `reduce()` (Parallel-Stream Safe, Returns `U`)**
    - **Syntax**: `<U> U reduce(U identity, BiFunction<U, T, U> accumulator, BinaryOperator<U> combiner)`
    - **Use Case**: Merges partial results in **parallel streams** using a `combiner`.
-   - **Example**: Concatenate strings.
+   - **Example**: Concatenate sgitrings.
      ```java
      List<String> words = List.of("Hello", "World");
      String concat = words.parallelStream()
