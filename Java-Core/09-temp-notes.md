@@ -6,21 +6,6 @@
      - Most operators are left-associative (evaluated left to right).
      - Assignment operators (like `=`, `+=`) are right-associative.
 
-
-### 15. **File I/O Basics**
-   - **Classes**: `File`, `FileReader`, `FileWriter`, `BufferedReader`, `BufferedWriter`
-   - **Streams**: Basic knowledge of `InputStream` and `OutputStream` classes.
-   - **Exception Handling**: Most file I/O operations throw checked exceptions (`IOException`).
-
----
-
-### 18. **Garbage Collection Basics**
-   - **Purpose**: Automatic memory management.
-   - **Reference Types**: Strong, weak, soft, phantom references.
-   - **`System.gc()`**: Suggests garbage collection but does not guarantee it.
-
-
-
 ### 1. **Constants in Math Class**
    - **`Math.PI`**: Represents the value of π (3.14159...), useful for trigonometric calculations.
    - **`Math.E`**: Represents the base of the natural logarithm (approximately 2.71828).

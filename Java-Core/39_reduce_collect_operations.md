@@ -199,3 +199,7 @@ The `collect()` operation accumulates stream elements into a **result container*
 
 
 Collectors.joining() -> default is ""
+
+
+
+in reduce with 3rd argument, here output of 2 accumulator (from 2nd argument)

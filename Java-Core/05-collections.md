@@ -72,7 +72,7 @@ When adding custom objects to an `ArrayList`, you must override the `equals()` m
 
 #### **Example**:
 Override the `equals()` method in your class:  
-        ```
+```java
         @Override
         public boolean equals(Object obj) {
             if (this == obj) return true;
@@ -80,7 +80,7 @@ Override the `equals()` method in your class:
             Emp emp = (Emp) obj;
             return id == emp.id && name.equals(emp.name) && salary == emp.salary;
         }
-        ```
+```
     
 
 ---
@@ -160,6 +160,8 @@ class LengthCompare implements Comparator<String> {
 
 
 Collections.sort(menu, new LengthCompare()); // Sorts by string length
+
+```
 
 ### **Using the `Comparable` Interface**
 

@@ -282,35 +282,7 @@ class Account {
   1. **Calling the base class constructor**.
   2. **Resolving method overriding** (when the subclass overrides a method and calls the superclass method).
 
----
 
-### Method Overriding
-### Example: Overriding with `Circle` and `Cylinder`
-
-> **Note**: The `@Override` annotation is optional but recommended. It ensures that the method in the subclass correctly overrides a method from the superclass. If the method signature doesn’t match, the compiler will throw an error.
-
-
-```java
-class Circle {
-    private int rad;
-    public Circle(int rad) { this.rad = rad; }
-    public int getRadius() { return rad; }
-    public double getArea() { return Math.PI * rad * rad; }
-    public double getCircum() { return 2 * Math.PI * rad; }
-}
-
-class Cylinder extends Circle {
-    private int height;
-    public Cylinder(int r, int h) {
-        super(r);
-        height = h;
-    }
-    @Override
-    public double getArea() {
-        return 2 * super.getArea() + getCircum() * height;
-    }
-}
-```
 
 ---
 
