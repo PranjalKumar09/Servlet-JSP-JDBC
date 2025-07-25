@@ -226,7 +226,6 @@ class Box {
 
 ---
 
-#### Static Data Members
 
 #### Static Methods -> Class Variable
 A method should be made static in the following situations:
@@ -359,7 +358,6 @@ class Test {
       public static void main(String[] args) {
           Conversions co = new TryConversions();
           System.out.println("Weight in grams: " + co.kgToGrams(5));
-          System.out.println("Height in mm: " + co.inchesToMm(10));
       }
   }
   ```

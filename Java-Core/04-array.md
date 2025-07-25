@@ -1,5 +1,3 @@
-## ✅ Java Arrays
-
 ### 1. **Basics of Array Declaration and Initialization**
 
 * **Declaration:**
@@ -29,7 +27,6 @@
   * Homogeneous (same data type only)
   * Arrays are **objects** in Java
   * Default values:
-int 
     * `int` → 0, `boolean` → false, `Object` → null
 
 ---
@@ -78,23 +75,7 @@ int
   | `byte[]`    | `[B`                               |
   | `boolean[]` | `[Z`                               |
   | `Object[]`  | `[Ljava.lang.Object;`              |
-
----
-
-### 4. **Invalid Initializations**
-
-```java
-int[] a = new int[3] {1, 2, 3};  // ❌ Not allowed (cannot combine size + values)
-int[] x;
-x = {10, 20, 30};                // ❌ Invalid
-```
-
-✅ **Valid:**
-
-```java
-int[] a = {1, 2, 3};
-int[] b = new int[] {1, 2, 3};  // Anonymous array
-```
+  | `Student[]` | `[LStudent;` (`L` only for non-primitives) |
 
 ---
 
@@ -244,7 +225,7 @@ A = B;  // `{10, 20}` is now unreachable → eligible for GC
 * Left side = reference; Right side = object.
 * `int[] x` → 1D int array reference
 * `int[][] x = new int[4][];` → Valid (Jagged)
-* First dimension **must be provided** when allocating:
+* Starting dimension **must be provided** when allocating:
 
   ```java
   new int[][3]; // ❌ Error
@@ -283,15 +264,8 @@ System.out.println(x);       // Output: [I@<hashcode>
 
 * Arrays are **objects**, even if holding primitives.
 * Stored on **heap**, referenced by variables.
-* `x.getClass().getName()` returns array type info:
 
-  * `int[]` → `[I`
-  * `int[][]` → `[[I`
-  * `long[]` → `[J`
-  * `byte[]` → `[B`
-  * `boolean[]` → `[Z`
-  * `Object[]` → `[Ljava.lang.Object;`
-  * `Student[]` → `[LStudent;` (`L` only for non-primitives)
+
 
 🧠 **Note**: These class names are internal and **not usually used directly by programmers**, but useful for debugging and introspection.
 
@@ -308,19 +282,7 @@ System.out.println(x);       // Output: [I@<hashcode>
 
 ---
 
-### 🔹 **Invalid 3D Declaration**
 
-```java
-int[][][] x = new int[3][][2];  // ❌ Invalid
-```
-
-✅ Only the **first dimension** can be omitted; others must be fixed during allocation:
-
-```java
-int[][] x = new int[4][];      // ✅ Valid jagged array
-```
-
----
 
 ### 🔹 **Array Element Type Clarification**
 
@@ -389,7 +351,7 @@ customMethod(new int[] {10, 20, 30});
 ```java
 int[] x = {1, 2};        // ✅
 int[] y;
-y = {1, 2};              // ❌
+y = {1, 2};   z           // ❌
 ```
 
 ---

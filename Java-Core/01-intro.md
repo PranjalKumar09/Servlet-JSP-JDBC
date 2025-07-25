@@ -177,13 +177,11 @@ java /project/sources/Whatever.java
 
 1. **Command-Line Arguments**
 
-   ```java
-   public class Test {
-       public static void main(String[] args) {
-           System.out.println("Hello " + args[0]);
-       }
-   }
-   ```
+  ```java
+  public static void main(String[] args) {
+        System.out.println("Hello " + args[0]);
+  }
+  ```
 
 2. **Scanner Class**
 
