@@ -18,7 +18,7 @@
 
 ### Key Keywords in Exception Handling:
 1. **`try`**
-2. **`catch`**to handle them.
+2. **`catch`** to handle them.
 3. **`throw`**
 4. **`throws`**
 5. **`finally`**

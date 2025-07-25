@@ -132,19 +132,6 @@ This `Math` class provides most of the mathematical functionality you’ll need 
 ---
 
 ### 3. **String Conversion**
-Java provides convenient ways to convert other data types to `String` and vice versa:
-
-- **Convert Primitive to String**:
-    - `String.valueOf(dataType)`: Converts a primitive data type to a `String`.
-    - Example:
-        ```java
-        int number = 123;
-        String strNumber = String.valueOf(number); // Converts int to String "123"
-        ```
-    - **Alternative**: Concatenation with an empty string also converts to `String`.
-        ```java
-        String strNumber = number + ""; // Also gives "123"
-        ```
 
 - **Convert String to Primitive**:
     - Use `Integer.parseInt()`, `Double.parseDouble()`, etc., to parse a `String` to a corresponding data type.

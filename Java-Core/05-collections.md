@@ -46,7 +46,7 @@ The `List` interface extends `Collection` and represents an **ordered collection
   - `Vector`  
   - `Stack`  
 
-================================================================================================================================
+====
 
 
 `ArrayList` can be created in two ways:  
@@ -54,10 +54,6 @@ The `List` interface extends `Collection` and represents an **ordered collection
 1. **Type-Unsafe `ArrayList`**  
 2. **Type-Safe `ArrayList`**  
 
----
----
----
----
 ---
 ---
 ### **Overriding the `equals()` Method**
@@ -72,7 +68,7 @@ When adding custom objects to an `ArrayList`, you must override the `equals()` m
 
 #### **Example**:
 Override the `equals()` method in your class:  
-```java
+    ```java
         @Override
         public boolean equals(Object obj) {
             if (this == obj) return true;
@@ -80,7 +76,7 @@ Override the `equals()` method in your class:
             Emp emp = (Emp) obj;
             return id == emp.id && name.equals(emp.name) && salary == emp.salary;
         }
-```
+
     
 
 ---
@@ -90,9 +86,9 @@ Override the `equals()` method in your class:
 The `Collections` class in `java.util` provides a static `sort()` method to sort `ArrayList` elements:  
 
 #### **Prototype**:  
-    ``` java
-        public static void sort(List list)
-    ```
+``` java
+    public static void sort(List list)
+```
 
 #### **Natural Sorting Order**:
 - **Strings**: Alphabetical order.  
@@ -196,8 +192,6 @@ public int compareTo(Object obj)
 
 ### **Accessing Elements in a `LinkedList`**
 
-- **`get()` Method**:  
-  Allows retrieval of elements by index but requires sequential traversal, making it slower for large lists.
 
 #### **Comparison with `ArrayList`**:
 - **`ArrayList`**: Supports **Random Access**, directly fetching elements by index.  
