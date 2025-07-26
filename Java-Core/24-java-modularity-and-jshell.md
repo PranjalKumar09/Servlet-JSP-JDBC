@@ -50,7 +50,7 @@ javadoc -d <output-path> -sourcepath <source-path> -subpackages <root-package>
 
 ### 🧩 How it Works:
 
-* Parses declarations + `/** */` doc commenHere’s your **enhanced and concise version** of the notes, organized for clarity and aligned with the **Oracle Java 17 certification** focus. All original points are preserved, repetitive parts removed, and formatting improved for quick revision and memorization:
+* Parses declarations + `/** */` doc comment
 
 ---
 

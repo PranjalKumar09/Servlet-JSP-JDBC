@@ -264,4 +264,3 @@ class Test {
 
 ---
 
-Let me know if you’d like this as a PDF or formatted as flashcards.

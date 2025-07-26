@@ -185,3 +185,11 @@ C.m1();         // C
 📌 Output depends on **reference type**
 
 ---
+
+===
+rule 1x 
+Class to Interface ((C) d where C is an interface and d is a class):
+
+    The class d (or any of its superclasses) must implement the interface C.
+
+    OR, if d does NOT implement C: The class d must not be final and it must be possible for a subclass of d to implement C. (The compiler does not definitively know it's impossible).

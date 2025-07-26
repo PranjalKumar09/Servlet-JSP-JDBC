@@ -1,5 +1,5 @@
 
-    Overiding of static method not possible
+Overiding of static method not possible
 
 # **Java Interface & Inheritance - Quick Notes**
 

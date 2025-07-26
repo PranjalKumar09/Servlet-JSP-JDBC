@@ -1,8 +1,8 @@
-# 📁 Java Source File Structure
+## 📁 Java Source File Structure
 
 ---
 
-## 🔹 File & Class Structure
+### 🔹 File & Cla                                                                                                       ss Structure
 
 * A `.java` source file can contain **any number of classes**.
 * **File name can be anything**, *unless*:
@@ -13,11 +13,11 @@
   * More than one → **compiler error**.
 * Best Practice: Name file after the main class.
 
-### 🔹 Compilation & Execution
+#### 🔹 Compilation & Execution
 
 ```bash
-javac filename.java     # Compiles file
-java ClassName          # Runs class containing main() method
+javac filename.java     ## Compiles file
+java ClassName          ## Runs class containing main() method
 ```
 
 * You can compile one file and run **any class** that has a `main()` method.
@@ -25,7 +25,7 @@ java ClassName          # Runs class containing main() method
 
 ---
 
-## ❌ Using Unknown Symbols (Compiler Errors)
+### ❌ Using Unknown Symbols (Compiler Errors)
 
 Examples of common errors:
 
@@ -57,15 +57,15 @@ java.util.ArrayList list = new java.util.ArrayList();
 
 ---
 
-## 📦 Import Types
+### 📦 Import Types
 
-### 1. **Explicit Import** (✅ Recommended)
+#### 1. **Explicit Import** (✅ Recommended)
 
 ```java
 import java.util.ArrayList;
 ```
 
-### 2. **Implicit Import** (Wildcard)
+#### 2. **Implicit Import** (Wildcard)
 
 ```java
 import java.util.*;
@@ -75,7 +75,7 @@ import java.util.*;
 * However, **IDEs usually generate explicit imports** for clarity and maintainability.
 * `import java.util.ArrayList*;` or `import java.util;` → ❌ Invalid.
 
-### ➕ Typing Shortcut
+#### ➕ Typing Shortcut
 
 ```java
 class MyList extends java.util.ArrayList { }
@@ -85,7 +85,7 @@ class MyList extends java.util.ArrayList { }
 
 ---
 
-## ⚠️ Import Conflict Example
+### ⚠️ Import Conflict Example
 
 ```java
 import java.sql.*;
@@ -109,7 +109,7 @@ class Test {
 
 ---
 
-## 📌 Import Precedence
+### 📌 Import Precedence
 
 1. **Explicit Import** (e.g., `import java.util.Date;`)
 2. **Classes in the same package/directory**
@@ -124,17 +124,17 @@ import java.util.regex.*;        // ✅ Valid
 
 ---
 
-## 🧮 Static Import
+### 🧮 Static Import
 
 Allows access to static members without class reference.
 
-### Example Without Static Import:
+#### Example Without Static Import:
 
 ```java
 System.out.println(Math.sqrt(25));
 ```
 
-### With Static Import:
+#### With Static Import:
 
 ```java
 import static java.lang.Math.sqrt;
@@ -149,7 +149,7 @@ class Test {
 
 ---
 
-## 📦 Packages
+### 📦 Packages
 
 * Mechanism for grouping related classes. (like in single component)
 * Provides:
@@ -159,7 +159,7 @@ class Test {
   * **Security**
   * **Name conflict resolution**
 
-### 📦 Declaration Syntax
+#### 📦 Declaration Syntax
 
 ```java
 package pack1;
@@ -176,7 +176,7 @@ import java.util.*;
 package mypack;
 ```
 
-### 📦 Naming Convention
+#### 📦 Naming Convention
 
 * Use **reverse domain name** for uniqueness:
 
@@ -192,7 +192,7 @@ package mypack;
 
 ---
 
-## 🛠️ Compiling with Package
+### 🛠️ Compiling with Package
 
 ```bash
 javac -d . Test.java
@@ -206,7 +206,7 @@ javac -d . Test.java
 
 ---
 
-## ✅ Additional Notes
+### ✅ Additional Notes
 
 * Even an **empty Java program** (a file with just class declaration) is **valid**.
 * Importing `java.util.*` doesn't bring in `java.util.regex.*` → must import subpackages separately.

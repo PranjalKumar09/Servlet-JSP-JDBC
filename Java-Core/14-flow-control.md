@@ -1,9 +1,9 @@
-# 🔁 **Flow Control in Java 
+## 🔁 **Flow Control in Java**
 ---
 
-## ✅ **1. Selection Statements**
+### ✅ **1. Selection Statements**
 
-### **if / else if / else**
+#### **if / else if / else**
 
 * `else if(condition)` → **condition must be boolean**.
 * Curly braces `{}` are **optional**, but recommended for clarity.
@@ -19,7 +19,7 @@ else                           // This 'else' belongs to 'if (temperature >= 4)'
     System.out.println("Too High");
 ``` 
 
-### **switch**
+#### **switch**
 
 * **Syntax**:
 
@@ -47,7 +47,7 @@ else                           // This 'else' belongs to 'if (temperature >= 4)'
   * **Wrapper classes** of these types are also allowed.
 * Not allowed: `long`, `float`, `double`, **`boolean`**.
 
-### **Cases**
+#### **Cases**
 
 * Case labels must be **compile-time constants**.
 
@@ -83,10 +83,10 @@ switch (b) {
 }
 ```
 
-#### **Example:**
+##### **Example:**
 
 ```java
-int x = 0;
+int x = 3;
 switch(x) {
     default: System.out.println("def");
     case 0: System.out.println(0);
@@ -95,18 +95,18 @@ switch(x) {
 }
 ```
 
-* If `x = 0` → `def`, `0`, `1`
-* If `x = 1` → `1`, `2`
+* If `x = 0` →  `0`, `1`
+* If `x = 1` → `1`
 * If `x = 3` → `def`, `0`, `1`
 
 ---
 
-## 🔁 **2. Iterative Statements**
+### 🔁 **2. Iterative Statements**
 
 
 - **Entry-Controlled Loops**: Condition checked before loop execution, e.g., `while` and `for` loops.
 - **Exit-Controlled Loops**: Condition checked after loop execution, e.g., `do-while` loop, ensuring the loop executes at least once.
-### **while**
+#### **while**
 
 ```java
 while(condition) {
@@ -114,7 +114,7 @@ while(condition) {
 }
 ```
 
-### **do-while**
+#### **do-while**
 
 ```java
 do {
@@ -122,7 +122,7 @@ do {
 } while(condition);
 ```
 
-### **for**
+#### **for**
 
 ```java
 for(initialization; condition; update) {
@@ -146,7 +146,7 @@ for(initialization; condition; update) {
   // Output: start, continue, continue
   ```
 
-### **Enhanced for-each**
+#### **Enhanced for-each**
 
 ```java
 int[] arr = {10, 20, 30};
@@ -160,9 +160,9 @@ for(int val : arr)
 * Can be `[]`, `List`, `Set`
 ---
 
-## 🔁 **3. Transfer Statements**
+### 🔁 **3. Transfer Statements**
 
-### **break**
+#### **break**
 
 * Exits:
 
@@ -180,7 +180,7 @@ for(int val : arr)
     // Output: begin, hi
     ```
 
-### **continue**
+#### **continue**
 
 * Skips current loop iteration and proceeds to next.
 * Must not be followed by unreachable code:
@@ -192,7 +192,7 @@ for(int val : arr)
   }
   ```
 
-#### Labeled continue
+##### Labeled continue
 ``` java
 outer:  
 for(int i=0; i<3; i++) {  
@@ -202,20 +202,20 @@ for(int i=0; i<3; i++) {
     }  
 }  
 ```
-### **return**
+#### **return**
 
 * Exits from a method.
 * Can be used with or without a value depending on method return type.
 
 
-### **assert**
+#### **assert**
 
 * Used for testing assumptions during development.
 * Throws `AssertionError` if the condition is false (when enabled with `-ea`).
 
 ---
 
-## 📌 **Other Key Points**
+### 📌 **Other Key Points**
 
 * **Unreachable Code**:
   Java does not allow code that will **never be executed**.
@@ -237,9 +237,9 @@ for(int i=0; i<3; i++) {
 
 ------
 
-### 🔁 `switch` + `yield` (Java 17)
+#### 🔁 `switch` + `yield` (Java 17)
 
-#### ✅ **Switch Expression with `yield`**
+##### ✅ **Switch Expression with `yield`**
 
 * Use when case has a block (`{}`) and you need to **return a value**.
 
@@ -254,14 +254,14 @@ int result = switch (day) {
 };
 ```
 
-#### 🔹 `yield`
+##### 🔹 `yield`
 
 * **Keyword** to return a value from a block in a `switch` expression & stop to fall through case
 * Needed **only in block-style** cases.
 
 ---
 
-### ⚠️ Rules & Tips
+#### ⚠️ Rules & Tips
 
 * `switch` can return a value (expression form).
 * Use `->` for concise cases.

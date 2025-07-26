@@ -1,4 +1,4 @@
-# **Java Class & Member Modifiers**
+
 
 ### **1. Class Modifiers (Allowed - 5)**
 
@@ -19,7 +19,7 @@
 
 ---
 
-# **Final Modifier**
+## **Final Modifier**
 
 ### **Final Class**
 
@@ -54,7 +54,7 @@
 
 ---
 
-# **Abstract Keyword**
+## **Abstract Keyword**
 
 ### **Abstract Class**
 
@@ -111,7 +111,7 @@ class C extends P {
 }
 
 abstract class C1 extends P {
-    public void m1(); // ✅ Valid: still abstract due to unimplemented m2()
+    public void m1(){}// ✅ Valid: still abstract due to unimplemented m2()
 }
 
 class C3 extends C1 {
@@ -164,7 +164,7 @@ b.m1(); // ❌ Error: protected member accessed via parent reference outside pac
 
 ---
 
-# **Interfaces**
+## **Interfaces**
 
 * Methods are implicitly: `public abstract`
 * A class implements an interface, not extends.
@@ -187,7 +187,7 @@ class C extends P {
 
 ---
 
-# **strictfp Modifier**
+## **strictfp Modifier**
 
 * Applicable to: **class** and **method**
 * Ensures **platform-independent** floating-point calculations (e.g., `10.0 / 3`)
@@ -203,7 +203,7 @@ class C extends P {
 
 ---
 
-# **Access Modifiers Summary**
+## **Access Modifiers Summary**
 
 | Modifier    | Class | Package | Subclass | World |
 | ----------- | ----- | ------- | -------- | ----- |
@@ -263,7 +263,7 @@ class E extends D {}
 
 ---
 
-# **Object Class**
+## **Object Class**
 
 * Defined in `java.lang.Object`
 * Contains \~12 methods.
@@ -272,7 +272,7 @@ class E extends D {}
 
 ---
 
-# **Quick Recap: True or False**
+## **Quick Recap: True or False**
 
 | Statement                                    | Validity |
 | -------------------------------------------- | -------- |

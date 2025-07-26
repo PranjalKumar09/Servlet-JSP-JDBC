@@ -1,6 +1,4 @@
----
-
-# [!Java-Core/13-operation.md Java-Core/operator_prescdence.png]
+[!Java-Core/13-operation.md](Java-operator_prescdence.png)
 
 
 ### **Unary Operators & Primitive Types**
@@ -213,7 +211,6 @@ s.equalsIgnoreCase("hELLo"); // true (case ignored)
 
 ---
 
-Absolutely, Pranjal! Let's clarify Java's bitwise shift operators with concise **examples and visual explanations**, especially focusing on:
 
 * `>>`  → Signed right shift
 * `>>>` → **Unsigned** right shift
