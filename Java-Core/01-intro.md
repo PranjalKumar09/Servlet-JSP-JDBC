@@ -192,7 +192,7 @@ java /project/sources/Whatever.java
    sc.close();
    ```
 
-3. **GUI (Swing / JavaFX)**: For graphical input (not covered in this summary)
+3. **GUI (Swing / JavaFX)**: For graphical input 
 
 
 

@@ -141,7 +141,7 @@ enum Temperature {
 | ------------------------------------------------- | ---------------------------------------------------------------- |
 | `protected Object clone()`                        | Creates and returns a copy. Throws `CloneNotSupportedException`. |
 | `public boolean equals(Object obj)`               | Compares object equality.                                        |
-| `public final Class<?> getClass()`                | Gets runtime class of the object.                                |
+| `public final Class<?> getClass()`                | Gets **runtime** class of the object.                                |
 | `public int hashCode()`                           | Returns object’s hash code.                                      |
 | `public String toString()`                        | Returns string representation.                                   |
 | `public final void wait()`                        | Waits for notification.                                          |
