@@ -229,6 +229,8 @@ A = B;  // `{10, 20}` is now unreachable → eligible for GC
 
   ```java
   new int[][3]; // ❌ Error
+  new int[0][]; // Valid
+  new int[0][2]; // ❌ Error
   ```
 
 ---

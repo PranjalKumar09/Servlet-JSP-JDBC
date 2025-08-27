@@ -334,3 +334,4 @@ As per the API documentation for charAt, it throws IndexOutOfBoundsException if 
 
 
 
+exception, substring   start < end

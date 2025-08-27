@@ -45,9 +45,10 @@ StringBuilder txt = new StringBuilder(c);
 | Specifier | Meaning                                   |
 | --------- | ----------------------------------------- |
 | `%s`      | String                                    |
-| `%d`      | Integer                                   |
+| `%d`      | Integer or long                           |
 | `%f`      | Floating-pt                               |
 | `%1.3f`   | Float: 1 digit before and 3 after decimal |
+| `%n`      | Insert line break using system dependent line break|
 
 #### 2. **Examples**
 
@@ -77,7 +78,7 @@ today.plusYears(1).getDayOfWeek(); // e.g., SUNDAY
 ---
 
 #### 2. **Duration (Time Difference)**
-
+  
 ```java
 Duration gap = Duration.between(teaTime, LocalTime.now());
 gap.toMinutes();      // → -707

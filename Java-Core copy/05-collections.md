@@ -87,6 +87,7 @@ The `Collections` class in `java.util` provides a static `sort()` method to sort
 #### **Prototype**:  
     ``` java
     public static void sort(List list)
+    ```
     
 #### **Natural Sorting Order**:
 - **Strings**: Alphabetical order.  
@@ -263,10 +264,7 @@ public boolean add(Object obj)
 
 ### **What is an Iterator?**
 
-
 Obtained by calling the `iterator()` method of a collection class.  
-
-
 
    - `boolean hasNext()`
    - `Object next()`
@@ -277,8 +275,6 @@ Obtained by calling the `iterator()` method of a collection class.
 
 1. `Set` collections do not allow duplicates.  
 2. `HashSet` provides unordered storage, while `TreeSet` ensures sorted order.  
-
-
 
 ---
 
