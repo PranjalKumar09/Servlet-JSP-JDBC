@@ -17,13 +17,13 @@
      - Example: `Math.abs(-5)` returns `5`.
    - **Minimum and Maximum**:
      - `Math.min(a, b)` and `Math.max(a, b)`
-     - Returns the smaller or larger of two numbers.
      - Example: `Math.min(10, 20)` returns `10`.
    - **Signum**:
      - `Math.signum(double a)`
      - Returns `-1.0` if the value is negative, `1.0` if positive, and `0.0` if zero.
 
 ### 3. **Exponential and Logarithmic Functions**
+  All mentioned return in **double**
    - **Power**:
      - `Math.pow(double base, double exponent)`
      - Raises the base to the power of the exponent.

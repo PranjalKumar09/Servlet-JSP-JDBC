@@ -279,3 +279,7 @@ t is not valid form
 z is valid form
 
 Number/Text: If the count of pattern letters is 3 or greater, use the Text rules above. Otherwise use the Number rules above.
+
+
+
+-> in of constructor
